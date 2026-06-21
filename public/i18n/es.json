@@ -166,7 +166,9 @@
       "ERROR_LATITUD": "La latitud es obligatoria.",
       "ERROR_LONGITUD": "La longitud es obligatoria.",
       "ERROR_LATITUD_RANGO": "La latitud debe estar entre -90 y 90.",
-      "ERROR_LONGITUD_RANGO": "La longitud debe estar entre -180 y 180."
+      "ERROR_LONGITUD_RANGO": "La longitud debe estar entre -180 y 180.",
+      "SELECCIONAR_UBICACION": "Seleccionar ubicación",
+      "MAPA_INFO": "Haz clic en el mapa para seleccionar una ubicación."
     },
     "MENSAJES": {
       "CONFIRMAR_ELIMINAR": "¿Eliminar esta ubicación?",

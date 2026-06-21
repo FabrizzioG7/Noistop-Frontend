@@ -34,16 +34,16 @@ export class UbicacionForm implements OnInit {
   id = 0;
 
   center: google.maps.LatLngLiteral = {
-    lat: -12.0464,
-    lng: -77.0428,
+    lat: -12.08757,
+    lng: -77.05007,
+  };
+
+  markerPosition: google.maps.LatLngLiteral = {
+    lat: -12.08757,
+    lng: -77.05007,
   };
 
   zoom = 13;
-
-  markerPosition: google.maps.LatLngLiteral = {
-    lat: -12.0464,
-    lng: -77.0428,
-  };
 
   constructor(
     private fb: FormBuilder,
@@ -67,6 +67,12 @@ export class UbicacionForm implements OnInit {
       this.edicion = !!p['id'];
       if (this.edicion) this.service.listId(this.id).subscribe((d) => this.form.patchValue(d));
     });
+    this.obtenerDireccion(this.center.lat, this.center.lng);
+    this.form.patchValue({
+      latitud: this.center.lat,
+      longitud: this.center.lng,
+    });
+    this.obtenerUbicacionActual();
   }
 
   guardar() {
@@ -97,18 +103,67 @@ export class UbicacionForm implements OnInit {
 
   onMapClick(event: google.maps.MapMouseEvent) {
     if (!event.latLng) return;
-
     const lat = event.latLng.lat();
     const lng = event.latLng.lng();
-
     this.markerPosition = {
       lat,
       lng,
     };
-
     this.form.patchValue({
       latitud: lat,
       longitud: lng,
     });
+    this.obtenerDireccion(lat, lng);
+  }
+
+  async obtenerDireccion(lat: number, lng: number) {
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode(
+      {
+        location: { lat, lng },
+      },
+      (results, status) => {
+        if (status === 'OK' && results && results.length > 0) {
+          const direccion = results[0].formatted_address;
+          let distrito = '';
+          for (const comp of results[0].address_components) {
+            if (
+              comp.types.includes('locality') ||
+              comp.types.includes('administrative_area_level_2')
+            ) {
+              distrito = comp.long_name;
+              break;
+            }
+          }
+          this.form.patchValue({
+            ubicacion: direccion,
+            distrito: distrito,
+          });
+        }
+      },
+    );
+  }
+
+  obtenerUbicacionActual() {
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        this.center = { lat, lng };
+        this.markerPosition = {
+          lat,
+          lng,
+        };
+        this.form.patchValue({
+          latitud: lat,
+          longitud: lng,
+        });
+        this.obtenerDireccion(lat, lng);
+      },
+      () => {
+        console.log('No se pudo obtener ubicación');
+      },
+    );
   }
 }
