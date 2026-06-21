@@ -1,0 +1,103 @@
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <h2>
+        <mat-icon>gavel</mat-icon>
+
+        {{ edicion ? ('ACCION.FORM.EDITAR' | translate) : ('ACCION.FORM.NUEVO' | translate) }}
+      </h2>
+
+      <p class="subtitle">
+        {{ 'ACCION.FORM.SUBTITULO' | translate }}
+      </p>
+    </div>
+
+    <a class="back-link" routerLink="/acciones">
+      <mat-icon>arrow_back</mat-icon>
+      {{ 'GENERAL.VOLVER' | translate }}
+    </a>
+  </div>
+
+  <div class="form-container">
+    <div class="form-info">
+      <mat-icon>info</mat-icon>
+
+      {{ 'ACCION.FORM.INFO' | translate }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'ACCION.FORM.DETALLE' | translate }}
+        </mat-label>
+
+        <textarea
+          matInput
+          formControlName="detalle"
+          rows="4"
+          [placeholder]="'ACCION.FORM.PLACEHOLDER_DETALLE' | translate"
+          required
+        >
+        </textarea>
+
+        @if (form.get('detalle')?.hasError('required')) {
+          <mat-error>
+            {{ 'ACCION.FORM.ERROR_DETALLE' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'ACCION.FORM.AUTORIDAD' | translate }}
+        </mat-label>
+
+        <mat-select formControlName="usuarioId" required>
+          @for (u of usuarios; track u.pkUsuarioId) {
+            <mat-option [value]="u.pkUsuarioId">
+              {{ u.nombre }}
+            </mat-option>
+          }
+        </mat-select>
+
+        @if (form.get('usuarioId')?.hasError('required')) {
+          <mat-error>
+            {{ 'ACCION.FORM.ERROR_USUARIO' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'ACCION.FORM.REPORTE' | translate }}
+        </mat-label>
+
+        <mat-select formControlName="reporteId" required>
+          @for (r of reportes; track r.pkReporteId) {
+            <mat-option [value]="r.pkReporteId">
+              #{{ r.pkReporteId }} - {{ r.descripcion | slice: 0 : 60 }}...
+            </mat-option>
+          }
+        </mat-select>
+
+        @if (form.get('reporteId')?.hasError('required')) {
+          <mat-error>
+            {{ 'ACCION.FORM.ERROR_REPORTE' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          <mat-icon>save</mat-icon>
+
+          {{ edicion ? ('GENERAL.ACTUALIZAR' | translate) : ('GENERAL.GUARDAR' | translate) }}
+        </button>
+
+        <a mat-stroked-button routerLink="/acciones">
+          {{ 'GENERAL.CANCELAR' | translate }}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

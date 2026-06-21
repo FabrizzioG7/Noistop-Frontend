@@ -1,0 +1,263 @@
+.home-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+  animation: fadeHome 0.6s ease-out;
+}
+
+.hero {
+  background: linear-gradient(135deg, #00695c, #00897b);
+  color: white;
+  min-height: 320px;
+  padding: 0 70px;
+  display: flex;
+  align-items: center;
+  border-radius: 35px;
+  margin-bottom: 50px;
+  box-shadow: 0 25px 50px rgba(0, 105, 92, 0.25);
+}
+
+.hero-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 120px;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 700px;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 35px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  margin: 12px 0 30px;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 700px;
+}
+
+.hero-line {
+  width: 120px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50px;
+  margin-top: 25px;
+}
+
+.hero-logo {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 80px;
+}
+
+.hero-icon {
+  font-size: 150px;
+  width: 150px;
+  height: 150px;
+  opacity: 0.25;
+  transition: 0.4s;
+}
+
+.hero:hover .hero-icon {
+  transform: scale(1.05);
+  opacity: 0.35;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 50px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+}
+
+.stat-card mat-icon {
+  font-size: 42px;
+  width: 42px;
+  height: 42px;
+  color: #00695c;
+  margin-bottom: 10px;
+}
+
+.stat-card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+  color: #212121;
+}
+
+.stat-card span {
+  color: #757575;
+  font-size: 0.95rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00695c;
+  margin-bottom: 24px;
+  padding-bottom: 10px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.entity-card {
+  cursor: pointer;
+  border-radius: 24px !important;
+  overflow: hidden;
+  background: white;
+  transition: all 0.35s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  min-height: 300px;
+  position: relative;
+}
+
+.entity-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: 0.6s;
+}
+
+.entity-card:hover::after {
+  left: 100%;
+}
+
+.entity-card::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #26a69a, #00695c);
+}
+
+.entity-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+mat-card-header {
+  padding-top: 20px;
+}
+
+.card-icon-wrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.card-icon {
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+  color: white;
+}
+
+mat-card-content h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #212121;
+}
+
+mat-card-content p {
+  color: #616161;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+mat-card-actions {
+  padding: 0 16px 20px;
+}
+
+mat-card-actions button {
+  font-weight: 600;
+}
+
+@keyframes fadeHome {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 40px;
+    min-height: auto;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero-logo {
+    margin-right: 0;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero-icon {
+    font-size: 100px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .hero-line {
+    margin: 25px auto 0;
+  }
+}

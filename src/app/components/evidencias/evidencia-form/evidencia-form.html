@@ -1,0 +1,88 @@
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <h2>
+        <mat-icon>photo_library</mat-icon>
+
+        {{ 'EVIDENCIA.FORM.NUEVO' | translate }}
+      </h2>
+
+      <p class="subtitle">
+        {{ 'EVIDENCIA.FORM.SUBTITULO' | translate }}
+      </p>
+    </div>
+
+    <a class="back-link" routerLink="/evidencias">
+      <mat-icon>arrow_back</mat-icon>
+      {{ 'GENERAL.VOLVER' | translate }}
+    </a>
+  </div>
+
+  <div class="form-container">
+    <div class="form-info">
+      <mat-icon>info</mat-icon>
+
+      {{ 'EVIDENCIA.FORM.INFO' | translate }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <div class="upload-section">
+        <label class="upload-label">
+          <mat-icon>cloud_upload</mat-icon>
+
+          {{ 'EVIDENCIA.FORM.SELECCIONAR' | translate }}
+        </label>
+
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+
+        @if (selectedFileName) {
+          <p class="file-name">
+            {{ selectedFileName }}
+          </p>
+        }
+      </div>
+
+      @if (previewUrl) {
+        <div class="preview-container">
+          <img
+            [src]="previewUrl"
+            [alt]="'EVIDENCIA.FORM.VISTA_PREVIA' | translate"
+            class="preview-image"
+          />
+        </div>
+      }
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'EVIDENCIA.FORM.REPORTE' | translate }}
+        </mat-label>
+
+        <mat-select formControlName="reporteId" required>
+          @for (r of reportes; track r.pkReporteId) {
+            <mat-option [value]="r.pkReporteId">
+              #{{ r.pkReporteId }} - {{ r.descripcion | slice: 0 : 60 }}
+            </mat-option>
+          }
+        </mat-select>
+
+        @if (form.get('reporteId')?.hasError('required')) {
+          <mat-error>
+            {{ 'EVIDENCIA.FORM.ERROR_REPORTE' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          <mat-icon>save</mat-icon>
+
+          {{ 'GENERAL.GUARDAR' | translate }}
+        </button>
+
+        <a mat-stroked-button routerLink="/evidencias">
+          {{ 'GENERAL.CANCELAR' | translate }}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

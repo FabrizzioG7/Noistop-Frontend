@@ -1,0 +1,62 @@
+.main-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 72px;
+  background: linear-gradient(135deg, #00695c, #00897b) !important;
+  color: white;
+  padding: 0 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.logo-icon {
+  margin: 0;
+}
+
+.brand {
+  font-size: 1.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: 0.3s;
+}
+
+.brand:hover {
+  transform: scale(1.03);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.main-toolbar button {
+  border-radius: 10px;
+  margin-left: 4px;
+  transition: 0.3s;
+  color: white !important;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.main-toolbar button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.main-toolbar mat-icon {
+  margin-right: 6px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logo-container:hover {
+  transform: scale(1.03);
+}

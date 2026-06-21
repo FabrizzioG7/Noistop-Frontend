@@ -1,0 +1,317 @@
+{
+  "MENU": {
+    "ROLES": "Roles",
+    "USUARIOS": "Usuarios",
+    "UBICACIONES": "Ubicaciones",
+    "CATEGORIAS": "Categorías",
+    "REPORTES": "Reportes",
+    "ACCIONES": "Acciones",
+    "EVIDENCIAS": "Evidencias",
+    "LISTAR": "Listar",
+    "NUEVO": "Nuevo",
+    "NUEVA": "Nueva",
+    "IDIOMA_ES": "Español",
+    "IDIOMA_EN": "Inglés"
+  },
+
+  "HOME": {
+    "BADGE": "Gestión Inteligente de Ruido Urbano",
+    "DESCRIPTION": "Plataforma para la administración de reportes de ruido, evidencias, ubicaciones y acciones correctivas.",
+    "USUARIOS": "Usuarios",
+    "USUARIOS_DESC": "Gestión completa",
+    "REPORTES": "Reportes",
+    "REPORTES_DESC": "Seguimiento urbano",
+    "UBICACIONES": "Ubicaciones",
+    "UBICACIONES_DESC": "Geolocalización",
+    "MODULOS": "Módulos del Sistema",
+    "GESTIONAR": "Gestionar",
+    "CARDS": {
+      "ROLES": {
+        "TITLE": "Roles",
+        "DESCRIPTION": "Gestión de roles del sistema. Crear, editar y eliminar roles de usuario."
+      },
+      "USUARIOS": {
+        "TITLE": "Usuarios",
+        "DESCRIPTION": "Administración de usuarios. Registrar, actualizar y eliminar cuentas."
+      },
+      "UBICACIONES": {
+        "TITLE": "Ubicaciones",
+        "DESCRIPTION": "Gestión de ubicaciones geográficas con coordenadas por distrito."
+      },
+      "CATEGORIAS": {
+        "TITLE": "Categorías de Ruido",
+        "DESCRIPTION": "Clasificación de tipos de ruido para los reportes del sistema."
+      },
+      "REPORTES": {
+        "TITLE": "Reportes",
+        "DESCRIPTION": "Reportes de ruido con estado, categoría y ubicación georreferenciada."
+      },
+      "ACCIONES": {
+        "TITLE": "Acciones Administrativas",
+        "DESCRIPTION": "Comentarios y acciones tomadas por autoridades sobre los reportes."
+      },
+      "EVIDENCIAS": {
+        "TITLE": "Evidencias",
+        "DESCRIPTION": "Archivos multimedia adjuntos como evidencia de los reportes de ruido."
+      }
+    }
+  },
+
+  "GENERAL": {
+    "GUARDAR": "Guardar",
+    "ACTUALIZAR": "Actualizar",
+    "CANCELAR": "Cancelar",
+    "VOLVER": "Volver",
+    "NUEVO": "Nuevo",
+    "NUEVA": "Nueva",
+    "LISTAR": "Listar",
+    "ACCIONES": "Acciones",
+    "TOTAL": "Total",
+    "NO_HAY_REGISTROS": "No hay registros disponibles.",
+    "ERROR": "Ocurrió un error"
+  },
+
+  "ROL": {
+    "LISTAR": {
+      "TITULO": "Roles del Sistema",
+      "SUBTITULO": "Administración de roles y permisos de la plataforma.",
+      "NUEVO": "Nuevo Rol",
+      "TOTAL": "Total de Roles",
+      "NOMBRE": "Nombre",
+      "ACCIONES": "Acciones",
+      "VACIO": "No hay roles registrados."
+    },
+    "FORM": {
+      "NUEVO": "Nuevo Rol",
+      "EDITAR": "Editar Rol",
+      "SUBTITULO": "Gestión de roles y permisos del sistema.",
+      "INFO": "Complete los datos necesarios para registrar el rol.",
+      "NOMBRE": "Nombre del Rol",
+      "ERROR_NOMBRE": "El nombre del rol es obligatorio."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "¿Eliminar este rol?",
+      "ELIMINADO": "Rol eliminado",
+      "ERROR_ELIMINAR": "Error al eliminar",
+      "CREADO": "Rol creado",
+      "ACTUALIZADO": "Rol actualizado",
+      "ERROR_GENERAL": "Error"
+    }
+  },
+
+  "USUARIO": {
+    "LISTAR": {
+      "TITULO": "Usuarios del Sistema",
+      "SUBTITULO": "Administración de usuarios y accesos de la plataforma.",
+      "NUEVO": "Nuevo Usuario",
+      "TOTAL": "Total de Usuarios",
+      "NOMBRE": "Nombre",
+      "EMAIL": "Email",
+      "ROL": "Rol",
+      "VACIO": "No hay usuarios registrados."
+    },
+    "FORM": {
+      "NUEVO": "Nuevo Usuario",
+      "EDITAR": "Editar Usuario",
+      "SUBTITULO": "Administración de usuarios y accesos de la plataforma.",
+      "INFO": "Complete los datos necesarios para registrar el usuario.",
+      "NOMBRE": "Nombre completo",
+      "PLACEHOLDER_NOMBRE": "Ingrese el nombre completo",
+      "ERROR_NOMBRE": "El nombre es obligatorio.",
+      "EMAIL": "Email",
+      "PLACEHOLDER_EMAIL": "correo@ejemplo.com",
+      "ERROR_EMAIL": "El email es obligatorio.",
+      "ERROR_EMAIL_FORMATO": "Formato de email inválido.",
+      "PASSWORD": "Contraseña",
+      "PLACEHOLDER_PASSWORD": "Ingrese una contraseña",
+      "ERROR_PASSWORD": "La contraseña es obligatoria.",
+      "ROL": "Rol",
+      "ERROR_ROL": "Debe seleccionar un rol."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "¿Eliminar este usuario?",
+      "ELIMINADO": "Usuario eliminado",
+      "ERROR_ELIMINAR": "Error al eliminar",
+      "CREADO": "Usuario creado",
+      "ACTUALIZADO": "Usuario actualizado",
+      "ERROR_GENERAL": "Error"
+    }
+  },
+
+  "UBICACION": {
+    "LISTAR": {
+      "TITULO": "Ubicaciones Registradas",
+      "SUBTITULO": "Gestión de ubicaciones asociadas a reportes ciudadanos.",
+      "NUEVO": "Nueva Ubicación",
+      "TOTAL": "Total de Ubicaciones",
+      "UBICACION": "Dirección",
+      "DISTRITO": "Distrito",
+      "LATITUD": "Latitud",
+      "LONGITUD": "Longitud",
+      "VACIO": "No hay ubicaciones registradas."
+    },
+    "FORM": {
+      "NUEVO": "Nueva Ubicación",
+      "EDITAR": "Editar Ubicación",
+      "SUBTITULO": "Administración de ubicaciones geográficas asociadas a reportes ciudadanos.",
+      "INFO": "Complete los datos necesarios para registrar la ubicación.",
+      "UBICACION": "Dirección / Descripción",
+      "DISTRITO": "Distrito",
+      "LATITUD": "Latitud",
+      "LONGITUD": "Longitud",
+      "PLACEHOLDER_UBICACION": "Av. Ejemplo 123",
+      "PLACEHOLDER_DISTRITO": "Miraflores",
+      "ERROR_UBICACION": "La dirección es obligatoria.",
+      "ERROR_DISTRITO": "El distrito es obligatorio.",
+      "ERROR_LATITUD": "La latitud es obligatoria.",
+      "ERROR_LONGITUD": "La longitud es obligatoria.",
+      "ERROR_LATITUD_RANGO": "La latitud debe estar entre -90 y 90.",
+      "ERROR_LONGITUD_RANGO": "La longitud debe estar entre -180 y 180."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "¿Eliminar esta ubicación?",
+      "ELIMINADO": "Ubicación eliminada",
+      "CREADO": "Ubicación creada",
+      "ACTUALIZADO": "Ubicación actualizada",
+      "ERROR_ELIMINAR": "Error al eliminar",
+      "ERROR_GENERAL": "Error"
+    }
+  },
+
+  "CATEGORIA": {
+    "LISTAR": {
+      "TITULO": "Categorías de Ruido",
+      "SUBTITULO": "Administración de categorías utilizadas para clasificar reportes de ruido.",
+      "NUEVO": "Nueva Categoría",
+      "TOTAL": "Total de Categorías",
+      "NOMBRE": "Nombre",
+      "DESCRIPCION": "Descripción",
+      "VACIO": "No hay categorías registradas."
+    },
+    "FORM": {
+      "NUEVO": "Nueva Categoría",
+      "EDITAR": "Editar Categoría",
+      "SUBTITULO": "Administración de categorías de ruido utilizadas en la plataforma.",
+      "INFO": "Complete los datos necesarios para registrar la categoría.",
+      "NOMBRE": "Nombre de la Categoría",
+      "DESCRIPCION": "Descripción",
+      "PLACEHOLDER_NOMBRE": "Ej: Tráfico, Construcción, Eventos...",
+      "PLACEHOLDER_DESCRIPCION": "Descripción detallada de la categoría...",
+      "ERROR_NOMBRE": "El nombre de la categoría es obligatorio.",
+      "ERROR_DESCRIPCION": "La descripción es obligatoria."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "¿Eliminar esta categoría?",
+      "ELIMINADO": "Categoría eliminada",
+      "ERROR_ELIMINAR": "Error al eliminar",
+      "CREADO": "Categoría creada",
+      "ACTUALIZADO": "Categoría actualizada",
+      "ERROR_GENERAL": "Error"
+    }
+  },
+
+  "REPORTE": {
+    "LISTAR": {
+      "TITULO": "Reportes de Ruido",
+      "SUBTITULO": "Administración y seguimiento de reportes registrados por los usuarios.",
+      "NUEVO": "Nuevo Reporte",
+      "TOTAL": "Total de Reportes",
+      "DESCRIPCION": "Descripción",
+      "ESTADO": "Estado",
+      "USUARIO": "Usuario",
+      "CATEGORIA": "Categoría",
+      "DISTRITO": "Distrito",
+      "FECHA": "Fecha",
+      "VACIO": "No hay reportes registrados."
+    },
+    "FORM": {
+      "NUEVO": "Nuevo Reporte",
+      "EDITAR": "Editar Reporte",
+      "SUBTITULO": "Gestión y seguimiento de reportes de ruido registrados en la plataforma.",
+      "INFO": "Complete los datos necesarios para registrar el reporte.",
+      "DESCRIPCION": "Descripción del incidente",
+      "ESTADO": "Estado",
+      "USUARIO": "Usuario",
+      "CATEGORIA": "Categoría de Ruido",
+      "UBICACION": "Ubicación",
+      "PLACEHOLDER_DESCRIPCION": "Descripción detallada del ruido...",
+      "ERROR_DESCRIPCION": "La descripción es obligatoria.",
+      "ERROR_ESTADO": "Debe seleccionar un estado.",
+      "ERROR_USUARIO": "Debe seleccionar un usuario.",
+      "ERROR_CATEGORIA": "Debe seleccionar una categoría.",
+      "ERROR_UBICACION": "Debe seleccionar una ubicación."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "¿Eliminar este reporte?",
+      "ELIMINADO": "Reporte eliminado",
+      "ERROR_ELIMINAR": "Error al eliminar",
+      "CREADO": "Reporte creado",
+      "ACTUALIZADO": "Reporte actualizado",
+      "ERROR_GENERAL": "Error"
+    }
+  },
+
+  "ACCION": {
+    "LISTAR": {
+      "TITULO": "Acciones Administrativas",
+      "SUBTITULO": "Gestión y seguimiento de acciones realizadas por las autoridades.",
+      "NUEVO": "Nueva Acción",
+      "TOTAL": "Total de Acciones",
+      "DETALLE": "Detalle",
+      "REPORTE": "Reporte",
+      "AUTORIDAD": "Autoridad",
+      "FECHA": "Fecha",
+      "VACIO": "No hay acciones administrativas registradas."
+    },
+    "FORM": {
+      "NUEVO": "Nueva Acción Administrativa",
+      "EDITAR": "Editar Acción",
+      "SUBTITULO": "Gestión y seguimiento de acciones administrativas realizadas sobre reportes.",
+      "INFO": "Complete los datos necesarios para registrar la acción administrativa.",
+      "DETALLE": "Detalle de la Acción",
+      "PLACEHOLDER_DETALLE": "Descripción de la acción tomada...",
+      "ERROR_DETALLE": "El detalle de la acción es obligatorio.",
+      "AUTORIDAD": "Usuario (Autoridad)",
+      "ERROR_USUARIO": "Debe seleccionar un usuario.",
+      "REPORTE": "Reporte Asociado",
+      "ERROR_REPORTE": "Debe seleccionar un reporte."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "¿Eliminar esta acción?",
+      "ELIMINADO": "Acción eliminada",
+      "ERROR_ELIMINAR": "Error al eliminar",
+      "CREADO": "Acción creada",
+      "ACTUALIZADO": "Acción actualizada",
+      "ERROR_GENERAL": "Error"
+    }
+  },
+
+  "EVIDENCIA": {
+    "LISTAR": {
+      "TITULO": "Evidencias de Reportes",
+      "SUBTITULO": "Gestión de evidencias multimedia asociadas a reportes ciudadanos.",
+      "NUEVO": "Nueva Evidencia",
+      "TOTAL": "Total de Evidencias",
+      "ARCHIVO": "Archivo",
+      "REPORTE": "Reporte",
+      "FECHA": "Fecha",
+      "VACIO": "No hay evidencias registradas."
+    },
+    "FORM": {
+      "NUEVO": "Nueva Evidencia",
+      "SUBTITULO": "Registre evidencias multimedia asociadas a los reportes.",
+      "INFO": "Seleccione una imagen de evidencia y asóciela a un reporte.",
+      "SELECCIONAR": "Seleccionar Evidencia",
+      "VISTA_PREVIA": "Vista previa",
+      "REPORTE": "Reporte Asociado",
+      "ERROR_REPORTE": "Debe seleccionar un reporte."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "¿Eliminar esta evidencia?",
+      "ELIMINADO": "Evidencia eliminada",
+      "CREADO": "Evidencia registrada",
+      "ERROR_ELIMINAR": "Error al eliminar",
+      "ERROR_GENERAL": "Error"
+    }
+  }
+}

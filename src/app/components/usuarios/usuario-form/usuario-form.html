@@ -1,0 +1,128 @@
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <h2>
+        <mat-icon>people</mat-icon>
+
+        {{ edicion ? ('USUARIO.FORM.EDITAR' | translate) : ('USUARIO.FORM.NUEVO' | translate) }}
+      </h2>
+
+      <p class="subtitle">
+        {{ 'USUARIO.FORM.SUBTITULO' | translate }}
+      </p>
+    </div>
+
+    <a class="back-link" routerLink="/usuarios">
+      <mat-icon>arrow_back</mat-icon>
+      {{ 'GENERAL.VOLVER' | translate }}
+    </a>
+  </div>
+
+  <div class="form-container">
+    <div class="form-info">
+      <mat-icon>info</mat-icon>
+      {{ 'USUARIO.FORM.INFO' | translate }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'USUARIO.FORM.NOMBRE' | translate }}
+        </mat-label>
+
+        <input
+          matInput
+          formControlName="nombre"
+          [placeholder]="'USUARIO.FORM.PLACEHOLDER_NOMBRE' | translate"
+          required
+        />
+
+        @if (form.get('nombre')?.hasError('required')) {
+          <mat-error>
+            {{ 'USUARIO.FORM.ERROR_NOMBRE' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'USUARIO.FORM.EMAIL' | translate }}
+        </mat-label>
+
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          [placeholder]="'USUARIO.FORM.PLACEHOLDER_EMAIL' | translate"
+          required
+        />
+
+        @if (form.get('email')?.hasError('required')) {
+          <mat-error>
+            {{ 'USUARIO.FORM.ERROR_EMAIL' | translate }}
+          </mat-error>
+        }
+
+        @if (form.get('email')?.hasError('email')) {
+          <mat-error>
+            {{ 'USUARIO.FORM.ERROR_EMAIL_FORMATO' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      @if (!edicion) {
+        <mat-form-field class="form-field-full">
+          <mat-label>
+            {{ 'USUARIO.FORM.PASSWORD' | translate }}
+          </mat-label>
+
+          <input
+            matInput
+            type="password"
+            formControlName="password"
+            [placeholder]="'USUARIO.FORM.PLACEHOLDER_PASSWORD' | translate"
+            required
+          />
+
+          @if (form.get('password')?.hasError('required')) {
+            <mat-error>
+              {{ 'USUARIO.FORM.ERROR_PASSWORD' | translate }}
+            </mat-error>
+          }
+        </mat-form-field>
+      }
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'USUARIO.FORM.ROL' | translate }}
+        </mat-label>
+
+        <mat-select formControlName="rolId" required>
+          @for (r of roles; track r.pkRolId) {
+            <mat-option [value]="r.pkRolId">
+              {{ r.nombreRol }}
+            </mat-option>
+          }
+        </mat-select>
+
+        @if (form.get('rolId')?.hasError('required')) {
+          <mat-error>
+            {{ 'USUARIO.FORM.ERROR_ROL' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          <mat-icon>save</mat-icon>
+
+          {{ edicion ? ('GENERAL.ACTUALIZAR' | translate) : ('GENERAL.GUARDAR' | translate) }}
+        </button>
+
+        <a mat-stroked-button routerLink="/usuarios">
+          {{ 'GENERAL.CANCELAR' | translate }}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,140 @@
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <h2>
+        <mat-icon>report_problem</mat-icon>
+
+        {{ edicion ? ('REPORTE.FORM.EDITAR' | translate) : ('REPORTE.FORM.NUEVO' | translate) }}
+      </h2>
+
+      <p class="subtitle">
+        {{ 'REPORTE.FORM.SUBTITULO' | translate }}
+      </p>
+    </div>
+
+    <a class="back-link" routerLink="/reportes">
+      <mat-icon>arrow_back</mat-icon>
+      {{ 'GENERAL.VOLVER' | translate }}
+    </a>
+  </div>
+
+  <div class="form-container">
+    <div class="form-info">
+      <mat-icon>info</mat-icon>
+      {{ 'REPORTE.FORM.INFO' | translate }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'REPORTE.FORM.DESCRIPCION' | translate }}
+        </mat-label>
+
+        <textarea
+          matInput
+          formControlName="descripcion"
+          rows="4"
+          [placeholder]="'REPORTE.FORM.PLACEHOLDER_DESCRIPCION' | translate"
+          required
+        >
+        </textarea>
+
+        @if (form.get('descripcion')?.hasError('required')) {
+          <mat-error>
+            {{ 'REPORTE.FORM.ERROR_DESCRIPCION' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'REPORTE.FORM.ESTADO' | translate }}
+        </mat-label>
+
+        <mat-select formControlName="estado" required>
+          @for (e of estados; track e) {
+            <mat-option [value]="e">
+              {{ e }}
+            </mat-option>
+          }
+        </mat-select>
+
+        @if (form.get('estado')?.hasError('required')) {
+          <mat-error>
+            {{ 'REPORTE.FORM.ERROR_ESTADO' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'REPORTE.FORM.USUARIO' | translate }}
+        </mat-label>
+
+        <mat-select formControlName="usuarioId" required>
+          @for (u of usuarios; track u.pkUsuarioId) {
+            <mat-option [value]="u.pkUsuarioId"> {{ u.nombre }} ({{ u.email }}) </mat-option>
+          }
+        </mat-select>
+
+        @if (form.get('usuarioId')?.hasError('required')) {
+          <mat-error>
+            {{ 'REPORTE.FORM.ERROR_USUARIO' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'REPORTE.FORM.CATEGORIA' | translate }}
+        </mat-label>
+
+        <mat-select formControlName="categoriaId" required>
+          @for (c of categorias; track c.pkCategoriaId) {
+            <mat-option [value]="c.pkCategoriaId">
+              {{ c.nombreCategoria }}
+            </mat-option>
+          }
+        </mat-select>
+
+        @if (form.get('categoriaId')?.hasError('required')) {
+          <mat-error>
+            {{ 'REPORTE.FORM.ERROR_CATEGORIA' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'REPORTE.FORM.UBICACION' | translate }}
+        </mat-label>
+
+        <mat-select formControlName="ubicacionId" required>
+          @for (u of ubicaciones; track u.pkUbicacionId) {
+            <mat-option [value]="u.pkUbicacionId">
+              {{ u.ubicacion }} - {{ u.distrito }}
+            </mat-option>
+          }
+        </mat-select>
+
+        @if (form.get('ubicacionId')?.hasError('required')) {
+          <mat-error>
+            {{ 'REPORTE.FORM.ERROR_UBICACION' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          <mat-icon>save</mat-icon>
+
+          {{ edicion ? ('GENERAL.ACTUALIZAR' | translate) : ('GENERAL.GUARDAR' | translate) }}
+        </button>
+
+        <a mat-stroked-button routerLink="/reportes">
+          {{ 'GENERAL.CANCELAR' | translate }}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
