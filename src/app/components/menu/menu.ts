@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,7 +15,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     MatIconModule,
     MatMenuModule,
     RouterLink,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './menu.html',
   styleUrl: './menu.scss',
@@ -23,7 +23,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class MenuComponent {
   constructor(private translate: TranslateService) {
     const idiomaGuardado = localStorage.getItem('idioma') || 'es';
-
     this.translate.setDefaultLang('es');
     this.translate.use(idiomaGuardado);
   }
@@ -31,5 +30,14 @@ export class MenuComponent {
   cambiarIdioma(idioma: string) {
     this.translate.use(idioma);
     localStorage.setItem('idioma', idioma);
+  }
+
+  checkCloseMenu(trigger: any, panel: any) {
+    // pequeño delay para que el mouse pueda pasar al panel sin que se cierre
+    setTimeout(() => {
+      if (!panel._isAnimating) {
+        trigger.closeMenu();
+      }
+    }, 100);
   }
 }

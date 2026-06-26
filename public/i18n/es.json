@@ -1,5 +1,6 @@
 {
   "MENU": {
+    "DASHBOARD": "Dashboard",
     "ROLES": "Roles",
     "USUARIOS": "Usuarios",
     "UBICACIONES": "Ubicaciones",

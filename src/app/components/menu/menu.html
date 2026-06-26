@@ -1,147 +1,184 @@
-<mat-toolbar color="primary" class="main-toolbar">
+<mat-toolbar class="main-toolbar">
+  <!-- LOGO -->
   <a class="logo-container" routerLink="/home">
-    <mat-icon class="logo-icon">volume_off</mat-icon>
+    <div class="logo-icon-box">
+      <mat-icon class="logo-icon">volume_off</mat-icon>
+    </div>
     <span class="brand">NoiStop</span>
   </a>
 
-  <span class="spacer"></span>
+  <div class="divider-vertical"></div>
 
-  <!-- ROLES -->
-  <button mat-button [matMenuTriggerFor]="menuRoles">
-    <mat-icon>security</mat-icon>
-    {{ 'MENU.ROLES' | translate }}
+  <!-- NAV CENTRADO -->
+  <div class="nav-center">
+    <nav class="nav-items">
+      <!-- DASHBOARD -->
+      <a class="nav-item" routerLink="/home">
+        <mat-icon>dashboard</mat-icon>
+        <span>{{ 'MENU.DASHBOARD' | translate }}</span>
+        <div class="active-bar"></div>
+      </a>
+
+      <!-- USUARIOS -->
+      <a
+        class="nav-item"
+        [matMenuTriggerFor]="menuUsuarios"
+        #usuariosTrigger="matMenuTrigger"
+        [class.active]="usuariosTrigger.menuOpen"
+      >
+        <mat-icon>people</mat-icon>
+        <span>{{ 'MENU.USUARIOS' | translate }}</span>
+        <div class="active-bar"></div>
+      </a>
+      <mat-menu #menuUsuarios="matMenu" class="custom-dropdown">
+        <button mat-menu-item routerLink="/usuarios">
+          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+        </button>
+        <button mat-menu-item routerLink="/usuarios/nuevo">
+          <mat-icon>add</mat-icon> {{ 'MENU.NUEVO' | translate }}
+        </button>
+      </mat-menu>
+
+      <!-- ROLES -->
+      <a
+        class="nav-item"
+        [matMenuTriggerFor]="menuRoles"
+        #rolesTrigger="matMenuTrigger"
+        [class.active]="rolesTrigger.menuOpen"
+      >
+        <mat-icon>security</mat-icon>
+        <span>{{ 'MENU.ROLES' | translate }}</span>
+        <div class="active-bar"></div>
+      </a>
+      <mat-menu #menuRoles="matMenu" class="custom-dropdown">
+        <button mat-menu-item routerLink="/roles">
+          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+        </button>
+        <button mat-menu-item routerLink="/roles/nuevo">
+          <mat-icon>add</mat-icon> {{ 'MENU.NUEVO' | translate }}
+        </button>
+      </mat-menu>
+
+      <!-- UBICACIONES -->
+      <a
+        class="nav-item"
+        [matMenuTriggerFor]="menuUbicaciones"
+        #ubicacionesTrigger="matMenuTrigger"
+        [class.active]="ubicacionesTrigger.menuOpen"
+      >
+        <mat-icon>location_on</mat-icon>
+        <span>{{ 'MENU.UBICACIONES' | translate }}</span>
+        <div class="active-bar"></div>
+      </a>
+      <mat-menu #menuUbicaciones="matMenu" class="custom-dropdown">
+        <button mat-menu-item routerLink="/ubicaciones">
+          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+        </button>
+        <button mat-menu-item routerLink="/ubicaciones/nuevo">
+          <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
+        </button>
+      </mat-menu>
+
+      <!-- CATEGORÍAS -->
+      <a
+        class="nav-item"
+        [matMenuTriggerFor]="menuCategorias"
+        #categoriasTrigger="matMenuTrigger"
+        [class.active]="categoriasTrigger.menuOpen"
+      >
+        <mat-icon>category</mat-icon>
+        <span>{{ 'MENU.CATEGORIAS' | translate }}</span>
+        <div class="active-bar"></div>
+      </a>
+      <mat-menu #menuCategorias="matMenu" class="custom-dropdown">
+        <button mat-menu-item routerLink="/categorias">
+          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+        </button>
+        <button mat-menu-item routerLink="/categorias/nuevo">
+          <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
+        </button>
+      </mat-menu>
+
+      <!-- REPORTES -->
+      <a
+        class="nav-item"
+        [matMenuTriggerFor]="menuReportes"
+        #reportesTrigger="matMenuTrigger"
+        [class.active]="reportesTrigger.menuOpen"
+      >
+        <mat-icon>report</mat-icon>
+        <span>{{ 'MENU.REPORTES' | translate }}</span>
+        <div class="active-bar"></div>
+      </a>
+      <mat-menu #menuReportes="matMenu" class="custom-dropdown">
+        <button mat-menu-item routerLink="/reportes">
+          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+        </button>
+        <button mat-menu-item routerLink="/reportes/nuevo">
+          <mat-icon>add</mat-icon> {{ 'MENU.NUEVO' | translate }}
+        </button>
+      </mat-menu>
+
+      <!-- ACCIONES -->
+      <a
+        class="nav-item"
+        [matMenuTriggerFor]="menuAcciones"
+        #accionesTrigger="matMenuTrigger"
+        [class.active]="accionesTrigger.menuOpen"
+      >
+        <mat-icon>gavel</mat-icon>
+        <span>{{ 'MENU.ACCIONES' | translate }}</span>
+        <div class="active-bar"></div>
+      </a>
+      <mat-menu #menuAcciones="matMenu" class="custom-dropdown">
+        <button mat-menu-item routerLink="/acciones">
+          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+        </button>
+        <button mat-menu-item routerLink="/acciones/nuevo">
+          <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
+        </button>
+      </mat-menu>
+
+      <!-- EVIDENCIAS -->
+      <a
+        class="nav-item"
+        [matMenuTriggerFor]="menuEvidencias"
+        #evidenciasTrigger="matMenuTrigger"
+        [class.active]="evidenciasTrigger.menuOpen"
+      >
+        <mat-icon>photo_library</mat-icon>
+        <span>{{ 'MENU.EVIDENCIAS' | translate }}</span>
+        <div class="active-bar"></div>
+      </a>
+      <mat-menu #menuEvidencias="matMenu" class="custom-dropdown">
+        <button mat-menu-item routerLink="/evidencias">
+          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+        </button>
+        <button mat-menu-item routerLink="/evidencias/nuevo">
+          <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
+        </button>
+      </mat-menu>
+    </nav>
+  </div>
+
+  <div class="divider-vertical"></div>
+
+  <!-- USUARIO -->
+  <button class="user-button" [matMenuTriggerFor]="userMenu">
+    <div class="user-avatar">
+      <mat-icon>person</mat-icon>
+    </div>
+    <div class="user-info">
+      <span class="user-name">Admin Usuario</span>
+      <span class="user-role">Administrador</span>
+    </div>
+    <mat-icon class="chevron">expand_more</mat-icon>
   </button>
 
-  <mat-menu #menuRoles="matMenu">
-    <button mat-menu-item routerLink="/roles">
-      <mat-icon>list</mat-icon>
-      {{ 'MENU.LISTAR' | translate }}
-    </button>
-
-    <button mat-menu-item routerLink="/roles/nuevo">
-      <mat-icon>add</mat-icon>
-      {{ 'MENU.NUEVO' | translate }}
-    </button>
-  </mat-menu>
-
-  <!-- USUARIOS -->
-  <button mat-button [matMenuTriggerFor]="menuUsuarios">
-    <mat-icon>people</mat-icon>
-    {{ 'MENU.USUARIOS' | translate }}
-  </button>
-
-  <mat-menu #menuUsuarios="matMenu">
-    <button mat-menu-item routerLink="/usuarios">
-      <mat-icon>list</mat-icon>
-      {{ 'MENU.LISTAR' | translate }}
-    </button>
-
-    <button mat-menu-item routerLink="/usuarios/nuevo">
-      <mat-icon>add</mat-icon>
-      {{ 'MENU.NUEVO' | translate }}
-    </button>
-  </mat-menu>
-
-  <!-- UBICACIONES -->
-  <button mat-button [matMenuTriggerFor]="menuUbicaciones">
-    <mat-icon>location_on</mat-icon>
-    {{ 'MENU.UBICACIONES' | translate }}
-  </button>
-
-  <mat-menu #menuUbicaciones="matMenu">
-    <button mat-menu-item routerLink="/ubicaciones">
-      <mat-icon>list</mat-icon>
-      {{ 'MENU.LISTAR' | translate }}
-    </button>
-
-    <button mat-menu-item routerLink="/ubicaciones/nuevo">
-      <mat-icon>add</mat-icon>
-      {{ 'MENU.NUEVA' | translate }}
-    </button>
-  </mat-menu>
-
-  <!-- CATEGORÍAS -->
-  <button mat-button [matMenuTriggerFor]="menuCategorias">
-    <mat-icon>category</mat-icon>
-    {{ 'MENU.CATEGORIAS' | translate }}
-  </button>
-
-  <mat-menu #menuCategorias="matMenu">
-    <button mat-menu-item routerLink="/categorias">
-      <mat-icon>list</mat-icon>
-      {{ 'MENU.LISTAR' | translate }}
-    </button>
-
-    <button mat-menu-item routerLink="/categorias/nuevo">
-      <mat-icon>add</mat-icon>
-      {{ 'MENU.NUEVA' | translate }}
-    </button>
-  </mat-menu>
-
-  <!-- REPORTES -->
-  <button mat-button [matMenuTriggerFor]="menuReportes">
-    <mat-icon>report</mat-icon>
-    {{ 'MENU.REPORTES' | translate }}
-  </button>
-
-  <mat-menu #menuReportes="matMenu">
-    <button mat-menu-item routerLink="/reportes">
-      <mat-icon>list</mat-icon>
-      {{ 'MENU.LISTAR' | translate }}
-    </button>
-
-    <button mat-menu-item routerLink="/reportes/nuevo">
-      <mat-icon>add</mat-icon>
-      {{ 'MENU.NUEVO' | translate }}
-    </button>
-  </mat-menu>
-
-  <!-- ACCIONES -->
-  <button mat-button [matMenuTriggerFor]="menuAcciones">
-    <mat-icon>gavel</mat-icon>
-    {{ 'MENU.ACCIONES' | translate }}
-  </button>
-
-  <mat-menu #menuAcciones="matMenu">
-    <button mat-menu-item routerLink="/acciones">
-      <mat-icon>list</mat-icon>
-      {{ 'MENU.LISTAR' | translate }}
-    </button>
-
-    <button mat-menu-item routerLink="/acciones/nuevo">
-      <mat-icon>add</mat-icon>
-      {{ 'MENU.NUEVA' | translate }}
-    </button>
-  </mat-menu>
-
-  <!-- EVIDENCIAS -->
-  <button mat-button [matMenuTriggerFor]="menuEvidencias">
-    <mat-icon>photo_library</mat-icon>
-    {{ 'MENU.EVIDENCIAS' | translate }}
-  </button>
-
-  <mat-menu #menuEvidencias="matMenu">
-    <button mat-menu-item routerLink="/evidencias">
-      <mat-icon>list</mat-icon>
-      {{ 'MENU.LISTAR' | translate }}
-    </button>
-
-    <button mat-menu-item routerLink="/evidencias/nuevo">
-      <mat-icon>add</mat-icon>
-      {{ 'MENU.NUEVA' | translate }}
-    </button>
-  </mat-menu>
-
-  <!-- IDIOMAS -->
-  <button mat-icon-button [matMenuTriggerFor]="idiomaMenu">
-    <mat-icon>language</mat-icon>
-  </button>
-
-  <mat-menu #idiomaMenu="matMenu">
+  <mat-menu #userMenu="matMenu" class="custom-dropdown user-dropdown">
     <button mat-menu-item (click)="cambiarIdioma('es')">
       🇪🇸 {{ 'MENU.IDIOMA_ES' | translate }}
     </button>
-
     <button mat-menu-item (click)="cambiarIdioma('en')">
       🇺🇸 {{ 'MENU.IDIOMA_EN' | translate }}
     </button>
