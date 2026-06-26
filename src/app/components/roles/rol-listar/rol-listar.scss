@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #00695c;
+  color: #0fa719;
   font-size: 2rem;
   font-weight: 700;
 }
@@ -50,7 +50,7 @@ table {
 
 .mat-mdc-header-cell {
   font-weight: 600;
-  color: #00695c;
+  color: #0fa719;
 }
 
 button[mat-raised-button] {
@@ -71,7 +71,7 @@ button[mat-raised-button] {
 }
 
 .stats-card {
-  background: linear-gradient(135deg, #00695c, #00897b);
+  background: linear-gradient(135deg, #0fa719, #0b8a14);
   color: white;
   width: 280px;
   padding: 18px 24px;
@@ -80,7 +80,7 @@ button[mat-raised-button] {
   align-items: center;
   gap: 24px;
   margin-bottom: 24px;
-  box-shadow: 0 12px 30px rgba(0, 105, 92, 0.25);
+  box-shadow: 0 12px 30px rgba(15, 167, 25, 0.25);
 }
 
 .stats-card-content {
@@ -206,22 +206,7 @@ button[mat-raised-button] {
   text-align: center;
 }
 
-.action-buttons a,
-.action-buttons button {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: #757575 !important;
-  color: white !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.action-buttons a:hover,
-.action-buttons button:hover {
-  background: #616161 !important;
-}
 
 .chip-admin {
   display: inline-block;
@@ -256,4 +241,35 @@ button[mat-raised-button] {
 .mat-column-nombre {
   text-align: center;
   width: 220px;
+}
+
+.action-buttons a,
+.action-buttons button {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white !important;
+}
+
+.action-buttons a.btn-editar,
+.action-buttons button.btn-editar {
+  background: #1976d2 !important;
+}
+
+.action-buttons a.btn-editar:hover,
+.action-buttons button.btn-editar:hover {
+  background: #1565c0 !important;
+}
+
+.action-buttons a.btn-eliminar,
+.action-buttons button.btn-eliminar {
+  background: #e53935 !important;
+}
+
+.action-buttons a.btn-eliminar:hover,
+.action-buttons button.btn-eliminar:hover {
+  background: #c62828 !important;
 }

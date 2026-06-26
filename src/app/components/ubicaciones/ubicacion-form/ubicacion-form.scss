@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #00695c;
+  color: #0fa719;
   font-size: 2.2rem;
   font-weight: 700;
 }
@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #00695c;
+  color: #0fa719;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s;
@@ -61,8 +61,8 @@
   align-items: center;
   gap: 8px;
 
-  background: #e0f2f1;
-  color: #00695c;
+  background: #f0faf0;
+  color: #0fa719;
 
   padding: 12px 16px;
   border-radius: 12px;
@@ -117,7 +117,7 @@ a[mat-stroked-button] {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #00695c;
+  color: #0fa719;
   margin-bottom: 6px;
 }
 
@@ -148,4 +148,9 @@ a[mat-stroked-button] {
 .form-grid mat-form-field:first-child,
 .form-grid mat-form-field:nth-child(2) {
   grid-column: span 2;
+}
+
+a[mat-stroked-button] {
+  color: #0fa719 !important;
+  border-color: #0fa719 !important;
 }

@@ -86,15 +86,7 @@
 
         <td mat-cell *matCellDef="let u">
           <div class="action-buttons">
-            <a
-              mat-icon-button
-              color="primary"
-              [routerLink]="['/ubicaciones/editar', u.pkUbicacionId]"
-            >
-              <mat-icon>edit</mat-icon>
-            </a>
-
-            <button mat-icon-button color="warn" (click)="eliminar(u.pkUbicacionId)">
+            <button mat-icon-button class="btn-eliminar" (click)="eliminar(u.pkUbicacionId)">
               <mat-icon>delete</mat-icon>
             </button>
           </div>

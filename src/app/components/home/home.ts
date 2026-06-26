@@ -70,7 +70,7 @@ export class HomeComponent {
       description: 'HOME.CARDS.EVIDENCIAS.DESCRIPTION',
       icon: 'photo_library',
       route: '/evidencias',
-      color: '#37474F',
+      color: '#477186',
     },
   ];
 

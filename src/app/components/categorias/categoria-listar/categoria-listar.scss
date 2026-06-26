@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #00695c;
+  color: #0fa719;
   font-size: 2rem;
   font-weight: 700;
 }
@@ -65,11 +65,11 @@ table {
 
 .mat-mdc-header-cell {
   font-weight: 600;
-  color: #00695c;
+  color: #0fa719;
 }
 
 .stats-card {
-  background: linear-gradient(135deg, #00695c, #00897b);
+  background: linear-gradient(135deg, #0b8a14, #0fa719);
   color: white;
   width: 300px;
   padding: 18px 24px;
@@ -78,7 +78,7 @@ table {
   align-items: center;
   gap: 24px;
   margin-bottom: 24px;
-  box-shadow: 0 12px 30px rgba(0, 105, 92, 0.25);
+  box-shadow: 0 12px 30px rgba(15, 167, 25, 0.25);
   animation: fadeCard 0.5s ease-out;
 }
 
@@ -141,7 +141,6 @@ table {
     opacity: 0;
     transform: translateY(30px);
   }
-
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -153,7 +152,6 @@ table {
     opacity: 0;
     transform: translateY(15px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -165,7 +163,6 @@ table {
     opacity: 0;
     transform: translateY(25px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -198,14 +195,28 @@ table {
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: #757575 !important;
-  color: white !important;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white !important;
 }
 
-.action-buttons a:hover,
-.action-buttons button:hover {
-  background: #616161 !important;
+.action-buttons a.btn-editar,
+.action-buttons button.btn-editar {
+  background: #1976d2 !important;
+}
+
+.action-buttons a.btn-editar:hover,
+.action-buttons button.btn-editar:hover {
+  background: #1565c0 !important;
+}
+
+.action-buttons a.btn-eliminar,
+.action-buttons button.btn-eliminar {
+  background: #e53935 !important;
+}
+
+.action-buttons a.btn-eliminar:hover,
+.action-buttons button.btn-eliminar:hover {
+  background: #c62828 !important;
 }
