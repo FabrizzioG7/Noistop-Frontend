@@ -11,8 +11,11 @@
     "LISTAR": "Listar",
     "NUEVO": "Nuevo",
     "NUEVA": "Nueva",
+    "CUENTA": "Cuenta",
+    "IDIOMA": "Idioma",
     "IDIOMA_ES": "Español",
-    "IDIOMA_EN": "Inglés"
+    "IDIOMA_EN": "Inglés",
+    "CERRAR_SESION": "Cerrar sesión"
   },
 
   "HOME": {

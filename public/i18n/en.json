@@ -11,8 +11,11 @@
     "LISTAR": "List",
     "NUEVO": "New",
     "NUEVA": "New",
+    "CUENTA": "Account",
+    "IDIOMA": "Language",
     "IDIOMA_ES": "Spanish",
-    "IDIOMA_EN": "English"
+    "IDIOMA_EN": "English",
+    "CERRAR_SESION": "Log out"
   },
 
   "HOME": {

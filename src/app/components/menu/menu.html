@@ -1,5 +1,4 @@
 <mat-toolbar class="main-toolbar">
-  <!-- LOGO -->
   <a class="logo-container" routerLink="/home">
     <div class="logo-icon-box">
       <mat-icon class="logo-icon">volume_off</mat-icon>
@@ -9,7 +8,6 @@
 
   <div class="divider-vertical"></div>
 
-  <!-- NAV CENTRADO -->
   <div class="nav-center">
     <nav class="nav-items">
       <!-- DASHBOARD -->
@@ -163,7 +161,7 @@
 
   <div class="divider-vertical"></div>
 
-  <!-- USUARIO -->
+  <!-- USUARIO (CUENTA) -->
   <button class="user-button" [matMenuTriggerFor]="userMenu">
     <div class="user-avatar">
       <mat-icon>person</mat-icon>
@@ -175,10 +173,31 @@
     <mat-icon class="chevron">expand_more</mat-icon>
   </button>
 
-  <mat-menu #userMenu="matMenu" class="custom-dropdown user-dropdown">
+  <mat-menu #userMenu="matMenu" class="custom-dropdown">
+    <button mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>{{ 'MENU.CUENTA' | translate }}</span>
+    </button>
+
+    <button mat-menu-item [matMenuTriggerFor]="idiomaMenu">
+      <mat-icon>language</mat-icon>
+      <span>{{ 'MENU.IDIOMA' | translate }}</span>
+
+      <span class="menu-spacer"></span>
+
+    </button>
+
+    <button mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>{{ 'MENU.CERRAR_SESION' | translate }}</span>
+    </button>
+  </mat-menu>
+
+  <mat-menu #idiomaMenu="matMenu">
     <button mat-menu-item (click)="cambiarIdioma('es')">
       🇪🇸 {{ 'MENU.IDIOMA_ES' | translate }}
     </button>
+
     <button mat-menu-item (click)="cambiarIdioma('en')">
       🇺🇸 {{ 'MENU.IDIOMA_EN' | translate }}
     </button>
