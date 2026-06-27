@@ -13,6 +13,7 @@ import { UsuarioForm } from './components/usuarios/usuario-form/usuario-form';
 import { Ubicaciones } from './components/ubicaciones/ubicaciones';
 import { UbicacionListar } from './components/ubicaciones/ubicacion-listar/ubicacion-listar';
 import { UbicacionForm } from './components/ubicaciones/ubicacion-form/ubicacion-form';
+import { UbicacionReportes } from './components/ubicaciones/ubicacion-reportes/ubicacion-reportes';
 
 import { Categorias } from './components/categorias/categorias';
 import { CategoriaListar } from './components/categorias/categoria-listar/categoria-listar';
@@ -62,7 +63,8 @@ export const routes: Routes = [
     children: [
       { path: '', component: UbicacionListar },
       { path: 'nuevo', component: UbicacionForm },
-      { path: 'editar/:id', component: UbicacionForm }
+      { path: 'editar/:id', component: UbicacionForm },
+      { path: 'reportes', component: UbicacionReportes }
     ]
   },
 

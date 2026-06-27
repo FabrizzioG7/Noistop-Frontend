@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable, Subject } from "rxjs";
-import { Ubicacion } from "../models/ubicacion.model";
+import { Ubicacion, DistritoRanking } from "../models/ubicacion.model";
 import { environment } from "../../environments/environment";
 
 @Injectable({ providedIn: "root" })
@@ -13,6 +13,10 @@ export class UbicacionService {
 
   list(): Observable<Ubicacion[]> {
     return this.http.get<Ubicacion[]>(this.url);
+  }
+
+  getTopDistritos(): Observable<DistritoRanking[]> {
+    return this.http.get<DistritoRanking[]>(`${this.url}/top-distritos`);
   }
   listId(id: number): Observable<Ubicacion> {
     return this.http.get<Ubicacion>(`${this.url}/${id}`);

@@ -6,3 +6,8 @@ export class Ubicacion {
   latitud: number = 0;
   createdAt?: string;
 }
+
+export interface DistritoRanking {
+  distrito: string;
+  cantidadReportes: number;
+}
