@@ -196,6 +196,12 @@
       "ACTUALIZADO": "Location updated",
       "ERROR_ELIMINAR": "Error deleting location",
       "ERROR_GENERAL": "Error"
+    },
+    "RANKING": {
+      "TITULO": "District Ranking",
+      "SUBTITULO": "Top districts with the highest number of reports",
+      "DISTRITO": "District",
+      "CANTIDAD_REPORTES": "Report Count"
     }
   },
 

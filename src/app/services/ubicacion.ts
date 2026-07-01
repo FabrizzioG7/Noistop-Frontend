@@ -14,7 +14,6 @@ export class UbicacionService {
   list(): Observable<Ubicacion[]> {
     return this.http.get<Ubicacion[]>(this.url);
   }
-
   getTopDistritos(): Observable<DistritoRanking[]> {
     return this.http.get<DistritoRanking[]>(`${this.url}/top-distritos`);
   }

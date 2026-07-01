@@ -196,6 +196,12 @@
       "ACTUALIZADO": "Ubicación actualizada",
       "ERROR_ELIMINAR": "Error al eliminar",
       "ERROR_GENERAL": "Error"
+    },
+    "RANKING": {
+      "TITULO": "Ranking de Distritos",
+      "SUBTITULO": "Top distritos con mayor cantidad de reportes",
+      "DISTRITO": "Distrito",
+      "CANTIDAD_REPORTES": "Cantidad de Reportes"
     }
   },
 
