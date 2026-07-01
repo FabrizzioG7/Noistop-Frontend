@@ -1,5 +1,5 @@
 .page-container {
-  padding: 24px;
+  padding: 36px 24px;
   max-width: 1200px;
   margin: 0 auto;
   animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -8,26 +8,28 @@
 .page-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
+  align-items: flex-start;
+  margin-bottom: 34px;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
 }
 
 .page-header h2 {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   color: #0fa719;
   font-size: 2rem;
   font-weight: 700;
-  margin: 0;
+  margin: 0 0 8px;
+  line-height: 1.2;
 }
 
 .subtitle {
   color: #757575;
-  margin-top: 6px;
-  font-size: 0.95rem;
+  margin-top: 0;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .table-container {
@@ -35,8 +37,9 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  animation: fadeTable 0.7s ease-out;
+  margin-top: 12px;
   margin-bottom: 40px;
+  animation: fadeTable 0.7s ease-out;
 }
 
 table {
@@ -102,4 +105,19 @@ table {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.mat-mdc-header-cell,
+.mat-mdc-cell {
+  padding: 18px 20px !important;
+}
+
+.mat-mdc-header-cell:first-child,
+.mat-mdc-cell:first-child {
+  padding-left: 36px !important;
+}
+
+.mat-mdc-header-cell:last-child,
+.mat-mdc-cell:last-child {
+  padding-right: 36px !important;
 }

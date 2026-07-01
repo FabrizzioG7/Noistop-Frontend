@@ -154,6 +154,12 @@
       "CREADO": "Usuario creado",
       "ACTUALIZADO": "Usuario actualizado",
       "ERROR_GENERAL": "Error"
+    },
+    "RANKING": {
+      "TITULO": "Usuario Más Activo",
+      "SUBTITULO": "Ranking de usuarios según cantidad de reportes registrados",
+      "USUARIO": "Usuario",
+      "CANTIDAD_REPORTES": "Cantidad de Reportes"
     }
   },
 

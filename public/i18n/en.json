@@ -154,6 +154,12 @@
       "CREADO": "User created",
       "ACTUALIZADO": "User updated",
       "ERROR_GENERAL": "Error"
+    },
+    "RANKING": {
+      "TITULO": "Most Active User",
+      "SUBTITULO": "Ranking of users by number of registered reports",
+      "USUARIO": "User",
+      "CANTIDAD_REPORTES": "Report Count"
     }
   },
 

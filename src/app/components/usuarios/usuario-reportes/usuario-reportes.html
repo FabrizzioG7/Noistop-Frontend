@@ -3,25 +3,38 @@
     <div>
       <h2>
         <mat-icon>bar_chart</mat-icon>
-        Usuario Más Activo
+        {{ 'USUARIO.RANKING.TITULO' | translate }}
       </h2>
-      <p class="subtitle">Ranking de usuarios según cantidad de reportes registrados</p>
+
+      <p class="subtitle">
+        {{ 'USUARIO.RANKING.SUBTITULO' | translate }}
+      </p>
     </div>
   </div>
 
   <div class="table-container">
     <table mat-table [dataSource]="(topReportadores$ | async) ?? []">
       <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'USUARIO.RANKING.USUARIO' | translate }}
+        </th>
+
         <td mat-cell *matCellDef="let element">
-          <span class="usuario-chip">{{ element.nombre }}</span>
+          <span class="usuario-chip">
+            {{ element.nombre }}
+          </span>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="cantidadReportes">
-        <th mat-header-cell *matHeaderCellDef>Cantidad de Reportes</th>
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'USUARIO.RANKING.CANTIDAD_REPORTES' | translate }}
+        </th>
+
         <td mat-cell *matCellDef="let element">
-          <div class="reportes-count">{{ element.cantidadReportes }}</div>
+          <div class="reportes-count">
+            {{ element.cantidadReportes }}
+          </div>
         </td>
       </ng-container>
 
