@@ -28,7 +28,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     MatSelectModule,
     MatSnackBarModule,
     RouterLink,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './accion-form.html',
   styleUrl: './accion-form.scss',
@@ -59,7 +59,7 @@ export class AccionForm implements OnInit {
 
   ngOnInit() {
     this.usuarioService.list().subscribe((d) => {
-      this.usuarios = d.filter((u) => u.nombreRol === 'AUTHORITY');
+      this.usuarios = d.filter((u) => u.nombreRol?.toUpperCase() === 'AUTHORITY');
     });
     this.reporteService.list().subscribe((d) => (this.reportes = d));
     this.route.params.subscribe((p) => {
