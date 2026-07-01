@@ -30,9 +30,9 @@ import { AccionForm } from './components/acciones/accion-form/accion-form';
 import { Evidencias } from './components/evidencias/evidencias';
 import { EvidenciaListar } from './components/evidencias/evidencia-listar/evidencia-listar';
 import { EvidenciaForm } from './components/evidencias/evidencia-form/evidencia-form';
+import { UsuarioReportes } from './components/usuarios/usuario-reportes/usuario-reportes';
 
 export const routes: Routes = [
-
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   { path: 'home', component: HomeComponent },
@@ -43,8 +43,8 @@ export const routes: Routes = [
     children: [
       { path: '', component: RolListar },
       { path: 'nuevo', component: RolForm },
-      { path: 'editar/:id', component: RolForm }
-    ]
+      { path: 'editar/:id', component: RolForm },
+    ],
   },
 
   {
@@ -53,8 +53,9 @@ export const routes: Routes = [
     children: [
       { path: '', component: UsuarioListar },
       { path: 'nuevo', component: UsuarioForm },
-      { path: 'editar/:id', component: UsuarioForm }
-    ]
+      { path: 'editar/:id', component: UsuarioForm },
+      { path: 'reportes', component: UsuarioReportes },
+    ],
   },
 
   {
@@ -64,8 +65,8 @@ export const routes: Routes = [
       { path: '', component: UbicacionListar },
       { path: 'nuevo', component: UbicacionForm },
       { path: 'editar/:id', component: UbicacionForm },
-      { path: 'reportes', component: UbicacionReportes }
-    ]
+      { path: 'reportes', component: UbicacionReportes },
+    ],
   },
 
   {
@@ -74,8 +75,8 @@ export const routes: Routes = [
     children: [
       { path: '', component: CategoriaListar },
       { path: 'nuevo', component: CategoriaForm },
-      { path: 'editar/:id', component: CategoriaForm }
-    ]
+      { path: 'editar/:id', component: CategoriaForm },
+    ],
   },
 
   {
@@ -84,8 +85,8 @@ export const routes: Routes = [
     children: [
       { path: '', component: ReporteListar },
       { path: 'nuevo', component: ReporteForm },
-      { path: 'editar/:id', component: ReporteForm }
-    ]
+      { path: 'editar/:id', component: ReporteForm },
+    ],
   },
 
   {
@@ -94,8 +95,8 @@ export const routes: Routes = [
     children: [
       { path: '', component: AccionListar },
       { path: 'nuevo', component: AccionForm },
-      { path: 'editar/:id', component: AccionForm }
-    ]
+      { path: 'editar/:id', component: AccionForm },
+    ],
   },
 
   {
@@ -103,10 +104,9 @@ export const routes: Routes = [
     component: Evidencias,
     children: [
       { path: '', component: EvidenciaListar },
-      { path: 'nuevo', component: EvidenciaForm }
-    ]
+      { path: 'nuevo', component: EvidenciaForm },
+    ],
   },
 
-  { path: '**', redirectTo: 'home' }
-
+  { path: '**', redirectTo: 'home' },
 ];

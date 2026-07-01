@@ -8,3 +8,8 @@ export class Usuario {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export interface UsuarioRanking {
+  nombre: string;
+  cantidadReportes: number;
+}

@@ -1,0 +1,105 @@
+.page-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.page-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0fa719;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.subtitle {
+  color: #757575;
+  margin-top: 6px;
+  font-size: 0.95rem;
+}
+
+.table-container {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  animation: fadeTable 0.7s ease-out;
+  margin-bottom: 40px;
+}
+
+table {
+  width: auto;
+  min-width: 100%;
+}
+
+.mat-mdc-row:hover {
+  background-color: #f5f7fa;
+}
+
+.mat-mdc-header-row {
+  background: #f8fafc;
+}
+
+.mat-mdc-header-cell {
+  font-weight: 600;
+  color: #0fa719;
+}
+
+.usuario-chip {
+  display: inline-block;
+  background: #ede7f6;
+  color: #5e35b1;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.reportes-count {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.mat-column-nombre {
+  width: 50%;
+}
+
+.mat-column-cantidadReportes {
+  width: 50%;
+  text-align: center;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeTable {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

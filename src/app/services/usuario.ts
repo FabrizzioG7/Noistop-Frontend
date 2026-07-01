@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable, Subject } from "rxjs";
-import { Usuario } from "../models/usuario.model";
-import { environment } from "../../environments/environment";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import { Usuario, UsuarioRanking } from '../models/usuario.model';
+import { environment } from '../../environments/environment';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class UsuarioService {
   private url = `${environment.base}/api/usuarios`;
   private listaCambio = new Subject<Usuario[]>();
@@ -25,6 +25,9 @@ export class UsuarioService {
   }
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`);
+  }
+  getTopReportadores(): Observable<UsuarioRanking[]> {
+    return this.http.get<UsuarioRanking[]>(`${this.url}/top-reportadores`);
   }
   setList(lista: Usuario[]) {
     this.listaCambio.next(lista);
