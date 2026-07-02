@@ -1,0 +1,89 @@
+<div class="login-bg">
+  <mat-card class="login-card">
+    <div class="login-logo">
+      <div class="logo-icon-box">
+        <mat-icon>volume_off</mat-icon>
+      </div>
+      <span class="brand">NoiStop</span>
+    </div>
+
+    <mat-card-header>
+      <mat-card-title>{{ 'LOGIN.TITULO' | translate }}</mat-card-title>
+      <mat-card-subtitle>{{ 'LOGIN.SUBTITULO' | translate }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="ingresar()">
+        <mat-form-field appearance="outline" class="form-field-full">
+          <mat-label>{{ 'LOGIN.IDENTIFICADOR' | translate }}</mat-label>
+
+          <input
+            matInput
+            formControlName="identificador"
+            [placeholder]="'LOGIN.PLACEHOLDER_IDENTIFICADOR' | translate"
+          />
+
+          <mat-icon matSuffix>person</mat-icon>
+
+          @if (
+            form.get('identificador')?.touched && form.get('identificador')?.hasError('required')
+          ) {
+            <mat-error>{{ 'LOGIN.ERROR_IDENTIFICADOR' | translate }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field-full">
+          <mat-label>{{ 'LOGIN.PASSWORD' | translate }}</mat-label>
+
+          <input
+            matInput
+            [type]="ocultarPassword() ? 'password' : 'text'"
+            formControlName="password"
+            [placeholder]="'LOGIN.PLACEHOLDER_PASSWORD' | translate"
+          />
+
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="togglePassword($event)"
+            [attr.aria-label]="'Mostrar contraseña'"
+            [attr.aria-pressed]="!ocultarPassword()"
+          >
+            <mat-icon>{{ ocultarPassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+
+          @if (form.get('password')?.touched && form.get('password')?.hasError('required')) {
+            <mat-error>{{ 'LOGIN.ERROR_PASSWORD' | translate }}</mat-error>
+          }
+        </mat-form-field>
+
+        @if (error()) {
+          <p class="error-msg">
+            <mat-icon>error_outline</mat-icon>
+            {{ error() }}
+          </p>
+        }
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="btn-full"
+          [disabled]="cargando()"
+        >
+          @if (cargando()) {
+            <mat-spinner diameter="22"></mat-spinner>
+          } @else {
+            {{ 'LOGIN.INGRESAR' | translate }}
+          }
+        </button>
+      </form>
+
+      <p class="registro-link">
+        {{ 'LOGIN.NO_TIENES_CUENTA' | translate }}
+        <a routerLink="/registro">{{ 'LOGIN.REGISTRATE' | translate }}</a>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

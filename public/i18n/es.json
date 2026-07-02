@@ -17,7 +17,6 @@
     "IDIOMA_EN": "Inglés",
     "CERRAR_SESION": "Cerrar sesión"
   },
-
   "HOME": {
     "BADGE": "Gestión Inteligente de Ruido Urbano",
     "DESCRIPTION": "Plataforma para la administración de reportes de ruido, evidencias, ubicaciones y acciones correctivas.",
@@ -75,7 +74,6 @@
       }
     }
   },
-
   "GENERAL": {
     "GUARDAR": "Guardar",
     "ACTUALIZAR": "Actualizar",
@@ -89,7 +87,6 @@
     "NO_HAY_REGISTROS": "No hay registros disponibles.",
     "ERROR": "Ocurrió un error"
   },
-
   "ROL": {
     "LISTAR": {
       "TITULO": "Roles del Sistema",
@@ -117,7 +114,6 @@
       "ERROR_GENERAL": "Error"
     }
   },
-
   "USUARIO": {
     "LISTAR": {
       "TITULO": "Usuarios del Sistema",
@@ -162,7 +158,6 @@
       "CANTIDAD_REPORTES": "Cantidad de Reportes"
     }
   },
-
   "UBICACION": {
     "LISTAR": {
       "TITULO": "Ubicaciones Registradas",
@@ -210,7 +205,6 @@
       "CANTIDAD_REPORTES": "Cantidad de Reportes"
     }
   },
-
   "CATEGORIA": {
     "LISTAR": {
       "TITULO": "Categorías de Ruido",
@@ -242,7 +236,6 @@
       "ERROR_GENERAL": "Error"
     }
   },
-
   "REPORTE": {
     "LISTAR": {
       "TITULO": "Reportes de Ruido",
@@ -283,7 +276,6 @@
       "ERROR_GENERAL": "Error"
     }
   },
-
   "ACCION": {
     "LISTAR": {
       "TITULO": "Acciones Administrativas",
@@ -318,7 +310,6 @@
       "ERROR_GENERAL": "Error"
     }
   },
-
   "EVIDENCIA": {
     "LISTAR": {
       "TITULO": "Evidencias de Reportes",
@@ -345,6 +336,35 @@
       "CREADO": "Evidencia registrada",
       "ERROR_ELIMINAR": "Error al eliminar",
       "ERROR_GENERAL": "Error"
+    }
+  },
+  "LOGIN": {
+    "TITULO": "Bienvenido de nuevo",
+    "SUBTITULO": "Inicia sesión para continuar",
+    "IDENTIFICADOR": "Usuario o correo",
+    "PLACEHOLDER_IDENTIFICADOR": "Ingrese su usuario o correo",
+    "ERROR_IDENTIFICADOR": "El usuario o correo es obligatorio.",
+    "PASSWORD": "Contraseña",
+    "PLACEHOLDER_PASSWORD": "Ingrese su contraseña",
+    "ERROR_PASSWORD": "La contraseña es obligatoria.",
+    "INGRESAR": "Ingresar",
+    "NO_TIENES_CUENTA": "¿No tienes cuenta?",
+    "REGISTRATE": "Regístrate",
+    "BIENVENIDA": {
+      "TITULO": "¡Bienvenido/a,",
+      "MENSAJE": "Iniciaste sesión correctamente. Disfruta tu visita con NoiStop 🎉",
+      "CONTINUAR": "Continuar"
+    }
+  },
+  "REGISTRO": {
+    "TITULO": "Crea tu cuenta",
+    "SUBTITULO": "Completa tus datos para registrarte",
+    "CREAR_CUENTA": "Crear cuenta",
+    "YA_TIENES_CUENTA": "¿Ya tienes cuenta?",
+    "INICIA_SESION": "Inicia sesión",
+    "MENSAJES": {
+      "CREADO": "Cuenta creada correctamente, ya puedes iniciar sesión",
+      "ERROR": "No se pudo crear la cuenta"
     }
   }
 }

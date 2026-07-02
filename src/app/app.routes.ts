@@ -32,14 +32,22 @@ import { EvidenciaListar } from './components/evidencias/evidencia-listar/eviden
 import { EvidenciaForm } from './components/evidencias/evidencia-form/evidencia-form';
 import { UsuarioReportes } from './components/usuarios/usuario-reportes/usuario-reportes';
 
+import { Login } from './components/login/login';
+import { Registro } from './components/registro/registro';
+import { authGuard } from './guards/auth-guard';
+
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
-  { path: 'home', component: HomeComponent },
+  { path: 'login', component: Login },
+  { path: 'registro', component: Registro },
+
+  { path: 'home', component: HomeComponent, canActivate: [authGuard] },
 
   {
     path: 'roles',
     component: Roles,
+    canActivate: [authGuard],
     children: [
       { path: '', component: RolListar },
       { path: 'nuevo', component: RolForm },
@@ -50,6 +58,7 @@ export const routes: Routes = [
   {
     path: 'usuarios',
     component: Usuarios,
+    canActivate: [authGuard],
     children: [
       { path: '', component: UsuarioListar },
       { path: 'nuevo', component: UsuarioForm },
@@ -61,6 +70,7 @@ export const routes: Routes = [
   {
     path: 'ubicaciones',
     component: Ubicaciones,
+    canActivate: [authGuard],
     children: [
       { path: '', component: UbicacionListar },
       { path: 'nuevo', component: UbicacionForm },
@@ -72,6 +82,7 @@ export const routes: Routes = [
   {
     path: 'categorias',
     component: Categorias,
+    canActivate: [authGuard],
     children: [
       { path: '', component: CategoriaListar },
       { path: 'nuevo', component: CategoriaForm },
@@ -82,6 +93,7 @@ export const routes: Routes = [
   {
     path: 'reportes',
     component: Reportes,
+    canActivate: [authGuard],
     children: [
       { path: '', component: ReporteListar },
       { path: 'nuevo', component: ReporteForm },
@@ -92,6 +104,7 @@ export const routes: Routes = [
   {
     path: 'acciones',
     component: Acciones,
+    canActivate: [authGuard],
     children: [
       { path: '', component: AccionListar },
       { path: 'nuevo', component: AccionForm },
@@ -102,6 +115,7 @@ export const routes: Routes = [
   {
     path: 'evidencias',
     component: Evidencias,
+    canActivate: [authGuard],
     children: [
       { path: '', component: EvidenciaListar },
       { path: 'nuevo', component: EvidenciaForm },

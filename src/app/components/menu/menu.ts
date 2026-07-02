@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-menu',
@@ -21,7 +22,17 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styleUrl: './menu.scss',
 })
 export class MenuComponent {
-  constructor(private translate: TranslateService) {
+  usuario;
+  rol;
+
+  constructor(
+    private translate: TranslateService,
+    private authService: AuthService,
+    private router: Router,
+  ) {
+    this.usuario = this.authService.usuario;
+    this.rol = this.authService.rol;
+
     const idiomaGuardado = localStorage.getItem('idioma') || 'es';
     this.translate.setDefaultLang('es');
     this.translate.use(idiomaGuardado);
@@ -30,6 +41,11 @@ export class MenuComponent {
   cambiarIdioma(idioma: string) {
     this.translate.use(idioma);
     localStorage.setItem('idioma', idioma);
+  }
+
+  cerrarSesion(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   checkCloseMenu(trigger: any, panel: any) {

@@ -20,6 +20,9 @@ export class UsuarioService {
   insert(u: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(`${this.url}/insertar`, u);
   }
+  registrar(u: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(`${this.url}/registrar`, u);
+  }
   update(id: number, u: Usuario): Observable<Usuario> {
     return this.http.put<Usuario>(`${this.url}/${id}`, u);
   }

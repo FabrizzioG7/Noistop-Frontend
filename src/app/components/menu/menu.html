@@ -173,8 +173,8 @@
       <mat-icon>person</mat-icon>
     </div>
     <div class="user-info">
-      <span class="user-name">Admin Usuario</span>
-      <span class="user-role">Administrador</span>
+      <span class="user-name">{{ usuario() || 'Usuario' }}</span>
+      <span class="user-role">{{ rol() || '' }}</span>
     </div>
     <mat-icon class="chevron">expand_more</mat-icon>
   </button>
@@ -192,7 +192,7 @@
       <span class="menu-spacer"></span>
     </button>
 
-    <button mat-menu-item>
+    <button mat-menu-item (click)="cerrarSesion()">
       <mat-icon>logout</mat-icon>
       <span>{{ 'MENU.CERRAR_SESION' | translate }}</span>
     </button>

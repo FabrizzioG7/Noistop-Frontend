@@ -17,7 +17,6 @@
     "IDIOMA_EN": "English",
     "CERRAR_SESION": "Log out"
   },
-
   "HOME": {
     "BADGE": "Smart Urban Noise Management",
     "DESCRIPTION": "Platform for managing noise reports, evidence, locations and corrective actions.",
@@ -75,7 +74,6 @@
       }
     }
   },
-
   "GENERAL": {
     "GUARDAR": "Save",
     "ACTUALIZAR": "Update",
@@ -89,7 +87,6 @@
     "NO_HAY_REGISTROS": "No records available.",
     "ERROR": "An error occurred"
   },
-
   "ROL": {
     "LISTAR": {
       "TITULO": "System Roles",
@@ -117,7 +114,6 @@
       "ERROR_GENERAL": "Error"
     }
   },
-
   "USUARIO": {
     "LISTAR": {
       "TITULO": "System Users",
@@ -162,7 +158,6 @@
       "CANTIDAD_REPORTES": "Report Count"
     }
   },
-
   "UBICACION": {
     "LISTAR": {
       "TITULO": "Registered Locations",
@@ -210,7 +205,6 @@
       "CANTIDAD_REPORTES": "Report Count"
     }
   },
-
   "CATEGORIA": {
     "LISTAR": {
       "TITULO": "Noise Categories",
@@ -242,7 +236,6 @@
       "ERROR_GENERAL": "Error"
     }
   },
-
   "REPORTE": {
     "LISTAR": {
       "TITULO": "Noise Reports",
@@ -283,7 +276,6 @@
       "ERROR_GENERAL": "Error"
     }
   },
-
   "ACCION": {
     "LISTAR": {
       "TITULO": "Administrative Actions",
@@ -318,7 +310,6 @@
       "ERROR_GENERAL": "Error"
     }
   },
-
   "EVIDENCIA": {
     "LISTAR": {
       "TITULO": "Report Evidence",
@@ -345,6 +336,35 @@
       "CREADO": "Evidence registered",
       "ERROR_ELIMINAR": "Error deleting evidence",
       "ERROR_GENERAL": "Error"
+    }
+  },
+  "LOGIN": {
+    "TITULO": "Welcome back",
+    "SUBTITULO": "Sign in to continue",
+    "IDENTIFICADOR": "Username or email",
+    "PLACEHOLDER_IDENTIFICADOR": "Enter your username or email",
+    "ERROR_IDENTIFICADOR": "Username or email is required.",
+    "PASSWORD": "Password",
+    "PLACEHOLDER_PASSWORD": "Enter your password",
+    "ERROR_PASSWORD": "Password is required.",
+    "INGRESAR": "Sign in",
+    "NO_TIENES_CUENTA": "Don't have an account?",
+    "REGISTRATE": "Sign up",
+    "BIENVENIDA": {
+      "TITULO": "Welcome,",
+      "MENSAJE": "You have signed in successfully. Enjoy your visit with NoiStop 🎉",
+      "CONTINUAR": "Continue"
+    }
+  },
+  "REGISTRO": {
+    "TITULO": "Create your account",
+    "SUBTITULO": "Fill in your details to sign up",
+    "CREAR_CUENTA": "Create account",
+    "YA_TIENES_CUENTA": "Already have an account?",
+    "INICIA_SESION": "Sign in",
+    "MENSAJES": {
+      "CREADO": "Account created successfully, you can now sign in",
+      "ERROR": "Could not create the account"
     }
   }
 }

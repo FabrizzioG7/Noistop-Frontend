@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable, Subject } from "rxjs";
-import { Rol } from "../models/rol.model";
-import { environment } from "../../environments/environment";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
+import { Rol } from '../models/rol.model';
+import { environment } from '../../environments/environment';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class RolService {
   private url = `${environment.base}/api/roles`;
   private listaCambio = new Subject<Rol[]>();
@@ -13,6 +13,9 @@ export class RolService {
 
   list(): Observable<Rol[]> {
     return this.http.get<Rol[]>(`${this.url}/listar`);
+  }
+  listPublico(): Observable<Rol[]> {
+    return this.http.get<Rol[]>(`${this.url}/publico`);
   }
   listId(id: number): Observable<Rol> {
     return this.http.get<Rol>(`${this.url}/${id}`);
