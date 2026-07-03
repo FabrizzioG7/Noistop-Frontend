@@ -26,29 +26,54 @@
     </div>
 
     <form [formGroup]="form" (ngSubmit)="guardar()">
-      <div class="upload-section">
-        <label class="upload-label">
-          <mat-icon>cloud_upload</mat-icon>
+      @if (!selectedFile) {
+        <div
+          class="upload-section"
+          [class.dragging]="arrastrando()"
+          (dragover)="onDragOver($event)"
+          (dragleave)="onDragLeave($event)"
+          (drop)="onDrop($event)"
+        >
+          <mat-icon class="upload-icon">cloud_upload</mat-icon>
 
-          {{ 'EVIDENCIA.FORM.SELECCIONAR' | translate }}
-        </label>
+          <label class="upload-label">
+            {{ 'EVIDENCIA.FORM.SELECCIONAR' | translate }}
+            <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden />
+          </label>
 
-        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+          <p class="upload-hint">{{ 'EVIDENCIA.FORM.ARRASTRAR' | translate }}</p>
+          <p class="upload-hint-small">{{ 'EVIDENCIA.FORM.FORMATOS' | translate }}</p>
+        </div>
+      }
 
-        @if (selectedFileName) {
-          <p class="file-name">
-            {{ selectedFileName }}
-          </p>
-        }
-      </div>
+      @if (errorArchivo()) {
+        <p class="error-archivo">
+          <mat-icon>error_outline</mat-icon>
+          {{ errorArchivo() }}
+        </p>
+      }
 
       @if (previewUrl) {
         <div class="preview-container">
+          <button
+            type="button"
+            class="preview-remove"
+            (click)="quitarArchivo()"
+            [attr.aria-label]="'GENERAL.CANCELAR' | translate"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+
           <img
             [src]="previewUrl"
             [alt]="'EVIDENCIA.FORM.VISTA_PREVIA' | translate"
             class="preview-image"
           />
+
+          <p class="file-name">
+            <mat-icon>image</mat-icon>
+            {{ selectedFileName }}
+          </p>
         </div>
       }
 
@@ -73,10 +98,15 @@
       </mat-form-field>
 
       <div class="form-actions">
-        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-          <mat-icon>save</mat-icon>
-
-          {{ 'GENERAL.GUARDAR' | translate }}
+        <button mat-raised-button color="primary" type="submit" [disabled]="guardando()">
+          @if (guardando()) {
+            <mat-spinner diameter="20"></mat-spinner>
+          } @else {
+            <ng-container>
+              <mat-icon>save</mat-icon>
+              {{ 'GENERAL.GUARDAR' | translate }}
+            </ng-container>
+          }
         </button>
 
         <a mat-stroked-button color="primary" routerLink="/evidencias">

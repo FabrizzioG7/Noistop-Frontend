@@ -1,18 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router, RouterLink } from '@angular/router';
 import { Reporte } from '../../../models/reporte.model';
 import { EvidenciaService } from '../../../services/evidencia';
 import { ReporteService } from '../../../services/reporte';
-import { EvidenciaReporte } from '../../../models/evidencia.model';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+
+const EXTENSIONES_PERMITIDAS = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+const TAMANO_MAXIMO_BYTES = 5 * 1024 * 1024; // 5MB
 
 @Component({
   selector: 'app-evidencia-form',
@@ -25,6 +28,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     MatIconModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     RouterLink,
     TranslateModule,
   ],
@@ -34,8 +38,13 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 export class EvidenciaForm implements OnInit {
   form: FormGroup;
   reportes: Reporte[] = [];
+
+  selectedFile: File | null = null;
   selectedFileName = '';
   previewUrl: string | ArrayBuffer | null = null;
+  arrastrando = signal(false);
+  guardando = signal(false);
+  errorArchivo = signal('');
 
   constructor(
     private fb: FormBuilder,
@@ -46,7 +55,6 @@ export class EvidenciaForm implements OnInit {
     private translate: TranslateService,
   ) {
     this.form = this.fb.group({
-      rutaArchivo: ['', Validators.required],
       reporteId: [null, Validators.required],
     });
   }
@@ -56,12 +64,44 @@ export class EvidenciaForm implements OnInit {
   }
 
   onFileSelected(event: any) {
-    const file = event.target.files[0];
+    const file = event.target.files?.[0];
+    this.procesarArchivo(file);
+  }
+
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    this.arrastrando.set(true);
+  }
+
+  onDragLeave(event: DragEvent) {
+    event.preventDefault();
+    this.arrastrando.set(false);
+  }
+
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    this.arrastrando.set(false);
+    const file = event.dataTransfer?.files?.[0];
+    this.procesarArchivo(file);
+  }
+
+  private procesarArchivo(file?: File) {
     if (!file) return;
+    this.errorArchivo.set('');
+
+    const extension = file.name.split('.').pop()?.toLowerCase() || '';
+    if (!EXTENSIONES_PERMITIDAS.includes(extension)) {
+      this.errorArchivo.set(this.translate.instant('EVIDENCIA.FORM.ERROR_FORMATO'));
+      return;
+    }
+    if (file.size > TAMANO_MAXIMO_BYTES) {
+      this.errorArchivo.set(this.translate.instant('EVIDENCIA.FORM.ERROR_TAMANO'));
+      return;
+    }
+
+    this.selectedFile = file;
     this.selectedFileName = file.name;
-    this.form.patchValue({
-      rutaArchivo: '/uploads/' + file.name,
-    });
+
     const reader = new FileReader();
     reader.onload = () => {
       this.previewUrl = reader.result;
@@ -69,17 +109,35 @@ export class EvidenciaForm implements OnInit {
     reader.readAsDataURL(file);
   }
 
+  quitarArchivo() {
+    this.selectedFile = null;
+    this.selectedFileName = '';
+    this.previewUrl = null;
+    this.errorArchivo.set('');
+  }
+
   guardar() {
-    if (this.form.invalid) return;
-    const e: EvidenciaReporte = this.form.value;
-    this.service.insert(e).subscribe({
+    if (this.form.invalid || !this.selectedFile) {
+      this.form.markAllAsTouched();
+      if (!this.selectedFile) {
+        this.errorArchivo.set(this.translate.instant('EVIDENCIA.FORM.ERROR_SIN_ARCHIVO'));
+      }
+      return;
+    }
+
+    this.guardando.set(true);
+    const reporteId = this.form.value.reporteId;
+
+    this.service.upload(this.selectedFile, reporteId).subscribe({
       next: () => {
+        this.guardando.set(false);
         this.snack.open(this.translate.instant('EVIDENCIA.MENSAJES.CREADO'), 'OK', {
           duration: 3000,
         });
         this.router.navigate(['/evidencias']);
       },
       error: (err) => {
+        this.guardando.set(false);
         this.snack.open(
           this.translate.instant('EVIDENCIA.MENSAJES.ERROR_GENERAL') +
             ': ' +

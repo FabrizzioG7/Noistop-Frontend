@@ -1,0 +1,24 @@
+<div class="preview-dialog">
+  <button type="button" class="close-btn" (click)="cerrar()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <img [src]="data.imageUrl" [alt]="data.evidencia.nombreOriginal || data.evidencia.rutaArchivo" />
+
+  <div class="preview-info">
+    <div class="preview-info-row">
+      <mat-icon>image</mat-icon>
+      <span>{{ data.evidencia.nombreOriginal || data.evidencia.rutaArchivo }}</span>
+    </div>
+
+    <div class="preview-info-row">
+      <mat-icon>report_problem</mat-icon>
+      <span>{{ 'EVIDENCIA.LISTAR.REPORTE' | translate }} #{{ data.evidencia.reporteId }}</span>
+    </div>
+
+    <div class="preview-info-row">
+      <mat-icon>schedule</mat-icon>
+      <span>{{ data.evidencia.createdAt | date: 'dd/MM/yyyy HH:mm' }}</span>
+    </div>
+  </div>
+</div>

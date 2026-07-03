@@ -36,10 +36,10 @@
           </div>
           <div class="hero-stat-divider"></div>
           <div class="hero-stat">
-            <mat-icon>photo_library</mat-icon>
+            <mat-icon>gavel</mat-icon>
             <div>
-              <span class="hero-stat-value">{{ totalEvidencias }}</span>
-              <span class="hero-stat-label">{{ 'HOME.STAT_EVIDENCIAS' | translate }}</span>
+              <span class="hero-stat-value">{{ accionesActivas }}</span>
+              <span class="hero-stat-label">{{ 'HOME.STAT_ACCIONES' | translate }}</span>
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@
       </div>
 
       @if (loading) {
-        <div class="loading-msg">Cargando...</div>
+        <div class="loading-msg">{{ 'HOME.CARGANDO' | translate }}</div>
       } @else {
         <div class="activity-list">
           @for (item of recentActivity; track item.id) {
@@ -71,14 +71,18 @@
                 <mat-icon [style.color]="item.color">{{ item.icon }}</mat-icon>
               </div>
               <div class="activity-info">
-                <span class="activity-title">{{ item.title }}</span>
+                <span class="activity-title">{{ item.title | translate }}</span>
                 <span class="activity-sub">{{ item.subtitle }}</span>
               </div>
-              <span class="activity-time">{{ item.time }}</span>
+              @if (item.timeUnit) {
+                <span class="activity-time">
+                  {{ 'HOME.TIEMPO.' + item.timeUnit | translate: { value: item.timeValue } }}
+                </span>
+              }
             </div>
           }
           @if (recentActivity.length === 0) {
-            <div class="empty-activity">Sin actividad reciente</div>
+            <div class="empty-activity">{{ 'HOME.SIN_ACTIVIDAD' | translate }}</div>
           }
         </div>
       }

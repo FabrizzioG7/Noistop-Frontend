@@ -25,7 +25,9 @@ interface ActivityItem {
   id: number;
   title: string;
   subtitle: string;
-  time: string;
+  timeUnit: string;
+  timeValue: number;
+  timestamp: number;
   icon: string;
   color: string;
 }
@@ -147,9 +149,10 @@ export class HomeComponent implements OnInit {
         sortedReportes.forEach((r) =>
           items.push({
             id: r.pkReporteId,
-            title: 'Reporte de ruido',
+            title: 'HOME.ACTIVIDAD.REPORTE_RUIDO',
             subtitle: r.descripcion?.slice(0, 45) || '',
-            time: this.timeAgo(r.createdAt),
+            ...this.timeAgo(r.createdAt),
+            timestamp: r.createdAt ? new Date(r.createdAt).getTime() : 0,
             icon: 'report_problem',
             color: '#e53935',
           }),
@@ -161,9 +164,10 @@ export class HomeComponent implements OnInit {
         sortedAcciones.forEach((a) =>
           items.push({
             id: a.pkAccionId,
-            title: 'Acción administrativa',
+            title: 'HOME.ACTIVIDAD.ACCION_ADMIN',
             subtitle: a.detalle?.slice(0, 45) || '',
-            time: this.timeAgo(a.fechaAccion),
+            ...this.timeAgo(a.fechaAccion),
+            timestamp: a.fechaAccion ? new Date(a.fechaAccion).getTime() : 0,
             icon: 'gavel',
             color: '#0fa719',
           }),
@@ -175,9 +179,10 @@ export class HomeComponent implements OnInit {
         sortedEvidencias.forEach((e) =>
           items.push({
             id: e.pkEvidenciaId,
-            title: 'Nueva evidencia subida',
+            title: 'HOME.ACTIVIDAD.EVIDENCIA_SUBIDA',
             subtitle: e.rutaArchivo?.slice(0, 45) || '',
-            time: this.timeAgo(e.createdAt),
+            ...this.timeAgo(e.createdAt),
+            timestamp: e.createdAt ? new Date(e.createdAt).getTime() : 0,
             icon: 'photo_library',
             color: '#0284c7',
           }),
@@ -189,9 +194,10 @@ export class HomeComponent implements OnInit {
         sortedUbicaciones.forEach((u) =>
           items.push({
             id: u.pkUbicacionId,
-            title: 'Ubicación registrada',
+            title: 'HOME.ACTIVIDAD.UBICACION_REGISTRADA',
             subtitle: `${u.ubicacion}, ${u.distrito}`,
-            time: this.timeAgo(u.createdAt),
+            ...this.timeAgo(u.createdAt),
+            timestamp: u.createdAt ? new Date(u.createdAt).getTime() : 0,
             icon: 'location_on',
             color: '#7c3aed',
           }),
@@ -203,14 +209,15 @@ export class HomeComponent implements OnInit {
         sortedUsuarios.forEach((u) =>
           items.push({
             id: u.pkUsuarioId,
-            title: 'Usuario registrado',
+            title: 'HOME.ACTIVIDAD.USUARIO_REGISTRADO',
             subtitle: `${u.nombre} — ${u.nombreRol || ''}`,
-            time: this.timeAgo(u.createdAt),
+            ...this.timeAgo(u.createdAt),
+            timestamp: u.createdAt ? new Date(u.createdAt).getTime() : 0,
             icon: 'person_add',
             color: '#f59e0b',
           }),
         );
-        this.recentActivity = items.sort((a, b) => a.time.localeCompare(b.time)).slice(0, 5);
+        this.recentActivity = items.sort((a, b) => b.timestamp - a.timestamp).slice(0, 5);
         this.loading = false;
       },
       error: () => {
@@ -223,13 +230,13 @@ export class HomeComponent implements OnInit {
     return new Date(b || 0).getTime() - new Date(a || 0).getTime();
   }
 
-  timeAgo(dateStr?: string): string {
-    if (!dateStr) return '';
+  timeAgo(dateStr?: string): { timeUnit: string; timeValue: number } {
+    if (!dateStr) return { timeUnit: '', timeValue: 0 };
     const diff = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000);
-    if (diff < 60) return `Hace ${diff}s`;
-    if (diff < 3600) return `Hace ${Math.floor(diff / 60)} min`;
-    if (diff < 86400) return `Hace ${Math.floor(diff / 3600)}h`;
-    return `Hace ${Math.floor(diff / 86400)}d`;
+    if (diff < 60) return { timeUnit: 'HACE_SEGUNDOS', timeValue: diff };
+    if (diff < 3600) return { timeUnit: 'HACE_MINUTOS', timeValue: Math.floor(diff / 60) };
+    if (diff < 86400) return { timeUnit: 'HACE_HORAS', timeValue: Math.floor(diff / 3600) };
+    return { timeUnit: 'HACE_DIAS', timeValue: Math.floor(diff / 86400) };
   }
 
   navigate(route: string) {

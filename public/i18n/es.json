@@ -72,6 +72,21 @@
         "TITLE": "Evidencias",
         "DESCRIPTION": "Archivos multimedia adjuntos como evidencia de los reportes de ruido."
       }
+    },
+    "CARGANDO": "Cargando...",
+    "SIN_ACTIVIDAD": "Sin actividad reciente",
+    "TIEMPO": {
+      "HACE_SEGUNDOS": "Hace {{value}}s",
+      "HACE_MINUTOS": "Hace {{value}} min",
+      "HACE_HORAS": "Hace {{value}}h",
+      "HACE_DIAS": "Hace {{value}}d"
+    },
+    "ACTIVIDAD": {
+      "REPORTE_RUIDO": "Reporte de ruido",
+      "ACCION_ADMIN": "Acción administrativa",
+      "EVIDENCIA_SUBIDA": "Nueva evidencia subida",
+      "UBICACION_REGISTRADA": "Ubicación registrada",
+      "USUARIO_REGISTRADO": "Usuario registrado"
     }
   },
   "GENERAL": {
@@ -319,7 +334,8 @@
       "ARCHIVO": "Archivo",
       "REPORTE": "Reporte",
       "FECHA": "Fecha",
-      "VACIO": "No hay evidencias registradas."
+      "VACIO": "No hay evidencias registradas.",
+      "VER_IMAGEN": "Ver imagen"
     },
     "FORM": {
       "NUEVO": "Nueva Evidencia",
@@ -328,7 +344,12 @@
       "SELECCIONAR": "Seleccionar Evidencia",
       "VISTA_PREVIA": "Vista previa",
       "REPORTE": "Reporte Asociado",
-      "ERROR_REPORTE": "Debe seleccionar un reporte."
+      "ERROR_REPORTE": "Debe seleccionar un reporte.",
+      "ARRASTRAR": "Arrastra tu imagen aquí o haz clic para elegirla",
+      "FORMATOS": "JPG, PNG, GIF o WEBP · máx. 5MB",
+      "ERROR_FORMATO": "Formato no permitido. Usa JPG, PNG, GIF o WEBP.",
+      "ERROR_TAMANO": "La imagen supera el tamaño máximo permitido (5MB).",
+      "ERROR_SIN_ARCHIVO": "Debes seleccionar una imagen de evidencia."
     },
     "MENSAJES": {
       "CONFIRMAR_ELIMINAR": "¿Eliminar esta evidencia?",

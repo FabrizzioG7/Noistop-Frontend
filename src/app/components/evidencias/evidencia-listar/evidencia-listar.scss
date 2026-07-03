@@ -144,12 +144,12 @@ table {
   margin-top: 8px;
 }
 
-.mat-column-id {
-  width: 70px;
+.mat-column-imagen {
+  width: 90px;
 }
 
-.mat-column-rutaArchivo {
-  width: 450px;
+.mat-column-archivo {
+  width: 380px;
 }
 
 .mat-column-reporteId {
@@ -163,12 +163,78 @@ table {
 }
 
 .mat-column-acciones {
-  width: 100px;
+  width: 120px;
   text-align: center;
 }
 
 .mat-column-acciones .action-buttons {
   justify-content: center;
+}
+
+.thumb-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  border: none;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: #f1f8e9;
+  transition: transform 0.15s ease;
+}
+
+.thumb-btn:not(:disabled):hover {
+  transform: scale(1.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.thumb-btn:disabled {
+  cursor: default;
+}
+
+.thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9e9e9e;
+}
+
+.thumb-placeholder.thumb-error {
+  color: #e57373;
+}
+
+.thumb-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.action-buttons button.btn-ver {
+  background: #0fa719 !important;
+}
+
+.action-buttons button.btn-ver:hover {
+  background: #0b8a14 !important;
+}
+
+.action-buttons button.btn-ver:disabled {
+  background: #cfcfcf !important;
 }
 
 @keyframes slideUp {

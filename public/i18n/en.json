@@ -72,6 +72,21 @@
         "TITLE": "Evidence",
         "DESCRIPTION": "Multimedia files attached as evidence for noise reports."
       }
+    },
+    "CARGANDO": "Loading...",
+    "SIN_ACTIVIDAD": "No recent activity",
+    "TIEMPO": {
+      "HACE_SEGUNDOS": "{{value}}s ago",
+      "HACE_MINUTOS": "{{value}} min ago",
+      "HACE_HORAS": "{{value}}h ago",
+      "HACE_DIAS": "{{value}}d ago"
+    },
+    "ACTIVIDAD": {
+      "REPORTE_RUIDO": "Noise report",
+      "ACCION_ADMIN": "Administrative action",
+      "EVIDENCIA_SUBIDA": "New evidence uploaded",
+      "UBICACION_REGISTRADA": "Location registered",
+      "USUARIO_REGISTRADO": "User registered"
     }
   },
   "GENERAL": {
@@ -319,7 +334,8 @@
       "ARCHIVO": "File",
       "REPORTE": "Report",
       "FECHA": "Date",
-      "VACIO": "No evidence registered."
+      "VACIO": "No evidence registered.",
+      "VER_IMAGEN": "View image"
     },
     "FORM": {
       "NUEVO": "New Evidence",
@@ -328,7 +344,12 @@
       "SELECCIONAR": "Select Evidence",
       "VISTA_PREVIA": "Preview",
       "REPORTE": "Associated Report",
-      "ERROR_REPORTE": "Please select a report."
+      "ERROR_REPORTE": "Please select a report.",
+      "ARRASTRAR": "Drag your image here or click to choose it",
+      "FORMATOS": "JPG, PNG, GIF or WEBP · max. 5MB",
+      "ERROR_FORMATO": "Format not allowed. Use JPG, PNG, GIF or WEBP.",
+      "ERROR_TAMANO": "The image exceeds the maximum allowed size (5MB).",
+      "ERROR_SIN_ARCHIVO": "You must select an evidence image."
     },
     "MENSAJES": {
       "CONFIRMAR_ELIMINAR": "Delete this evidence?",

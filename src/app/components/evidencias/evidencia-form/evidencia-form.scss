@@ -84,6 +84,14 @@ button[mat-raised-button] {
   min-width: 160px;
   height: 48px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  ::ng-deep .mat-mdc-progress-spinner circle {
+    stroke: white;
+  }
 }
 
 a[mat-stroked-button] {
@@ -91,37 +99,128 @@ a[mat-stroked-button] {
   min-width: 160px;
   height: 48px;
   font-weight: 600;
+  color: #0fa719 !important;
+  border-color: #0fa719 !important;
 }
 
+// Zona de arrastrar y soltar
 .upload-section {
-  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+  padding: 36px 20px;
+  border: 2px dashed #c7e8c9;
+  border-radius: 18px;
+  background: #f7fdf7;
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.upload-section:hover,
+.upload-section.dragging {
+  border-color: #0fa719;
+  background: #eefbee;
+}
+
+.upload-icon {
+  font-size: 34px;
+  width: 34px;
+  height: 34px;
+  color: #0fa719;
+  margin-bottom: 4px;
 }
 
 .upload-label {
+  color: #0fa719;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.upload-hint {
+  color: #888;
+  font-size: 0.88rem;
+  margin: 2px 0 0;
+}
+
+.upload-hint-small {
+  color: #aaa;
+  font-size: 0.78rem;
+  margin: 0;
+}
+
+.error-archivo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #0fa719;
-  font-weight: 600;
-  margin-bottom: 12px;
+  gap: 6px;
+  color: #d32f2f;
+  background: #fdecea;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  margin: 0 0 20px;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
 }
 
 .file-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   margin-top: 10px;
   color: #616161;
   font-size: 0.9rem;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: #0fa719;
+  }
 }
 
 .preview-container {
+  position: relative;
   text-align: center;
   margin-bottom: 24px;
 }
 
 .preview-image {
   max-width: 100%;
-  max-height: 250px;
+  max-height: 280px;
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.preview-remove {
+  position: absolute;
+  top: -10px;
+  right: calc(50% - 140px);
+  background: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #d32f2f;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
 }
 
 @keyframes fadeIn {
@@ -134,9 +233,4 @@ a[mat-stroked-button] {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-a[mat-stroked-button] {
-  color: #0fa719 !important;
-  border-color: #0fa719 !important;
 }
