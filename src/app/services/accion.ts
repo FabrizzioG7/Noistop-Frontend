@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { AccionAdministrativa } from '../models/accion.model';
+import {AccionAdministrativa, AccionMensual} from '../models/accion.model';
 import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
@@ -31,5 +31,8 @@ export class AccionService {
   }
   getList(): Observable<AccionAdministrativa[]> {
     return this.listaCambio.asObservable();
+  }
+  getComparativaMensual() {
+    return this.http.get<AccionMensual[]>(`${this.url}/estadisticas/mensual`);
   }
 }

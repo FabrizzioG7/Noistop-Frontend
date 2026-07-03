@@ -1,0 +1,29 @@
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <h2>
+        <mat-icon>bar_chart</mat-icon>Reporte de Acciones Administrativas
+      </h2>
+      <p class="subtitle">Comparativa mensual de acciones realizadas por cada autoridad.</p>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="chart-title">
+      <mat-icon>analytics</mat-icon>
+      <span>
+        Acciones por autoridad según año y mes
+      </span>
+    </div>
+    <div class="chart-container">
+      <div class="grafico-card">
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="barChartType">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>
