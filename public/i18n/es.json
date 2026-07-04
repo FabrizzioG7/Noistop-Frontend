@@ -15,7 +15,9 @@
     "IDIOMA": "Idioma",
     "IDIOMA_ES": "Español",
     "IDIOMA_EN": "Inglés",
-    "CERRAR_SESION": "Cerrar sesión"
+    "CERRAR_SESION": "Cerrar sesión",
+    "REPORTAR": "Reportar",
+    "SUBIR_EVIDENCIA": "Subir Evidencia"
   },
   "HOME": {
     "BADGE": "Gestión Inteligente de Ruido Urbano",
@@ -71,6 +73,14 @@
       "EVIDENCIAS": {
         "TITLE": "Evidencias",
         "DESCRIPTION": "Archivos multimedia adjuntos como evidencia de los reportes de ruido."
+      },
+      "REPORTAR": {
+        "TITLE": "Reportar Ruido",
+        "DESCRIPTION": "Denuncia un caso de ruido excesivo en tu zona en pocos pasos."
+      },
+      "SUBIR_EVIDENCIA": {
+        "TITLE": "Subir Evidencia",
+        "DESCRIPTION": "Adjunta una foto que respalde tu reporte de ruido."
       }
     },
     "CARGANDO": "Cargando...",
@@ -87,7 +97,14 @@
       "EVIDENCIA_SUBIDA": "Nueva evidencia subida",
       "UBICACION_REGISTRADA": "Ubicación registrada",
       "USUARIO_REGISTRADO": "Usuario registrado"
-    }
+    },
+    "STAT_UBICACIONES": "Ubicaciones",
+    "STAT_MIS_REPORTES": "Mis Reportes",
+    "STAT_MIS_REPORTES_HOY": "Reportados Hoy",
+    "STAT_CATEGORIAS": "Categorías",
+    "KPI_MIS_REPORTES": "Mis Reportes",
+    "KPI_CATEGORIAS": "Categorías Disponibles",
+    "MI_ACTIVIDAD_RECIENTE": "Mi Actividad Reciente"
   },
   "GENERAL": {
     "GUARDAR": "Guardar",

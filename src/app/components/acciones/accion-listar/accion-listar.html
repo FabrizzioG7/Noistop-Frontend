@@ -92,7 +92,12 @@
               <mat-icon>edit</mat-icon>
             </a>
 
-            <button mat-icon-button class="btn-eliminar" (click)="eliminar(a.pkAccionId)">
+            <button
+              mat-icon-button
+              class="btn-eliminar"
+              *ngIf="puedeEliminar()"
+              (click)="eliminar(a.pkAccionId)"
+            >
               <mat-icon>delete</mat-icon>
             </button>
           </div>

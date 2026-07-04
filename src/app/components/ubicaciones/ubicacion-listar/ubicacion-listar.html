@@ -12,7 +12,7 @@
       </p>
     </div>
 
-    <a mat-raised-button color="primary" routerLink="/ubicaciones/nuevo">
+    <a mat-raised-button color="primary" routerLink="/ubicaciones/nuevo" *ngIf="puedeGestionar()">
       <mat-icon>add_location</mat-icon>
 
       {{ 'UBICACION.LISTAR.NUEVO' | translate }}
@@ -85,7 +85,7 @@
         </th>
 
         <td mat-cell *matCellDef="let u">
-          <div class="action-buttons">
+          <div class="action-buttons" *ngIf="puedeEliminar()">
             <button mat-icon-button class="btn-eliminar" (click)="eliminar(u.pkUbicacionId)">
               <mat-icon>delete</mat-icon>
             </button>

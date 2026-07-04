@@ -10,6 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { EvidenciaService } from '../../../services/evidencia';
 import { EvidenciaReporte } from '../../../models/evidencia.model';
+import { AuthService } from '../../../services/auth';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { EvidenciaPreviewDialog } from '../evidencia-preview-dialog/evidencia-preview-dialog';
 
@@ -47,7 +48,12 @@ export class EvidenciaListar implements OnInit, OnDestroy {
     private translate: TranslateService,
     private sanitizer: DomSanitizer,
     private dialog: MatDialog,
+    public auth: AuthService,
   ) {}
+
+  puedeEliminar(): boolean {
+    return this.auth.tieneRol('ADMIN');
+  }
 
   ngOnInit() {
     this.cargar();

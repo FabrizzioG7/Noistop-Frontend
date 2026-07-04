@@ -10,57 +10,61 @@
 
   <div class="nav-center">
     <nav class="nav-items">
-      <!-- DASHBOARD -->
+      <!-- DASHBOARD: todos los roles logueados -->
       <a class="nav-item" routerLink="/home">
         <mat-icon>dashboard</mat-icon>
         <span>{{ 'MENU.DASHBOARD' | translate }}</span>
         <div class="active-bar"></div>
       </a>
 
-      <!-- USUARIOS -->
-      <a
-        class="nav-item"
-        [matMenuTriggerFor]="menuUsuarios"
-        #usuariosTrigger="matMenuTrigger"
-        [class.active]="usuariosTrigger.menuOpen"
-      >
-        <mat-icon>people</mat-icon>
-        <span>{{ 'MENU.USUARIOS' | translate }}</span>
-        <div class="active-bar"></div>
-      </a>
-      <mat-menu #menuUsuarios="matMenu" class="custom-dropdown">
-        <button mat-menu-item routerLink="/usuarios">
-          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
-        </button>
-        <button mat-menu-item routerLink="/usuarios/nuevo">
-          <mat-icon>add</mat-icon> {{ 'MENU.NUEVO' | translate }}
-        </button>
-        <button mat-menu-item routerLink="/usuarios/reportes">
-          <mat-icon>bar_chart</mat-icon> {{ 'MENU.REPORTES' | translate }}
-        </button>
-      </mat-menu>
+      <!-- USUARIOS: solo ADMIN -->
+      @if (esAdmin()) {
+        <a
+          class="nav-item"
+          [matMenuTriggerFor]="menuUsuarios"
+          #usuariosTrigger="matMenuTrigger"
+          [class.active]="usuariosTrigger.menuOpen"
+        >
+          <mat-icon>people</mat-icon>
+          <span>{{ 'MENU.USUARIOS' | translate }}</span>
+          <div class="active-bar"></div>
+        </a>
+        <mat-menu #menuUsuarios="matMenu" class="custom-dropdown">
+          <button mat-menu-item routerLink="/usuarios">
+            <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+          </button>
+          <button mat-menu-item routerLink="/usuarios/nuevo">
+            <mat-icon>add</mat-icon> {{ 'MENU.NUEVO' | translate }}
+          </button>
+          <button mat-menu-item routerLink="/usuarios/reportes">
+            <mat-icon>bar_chart</mat-icon> {{ 'MENU.REPORTES' | translate }}
+          </button>
+        </mat-menu>
+      }
 
-      <!-- ROLES -->
-      <a
-        class="nav-item"
-        [matMenuTriggerFor]="menuRoles"
-        #rolesTrigger="matMenuTrigger"
-        [class.active]="rolesTrigger.menuOpen"
-      >
-        <mat-icon>security</mat-icon>
-        <span>{{ 'MENU.ROLES' | translate }}</span>
-        <div class="active-bar"></div>
-      </a>
-      <mat-menu #menuRoles="matMenu" class="custom-dropdown">
-        <button mat-menu-item routerLink="/roles">
-          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
-        </button>
-        <button mat-menu-item routerLink="/roles/nuevo">
-          <mat-icon>add</mat-icon> {{ 'MENU.NUEVO' | translate }}
-        </button>
-      </mat-menu>
+      <!-- ROLES: solo ADMIN -->
+      @if (esAdmin()) {
+        <a
+          class="nav-item"
+          [matMenuTriggerFor]="menuRoles"
+          #rolesTrigger="matMenuTrigger"
+          [class.active]="rolesTrigger.menuOpen"
+        >
+          <mat-icon>security</mat-icon>
+          <span>{{ 'MENU.ROLES' | translate }}</span>
+          <div class="active-bar"></div>
+        </a>
+        <mat-menu #menuRoles="matMenu" class="custom-dropdown">
+          <button mat-menu-item routerLink="/roles">
+            <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+          </button>
+          <button mat-menu-item routerLink="/roles/nuevo">
+            <mat-icon>add</mat-icon> {{ 'MENU.NUEVO' | translate }}
+          </button>
+        </mat-menu>
+      }
 
-      <!-- UBICACIONES -->
+      <!-- UBICACIONES: los 3 roles ven el listado; crear/reportes solo staff -->
       <a
         class="nav-item"
         [matMenuTriggerFor]="menuUbicaciones"
@@ -75,15 +79,17 @@
         <button mat-menu-item routerLink="/ubicaciones">
           <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
         </button>
-        <button mat-menu-item routerLink="/ubicaciones/nuevo">
-          <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
-        </button>
-        <button mat-menu-item routerLink="/ubicaciones/reportes">
-          <mat-icon>bar_chart</mat-icon> {{ 'MENU.REPORTES' | translate }}
-        </button>
+        @if (esStaff()) {
+          <button mat-menu-item routerLink="/ubicaciones/nuevo">
+            <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
+          </button>
+          <button mat-menu-item routerLink="/ubicaciones/reportes">
+            <mat-icon>bar_chart</mat-icon> {{ 'MENU.REPORTES' | translate }}
+          </button>
+        }
       </mat-menu>
 
-      <!-- CATEGORÍAS -->
+      <!-- CATEGORÍAS: los 3 roles ven el listado; crear solo ADMIN -->
       <a
         class="nav-item"
         [matMenuTriggerFor]="menuCategorias"
@@ -98,70 +104,90 @@
         <button mat-menu-item routerLink="/categorias">
           <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
         </button>
-        <button mat-menu-item routerLink="/categorias/nuevo">
-          <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
-        </button>
+        @if (esAdmin()) {
+          <button mat-menu-item routerLink="/categorias/nuevo">
+            <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
+          </button>
+        }
       </mat-menu>
 
-      <!-- REPORTES -->
-      <a
-        class="nav-item"
-        [matMenuTriggerFor]="menuReportes"
-        #reportesTrigger="matMenuTrigger"
-        [class.active]="reportesTrigger.menuOpen"
-      >
-        <mat-icon>report</mat-icon>
-        <span>{{ 'MENU.REPORTES' | translate }}</span>
-        <div class="active-bar"></div>
-      </a>
-      <mat-menu #menuReportes="matMenu" class="custom-dropdown">
-        <button mat-menu-item routerLink="/reportes">
-          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
-        </button>
-        <button mat-menu-item routerLink="/reportes/nuevo">
-          <mat-icon>add</mat-icon> {{ 'MENU.NUEVO' | translate }}
-        </button>
-      </mat-menu>
+      <!-- REPORTES: staff ve el listado completo; USER va directo a "reportar" -->
+      @if (esStaff()) {
+        <a
+          class="nav-item"
+          [matMenuTriggerFor]="menuReportes"
+          #reportesTrigger="matMenuTrigger"
+          [class.active]="reportesTrigger.menuOpen"
+        >
+          <mat-icon>report</mat-icon>
+          <span>{{ 'MENU.REPORTES' | translate }}</span>
+          <div class="active-bar"></div>
+        </a>
+        <mat-menu #menuReportes="matMenu" class="custom-dropdown">
+          <button mat-menu-item routerLink="/reportes">
+            <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+          </button>
+          <button mat-menu-item routerLink="/reportes/nuevo">
+            <mat-icon>add</mat-icon> {{ 'MENU.NUEVO' | translate }}
+          </button>
+        </mat-menu>
+      } @else if (esUser()) {
+        <a class="nav-item" routerLink="/reportes/nuevo">
+          <mat-icon>report</mat-icon>
+          <span>{{ 'MENU.REPORTAR' | translate }}</span>
+          <div class="active-bar"></div>
+        </a>
+      }
 
-      <!-- ACCIONES -->
-      <a
-        class="nav-item"
-        [matMenuTriggerFor]="menuAcciones"
-        #accionesTrigger="matMenuTrigger"
-        [class.active]="accionesTrigger.menuOpen"
-      >
-        <mat-icon>gavel</mat-icon>
-        <span>{{ 'MENU.ACCIONES' | translate }}</span>
-        <div class="active-bar"></div>
-      </a>
-      <mat-menu #menuAcciones="matMenu" class="custom-dropdown">
-        <button mat-menu-item routerLink="/acciones">
-          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
-        </button>
-        <button mat-menu-item routerLink="/acciones/nuevo">
-          <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
-        </button>
-      </mat-menu>
+      <!-- ACCIONES: solo staff (ADMIN, AUTHORITY) -->
+      @if (esStaff()) {
+        <a
+          class="nav-item"
+          [matMenuTriggerFor]="menuAcciones"
+          #accionesTrigger="matMenuTrigger"
+          [class.active]="accionesTrigger.menuOpen"
+        >
+          <mat-icon>gavel</mat-icon>
+          <span>{{ 'MENU.ACCIONES' | translate }}</span>
+          <div class="active-bar"></div>
+        </a>
+        <mat-menu #menuAcciones="matMenu" class="custom-dropdown">
+          <button mat-menu-item routerLink="/acciones">
+            <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+          </button>
+          <button mat-menu-item routerLink="/acciones/nuevo">
+            <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
+          </button>
+        </mat-menu>
+      }
 
-      <!-- EVIDENCIAS -->
-      <a
-        class="nav-item"
-        [matMenuTriggerFor]="menuEvidencias"
-        #evidenciasTrigger="matMenuTrigger"
-        [class.active]="evidenciasTrigger.menuOpen"
-      >
-        <mat-icon>photo_library</mat-icon>
-        <span>{{ 'MENU.EVIDENCIAS' | translate }}</span>
-        <div class="active-bar"></div>
-      </a>
-      <mat-menu #menuEvidencias="matMenu" class="custom-dropdown">
-        <button mat-menu-item routerLink="/evidencias">
-          <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
-        </button>
-        <button mat-menu-item routerLink="/evidencias/nuevo">
-          <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
-        </button>
-      </mat-menu>
+      <!-- EVIDENCIAS: staff ve el listado completo; USER va directo a "subir" -->
+      @if (esStaff()) {
+        <a
+          class="nav-item"
+          [matMenuTriggerFor]="menuEvidencias"
+          #evidenciasTrigger="matMenuTrigger"
+          [class.active]="evidenciasTrigger.menuOpen"
+        >
+          <mat-icon>photo_library</mat-icon>
+          <span>{{ 'MENU.EVIDENCIAS' | translate }}</span>
+          <div class="active-bar"></div>
+        </a>
+        <mat-menu #menuEvidencias="matMenu" class="custom-dropdown">
+          <button mat-menu-item routerLink="/evidencias">
+            <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
+          </button>
+          <button mat-menu-item routerLink="/evidencias/nuevo">
+            <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
+          </button>
+        </mat-menu>
+      } @else if (esUser()) {
+        <a class="nav-item" routerLink="/evidencias/nuevo">
+          <mat-icon>photo_library</mat-icon>
+          <span>{{ 'MENU.SUBIR_EVIDENCIA' | translate }}</span>
+          <div class="active-bar"></div>
+        </a>
+      }
     </nav>
   </div>
 

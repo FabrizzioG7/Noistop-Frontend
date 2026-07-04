@@ -106,7 +106,12 @@
               <mat-icon>visibility</mat-icon>
             </button>
 
-            <button mat-icon-button class="btn-eliminar" (click)="eliminar(e.pkEvidenciaId)">
+            <button
+              mat-icon-button
+              class="btn-eliminar"
+              *ngIf="puedeEliminar()"
+              (click)="eliminar(e.pkEvidenciaId)"
+            >
               <mat-icon>delete</mat-icon>
             </button>
           </div>

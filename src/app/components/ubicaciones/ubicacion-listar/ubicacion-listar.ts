@@ -7,6 +7,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { Ubicacion } from '../../../models/ubicacion.model';
 import { UbicacionService } from '../../../services/ubicacion';
+import { AuthService } from '../../../services/auth';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -31,7 +32,16 @@ export class UbicacionListar implements OnInit {
     private service: UbicacionService,
     private snack: MatSnackBar,
     private translate: TranslateService,
+    public auth: AuthService,
   ) {}
+
+  // Crear/editar ubicaciones: ADMIN y AUTHORITY. Eliminar: solo ADMIN.
+  puedeGestionar(): boolean {
+    return this.auth.tieneRol('ADMIN', 'AUTHORITY');
+  }
+  puedeEliminar(): boolean {
+    return this.auth.tieneRol('ADMIN');
+  }
 
   ngOnInit() {
     this.cargar();

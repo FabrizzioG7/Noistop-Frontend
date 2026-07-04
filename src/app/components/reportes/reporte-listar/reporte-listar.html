@@ -115,7 +115,12 @@
               <mat-icon>edit</mat-icon>
             </a>
 
-            <button mat-icon-button class="btn-eliminar" (click)="eliminar(r.pkReporteId)">
+            <button
+              mat-icon-button
+              class="btn-eliminar"
+              *ngIf="puedeEliminar()"
+              (click)="eliminar(r.pkReporteId)"
+            >
               <mat-icon>delete</mat-icon>
             </button>
           </div>

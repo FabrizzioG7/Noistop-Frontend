@@ -14,6 +14,9 @@ export class ReporteService {
   list(): Observable<Reporte[]> {
     return this.http.get<Reporte[]>(`${this.url}/listar`);
   }
+  historialPorUsuario(usuarioId: number): Observable<Reporte[]> {
+    return this.http.get<Reporte[]>(`${this.url}/historial/usuario/${usuarioId}`);
+  }
   listId(id: number): Observable<Reporte> {
     return this.http.get<Reporte>(`${this.url}/${id}`);
   }

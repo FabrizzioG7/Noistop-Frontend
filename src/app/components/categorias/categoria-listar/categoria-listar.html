@@ -11,7 +11,7 @@
       </p>
     </div>
 
-    <a mat-raised-button color="primary" routerLink="/categorias/nuevo">
+    <a mat-raised-button color="primary" routerLink="/categorias/nuevo" *ngIf="puedeGestionar()">
       <mat-icon>add</mat-icon>
       {{ 'CATEGORIA.LISTAR.NUEVO' | translate }}
     </a>
@@ -64,7 +64,7 @@
         </th>
 
         <td mat-cell *matCellDef="let c">
-          <div class="action-buttons">
+          <div class="action-buttons" *ngIf="puedeGestionar()">
             <a
               mat-icon-button
               class="btn-editar"

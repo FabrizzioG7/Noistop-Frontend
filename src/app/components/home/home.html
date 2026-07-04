@@ -11,37 +11,18 @@
         <p>{{ 'HOME.DESCRIPTION' | translate }}</p>
 
         <div class="hero-stats">
-          <div class="hero-stat">
-            <mat-icon>radio_button_checked</mat-icon>
-            <div>
-              <span class="hero-stat-value">{{ totalUsuarios }}</span>
-              <span class="hero-stat-label">{{ 'HOME.STAT_USUARIOS' | translate }}</span>
+          @for (stat of heroStats; track stat.labelKey; let last = $last) {
+            <div class="hero-stat">
+              <mat-icon>{{ stat.icon }}</mat-icon>
+              <div>
+                <span class="hero-stat-value">{{ stat.value }}</span>
+                <span class="hero-stat-label">{{ stat.labelKey | translate }}</span>
+              </div>
             </div>
-          </div>
-          <div class="hero-stat-divider"></div>
-          <div class="hero-stat">
-            <mat-icon>report_problem</mat-icon>
-            <div>
-              <span class="hero-stat-value">{{ totalReportes }}</span>
-              <span class="hero-stat-label">{{ 'HOME.STAT_REPORTES' | translate }}</span>
-            </div>
-          </div>
-          <div class="hero-stat-divider"></div>
-          <div class="hero-stat">
-            <mat-icon>report</mat-icon>
-            <div>
-              <span class="hero-stat-value">{{ reportesHoy }}</span>
-              <span class="hero-stat-label">{{ 'HOME.STAT_REPORTES_HOY' | translate }}</span>
-            </div>
-          </div>
-          <div class="hero-stat-divider"></div>
-          <div class="hero-stat">
-            <mat-icon>gavel</mat-icon>
-            <div>
-              <span class="hero-stat-value">{{ accionesActivas }}</span>
-              <span class="hero-stat-label">{{ 'HOME.STAT_ACCIONES' | translate }}</span>
-            </div>
-          </div>
+            @if (!last) {
+              <div class="hero-stat-divider"></div>
+            }
+          }
         </div>
       </div>
 
@@ -58,7 +39,8 @@
     <!-- ACTIVIDAD RECIENTE -->
     <div class="activity-section">
       <div class="section-header">
-        <h2 class="section-title">{{ 'HOME.ACTIVIDAD_RECIENTE' | translate }}</h2>
+        <h2 class="section-title">{{ actividadTituloKey | translate }}</h2>
+        <span class="ver-todas">{{ 'HOME.VER_TODAS' | translate }}</span>
       </div>
 
       @if (loading) {
@@ -91,97 +73,30 @@
 
   <!-- KPI CARDS -->
   <div class="kpi-grid">
-    <div class="kpi-card">
-      <div class="kpi-header">
-        <span class="kpi-label">{{ 'HOME.KPI_REPORTES' | translate }}</span>
-        <div class="kpi-icon" style="background: #fff0f0">
-          <mat-icon style="color: #e53935">report_problem</mat-icon>
+    @for (kpi of kpis; track kpi.labelKey) {
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-label">{{ kpi.labelKey | translate }}</span>
+          <div class="kpi-icon" [style.background]="kpi.iconBg">
+            <mat-icon [style.color]="kpi.iconColor">{{ kpi.icon }}</mat-icon>
+          </div>
         </div>
-      </div>
-      <div class="kpi-value">{{ totalReportes }}</div>
-      <div class="kpi-trend positive">
-        <mat-icon>trending_up</mat-icon><span>{{ 'HOME.TOTAL_REGISTROS' | translate }}</span>
-      </div>
-      <svg class="sparkline" viewBox="0 0 100 30" preserveAspectRatio="none">
-        <polyline
-          points="0,25 20,20 40,22 60,15 80,12 100,8"
-          fill="none"
-          stroke="#0fa719"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    </div>
-
-    <div class="kpi-card">
-      <div class="kpi-header">
-        <span class="kpi-label">{{ 'HOME.KPI_UBICACIONES' | translate }}</span>
-        <div class="kpi-icon" style="background: #f3e8ff">
-          <mat-icon style="color: #7c3aed">location_on</mat-icon>
+        <div class="kpi-value">{{ kpi.value }}</div>
+        <div class="kpi-trend positive">
+          <mat-icon>trending_up</mat-icon><span>{{ 'HOME.TOTAL_REGISTROS' | translate }}</span>
         </div>
+        <svg class="sparkline" viewBox="0 0 100 30" preserveAspectRatio="none">
+          <polyline
+            points="0,25 20,20 40,22 60,15 80,12 100,8"
+            fill="none"
+            stroke="#0fa719"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
       </div>
-      <div class="kpi-value">{{ totalUbicaciones }}</div>
-      <div class="kpi-trend positive">
-        <mat-icon>trending_up</mat-icon><span>{{ 'HOME.TOTAL_REGISTROS' | translate }}</span>
-      </div>
-      <svg class="sparkline" viewBox="0 0 100 30" preserveAspectRatio="none">
-        <polyline
-          points="0,22 20,18 40,20 60,14 80,10 100,7"
-          fill="none"
-          stroke="#0fa719"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    </div>
-
-    <div class="kpi-card">
-      <div class="kpi-header">
-        <span class="kpi-label">{{ 'HOME.KPI_ACCIONES' | translate }}</span>
-        <div class="kpi-icon" style="background: #fff7e6">
-          <mat-icon style="color: #f59e0b">gavel</mat-icon>
-        </div>
-      </div>
-      <div class="kpi-value">{{ totalAcciones }}</div>
-      <div class="kpi-trend positive">
-        <mat-icon>trending_up</mat-icon><span>{{ 'HOME.TOTAL_REGISTROS' | translate }}</span>
-      </div>
-      <svg class="sparkline" viewBox="0 0 100 30" preserveAspectRatio="none">
-        <polyline
-          points="0,24 20,19 40,21 60,13 80,9 100,6"
-          fill="none"
-          stroke="#0fa719"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    </div>
-
-    <div class="kpi-card">
-      <div class="kpi-header">
-        <span class="kpi-label">{{ 'HOME.KPI_EVIDENCIAS' | translate }}</span>
-        <div class="kpi-icon" style="background: #e0f2fe">
-          <mat-icon style="color: #0284c7">photo_library</mat-icon>
-        </div>
-      </div>
-      <div class="kpi-value">{{ totalEvidencias }}</div>
-      <div class="kpi-trend positive">
-        <mat-icon>trending_up</mat-icon><span>{{ 'HOME.TOTAL_REGISTROS' | translate }}</span>
-      </div>
-      <svg class="sparkline" viewBox="0 0 100 30" preserveAspectRatio="none">
-        <polyline
-          points="0,26 20,21 40,23 60,16 80,11 100,8"
-          fill="none"
-          stroke="#0fa719"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    </div>
+    }
   </div>
 
   <!-- MÓDULOS -->

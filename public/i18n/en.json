@@ -15,7 +15,9 @@
     "IDIOMA": "Language",
     "IDIOMA_ES": "Spanish",
     "IDIOMA_EN": "English",
-    "CERRAR_SESION": "Log out"
+    "CERRAR_SESION": "Log out",
+    "REPORTAR": "Report",
+    "SUBIR_EVIDENCIA": "Upload Evidence"
   },
   "HOME": {
     "BADGE": "Smart Urban Noise Management",
@@ -71,6 +73,14 @@
       "EVIDENCIAS": {
         "TITLE": "Evidence",
         "DESCRIPTION": "Multimedia files attached as evidence for noise reports."
+      },
+      "REPORTAR": {
+        "TITLE": "Report Noise",
+        "DESCRIPTION": "Report an excessive noise case in your area in a few steps."
+      },
+      "SUBIR_EVIDENCIA": {
+        "TITLE": "Upload Evidence",
+        "DESCRIPTION": "Attach a photo to support your noise report."
       }
     },
     "CARGANDO": "Loading...",
@@ -87,7 +97,14 @@
       "EVIDENCIA_SUBIDA": "New evidence uploaded",
       "UBICACION_REGISTRADA": "Location registered",
       "USUARIO_REGISTRADO": "User registered"
-    }
+    },
+    "STAT_UBICACIONES": "Locations",
+    "STAT_MIS_REPORTES": "My Reports",
+    "STAT_MIS_REPORTES_HOY": "Reported Today",
+    "STAT_CATEGORIAS": "Categories",
+    "KPI_MIS_REPORTES": "My Reports",
+    "KPI_CATEGORIAS": "Available Categories",
+    "MI_ACTIVIDAD_RECIENTE": "My Recent Activity"
   },
   "GENERAL": {
     "GUARDAR": "Save",

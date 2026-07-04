@@ -49,12 +49,23 @@ export class AuthService {
     return localStorage.getItem('usuario_nombre');
   }
 
+  getUsuarioId(): number | null {
+    const id = localStorage.getItem('usuario_id');
+    return id ? Number(id) : null;
+  }
+
   getUsuarioEmail(): string | null {
     return localStorage.getItem('usuario_email');
   }
 
   getRol(): string | null {
     return localStorage.getItem('usuario_rol');
+  }
+
+  /** true si el rol del usuario logueado está dentro de la lista dada. */
+  tieneRol(...roles: string[]): boolean {
+    const rolActual = this.getRol();
+    return !!rolActual && roles.includes(rolActual);
   }
 
   isLoggedIn(): boolean {

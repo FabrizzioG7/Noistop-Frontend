@@ -48,8 +48,19 @@ export class MenuComponent {
     this.router.navigate(['/login']);
   }
 
+  esAdmin(): boolean {
+    return this.rol() === 'ADMIN';
+  }
+
+  esStaff(): boolean {
+    return this.rol() === 'ADMIN' || this.rol() === 'AUTHORITY';
+  }
+
+  esUser(): boolean {
+    return this.rol() === 'USER';
+  }
+
   checkCloseMenu(trigger: any, panel: any) {
-    // pequeño delay para que el mouse pueda pasar al panel sin que se cierre
     setTimeout(() => {
       if (!panel._isAnimating) {
         trigger.closeMenu();

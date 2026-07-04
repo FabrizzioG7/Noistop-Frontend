@@ -7,6 +7,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { Categoria } from '../../../models/categoria.model';
 import { CategoriaService } from '../../../services/categoria';
+import { AuthService } from '../../../services/auth';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -18,7 +19,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     MatButtonModule,
     MatIconModule,
     MatSnackBarModule,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './categoria-listar.html',
   styleUrl: './categoria-listar.scss',
@@ -31,7 +32,12 @@ export class CategoriaListar implements OnInit {
     private service: CategoriaService,
     private snack: MatSnackBar,
     private translate: TranslateService,
+    public auth: AuthService,
   ) {}
+
+  puedeGestionar(): boolean {
+    return this.auth.tieneRol('ADMIN');
+  }
 
   ngOnInit() {
     this.cargar();

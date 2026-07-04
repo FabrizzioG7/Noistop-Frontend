@@ -35,6 +35,11 @@ import { UsuarioReportes } from './components/usuarios/usuario-reportes/usuario-
 import { Login } from './components/login/login';
 import { Registro } from './components/registro/registro';
 import { authGuard } from './guards/auth-guard';
+import { roleGuard } from './guards/role-guard';
+
+const ADMIN = ['ADMIN'];
+const STAFF = ['ADMIN', 'AUTHORITY'];
+const TODOS = ['ADMIN', 'USER', 'AUTHORITY'];
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -44,10 +49,11 @@ export const routes: Routes = [
 
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
 
+  // Usuarios y Roles: solo ADMIN (gestión del sistema)
   {
     path: 'roles',
     component: Roles,
-    canActivate: [authGuard],
+    canActivate: [roleGuard(ADMIN)],
     children: [
       { path: '', component: RolListar },
       { path: 'nuevo', component: RolForm },
@@ -58,7 +64,7 @@ export const routes: Routes = [
   {
     path: 'usuarios',
     component: Usuarios,
-    canActivate: [authGuard],
+    canActivate: [roleGuard(ADMIN)],
     children: [
       { path: '', component: UsuarioListar },
       { path: 'nuevo', component: UsuarioForm },
@@ -67,44 +73,50 @@ export const routes: Routes = [
     ],
   },
 
+  // Ubicaciones: los 3 roles pueden ver el listado (catálogo); crear/editar
+  // es de ADMIN y AUTHORITY, tal como en el backend.
   {
     path: 'ubicaciones',
     component: Ubicaciones,
     canActivate: [authGuard],
     children: [
-      { path: '', component: UbicacionListar },
-      { path: 'nuevo', component: UbicacionForm },
-      { path: 'editar/:id', component: UbicacionForm },
-      { path: 'reportes', component: UbicacionReportes },
+      { path: '', component: UbicacionListar, canActivate: [roleGuard(TODOS)] },
+      { path: 'nuevo', component: UbicacionForm, canActivate: [roleGuard(STAFF)] },
+      { path: 'editar/:id', component: UbicacionForm, canActivate: [roleGuard(STAFF)] },
+      { path: 'reportes', component: UbicacionReportes, canActivate: [roleGuard(STAFF)] },
     ],
   },
 
+  // Categorías: los 3 roles ven el listado; solo ADMIN crea/edita.
   {
     path: 'categorias',
     component: Categorias,
     canActivate: [authGuard],
     children: [
-      { path: '', component: CategoriaListar },
-      { path: 'nuevo', component: CategoriaForm },
-      { path: 'editar/:id', component: CategoriaForm },
+      { path: '', component: CategoriaListar, canActivate: [roleGuard(TODOS)] },
+      { path: 'nuevo', component: CategoriaForm, canActivate: [roleGuard(ADMIN)] },
+      { path: 'editar/:id', component: CategoriaForm, canActivate: [roleGuard(ADMIN)] },
     ],
   },
 
+  // Reportes: cualquiera puede crear una denuncia (USER incluido), pero solo
+  // ADMIN/AUTHORITY ven el listado completo y editan reportes.
   {
     path: 'reportes',
     component: Reportes,
     canActivate: [authGuard],
     children: [
-      { path: '', component: ReporteListar },
-      { path: 'nuevo', component: ReporteForm },
-      { path: 'editar/:id', component: ReporteForm },
+      { path: '', component: ReporteListar, canActivate: [roleGuard(STAFF)] },
+      { path: 'nuevo', component: ReporteForm, canActivate: [roleGuard(TODOS)] },
+      { path: 'editar/:id', component: ReporteForm, canActivate: [roleGuard(STAFF)] },
     ],
   },
 
+  // Acciones administrativas: trabajo de staff (ADMIN, AUTHORITY).
   {
     path: 'acciones',
     component: Acciones,
-    canActivate: [authGuard],
+    canActivate: [roleGuard(STAFF)],
     children: [
       { path: '', component: AccionListar },
       { path: 'nuevo', component: AccionForm },
@@ -117,8 +129,8 @@ export const routes: Routes = [
     component: Evidencias,
     canActivate: [authGuard],
     children: [
-      { path: '', component: EvidenciaListar },
-      { path: 'nuevo', component: EvidenciaForm },
+      { path: '', component: EvidenciaListar, canActivate: [roleGuard(STAFF)] },
+      { path: 'nuevo', component: EvidenciaForm, canActivate: [roleGuard(TODOS)] },
     ],
   },
 

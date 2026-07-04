@@ -8,6 +8,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { Reporte } from '../../../models/reporte.model';
 import { ReporteService } from '../../../services/reporte';
+import { AuthService } from '../../../services/auth';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -43,7 +44,12 @@ export class ReporteListar implements OnInit {
     private service: ReporteService,
     private snack: MatSnackBar,
     private translate: TranslateService,
+    public auth: AuthService,
   ) {}
+
+  puedeEliminar(): boolean {
+    return this.auth.tieneRol('ADMIN');
+  }
 
   ngOnInit() {
     this.cargar();

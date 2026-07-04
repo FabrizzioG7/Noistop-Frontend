@@ -7,6 +7,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { AccionAdministrativa } from '../../../models/accion.model';
 import { AccionService } from '../../../services/accion';
+import { AuthService } from '../../../services/auth';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -19,7 +20,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     MatIconModule,
     MatSnackBarModule,
     DatePipe,
-    TranslateModule
+    TranslateModule,
   ],
   templateUrl: './accion-listar.html',
   styleUrl: './accion-listar.scss',
@@ -32,7 +33,12 @@ export class AccionListar implements OnInit {
     private service: AccionService,
     private snack: MatSnackBar,
     private translate: TranslateService,
+    public auth: AuthService,
   ) {}
+
+  puedeEliminar(): boolean {
+    return this.auth.tieneRol('ADMIN');
+  }
 
   ngOnInit() {
     this.cargar();
