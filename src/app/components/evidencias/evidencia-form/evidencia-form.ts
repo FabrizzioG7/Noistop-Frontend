@@ -12,6 +12,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Reporte } from '../../../models/reporte.model';
 import { EvidenciaService } from '../../../services/evidencia';
 import { ReporteService } from '../../../services/reporte';
+import { AuthService } from '../../../services/auth';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 const EXTENSIONES_PERMITIDAS = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
@@ -53,6 +54,7 @@ export class EvidenciaForm implements OnInit {
     private router: Router,
     private snack: MatSnackBar,
     private translate: TranslateService,
+    public auth: AuthService,
   ) {
     this.form = this.fb.group({
       reporteId: [null, Validators.required],
@@ -60,7 +62,16 @@ export class EvidenciaForm implements OnInit {
   }
 
   ngOnInit() {
-    this.reporteService.list().subscribe((d) => (this.reportes = d));
+    // ADMIN/AUTHORITY ven todos los reportes; USER solo puede asociar
+    // evidencia a SUS propios reportes (el backend le bloquea /listar).
+    if (this.auth.tieneRol('ADMIN', 'AUTHORITY')) {
+      this.reporteService.list().subscribe((d) => (this.reportes = d));
+    } else {
+      const usuarioId = this.auth.getUsuarioId();
+      if (usuarioId) {
+        this.reporteService.historialPorUsuario(usuarioId).subscribe((d) => (this.reportes = d));
+      }
+    }
   }
 
   onFileSelected(event: any) {

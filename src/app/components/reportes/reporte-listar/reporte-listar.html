@@ -3,11 +3,11 @@
     <div>
       <h2>
         <mat-icon>report_problem</mat-icon>
-        {{ 'REPORTE.LISTAR.TITULO' | translate }}
+        {{ (esUser() ? 'REPORTE.LISTAR.TITULO_MIS' : 'REPORTE.LISTAR.TITULO') | translate }}
       </h2>
 
       <p class="subtitle">
-        {{ 'REPORTE.LISTAR.SUBTITULO' | translate }}
+        {{ (esUser() ? 'REPORTE.LISTAR.SUBTITULO_MIS' : 'REPORTE.LISTAR.SUBTITULO') | translate }}
       </p>
     </div>
 
@@ -110,6 +110,7 @@
             <a
               mat-icon-button
               class="btn-editar"
+              *ngIf="puedeEditar()"
               [routerLink]="['/reportes/editar', r.pkReporteId]"
             >
               <mat-icon>edit</mat-icon>

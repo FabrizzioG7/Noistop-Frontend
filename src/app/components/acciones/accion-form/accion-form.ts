@@ -12,8 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { AccionAdministrativa } from '../../../models/accion.model';
 import { AccionService } from '../../../services/accion';
-import { UsuarioService } from '../../../services/usuario';
-import { Usuario } from '../../../models/usuario.model';
+import { AuthService } from '../../../services/auth';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -37,30 +36,27 @@ export class AccionForm implements OnInit {
   form: FormGroup;
   edicion = false;
   id = 0;
-  usuarios: Usuario[] = [];
   reportes: Reporte[] = [];
 
   constructor(
     private fb: FormBuilder,
     private service: AccionService,
-    private usuarioService: UsuarioService,
     private reporteService: ReporteService,
     private router: Router,
     private route: ActivatedRoute,
     private snack: MatSnackBar,
     private translate: TranslateService,
+    public auth: AuthService,
   ) {
     this.form = this.fb.group({
       detalle: ['', Validators.required],
-      usuarioId: [null, Validators.required],
+      // Se autocompleta con la autoridad logueada; no se elige manualmente.
+      usuarioId: [this.auth.getUsuarioId(), Validators.required],
       reporteId: [null, Validators.required],
     });
   }
 
   ngOnInit() {
-    this.usuarioService.list().subscribe((d) => {
-      this.usuarios = d.filter((u) => u.nombreRol?.toUpperCase() === 'AUTHORITY');
-    });
     this.reporteService.list().subscribe((d) => (this.reportes = d));
     this.route.params.subscribe((p) => {
       this.id = +p['id'];

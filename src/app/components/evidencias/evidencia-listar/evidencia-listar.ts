@@ -32,7 +32,6 @@ import { EvidenciaPreviewDialog } from '../evidencia-preview-dialog/evidencia-pr
   styleUrl: './evidencia-listar.scss',
 })
 export class EvidenciaListar implements OnInit, OnDestroy {
-  displayedColumns = ['imagen', 'archivo', 'reporteId', 'fecha', 'acciones'];
   dataSource = new MatTableDataSource<EvidenciaReporte>();
 
   // pkEvidenciaId -> object URL de la miniatura ya descargada
@@ -51,8 +50,17 @@ export class EvidenciaListar implements OnInit, OnDestroy {
     public auth: AuthService,
   ) {}
 
+  esUser(): boolean {
+    return this.auth.getRol() === 'USER';
+  }
+
+  // Eliminar evidencias: solo ADMIN
   puedeEliminar(): boolean {
     return this.auth.tieneRol('ADMIN');
+  }
+
+  get displayedColumns(): string[] {
+    return ['imagen', 'archivo', 'reporteId', 'fecha', 'acciones'];
   }
 
   ngOnInit() {
@@ -65,6 +73,23 @@ export class EvidenciaListar implements OnInit, OnDestroy {
   }
 
   cargar() {
+    // USER: solo ve las evidencias de sus propios reportes. ADMIN/AUTHORITY ven todas.
+    if (this.esUser()) {
+      const usuarioId = this.auth.getUsuarioId();
+      if (!usuarioId) {
+        this.dataSource.data = [];
+        return;
+      }
+      this.service.listByUsuario(usuarioId).subscribe({
+        next: (d) => {
+          this.dataSource.data = d;
+          this.cargarImagenes(d);
+        },
+        error: () => (this.dataSource.data = []),
+      });
+      return;
+    }
+
     this.service.list().subscribe({
       next: (d) => {
         this.dataSource.data = d;

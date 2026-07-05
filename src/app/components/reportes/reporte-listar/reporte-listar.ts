@@ -28,16 +28,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styleUrl: './reporte-listar.scss',
 })
 export class ReporteListar implements OnInit {
-  displayedColumns = [
-    'id',
-    'descripcion',
-    'estado',
-    'usuario',
-    'categoria',
-    'distrito',
-    'fecha',
-    'acciones',
-  ];
   dataSource = new MatTableDataSource<Reporte>();
 
   constructor(
@@ -47,8 +37,21 @@ export class ReporteListar implements OnInit {
     public auth: AuthService,
   ) {}
 
+  esUser(): boolean {
+    return this.auth.getRol() === 'USER';
+  }
+
+  // Editar reportes: ADMIN y AUTHORITY. Eliminar: solo ADMIN.
+  puedeEditar(): boolean {
+    return this.auth.tieneRol('ADMIN', 'AUTHORITY');
+  }
   puedeEliminar(): boolean {
     return this.auth.tieneRol('ADMIN');
+  }
+
+  get displayedColumns(): string[] {
+    const base = ['id', 'descripcion', 'estado', 'usuario', 'categoria', 'distrito', 'fecha'];
+    return this.puedeEditar() || this.puedeEliminar() ? [...base, 'acciones'] : base;
   }
 
   ngOnInit() {
@@ -57,6 +60,20 @@ export class ReporteListar implements OnInit {
   }
 
   cargar() {
+    // USER: solo ve sus propios reportes. ADMIN/AUTHORITY ven todos.
+    if (this.esUser()) {
+      const usuarioId = this.auth.getUsuarioId();
+      if (!usuarioId) {
+        this.dataSource.data = [];
+        return;
+      }
+      this.service.historialPorUsuario(usuarioId).subscribe({
+        next: (d) => (this.dataSource.data = d),
+        error: () => (this.dataSource.data = []),
+      });
+      return;
+    }
+
     this.service.list().subscribe({
       next: (d) => (this.dataSource.data = d),
       error: () => (this.dataSource.data = []),

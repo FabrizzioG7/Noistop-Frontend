@@ -8,13 +8,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { Usuario } from '../../../models/usuario.model';
 import { Categoria } from '../../../models/categoria.model';
 import { Ubicacion } from '../../../models/ubicacion.model';
 import { ReporteService } from '../../../services/reporte';
-import { UsuarioService } from '../../../services/usuario';
 import { CategoriaService } from '../../../services/categoria';
 import { UbicacionService } from '../../../services/ubicacion';
+import { AuthService } from '../../../services/auth';
 import { Reporte } from '../../../models/reporte.model';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -39,7 +38,6 @@ export class ReporteForm implements OnInit {
   form: FormGroup;
   edicion = false;
   id = 0;
-  usuarios: Usuario[] = [];
   categorias: Categoria[] = [];
   ubicaciones: Ubicacion[] = [];
   estados = ['pendiente', 'en proceso', 'resuelto', 'cerrado'];
@@ -47,34 +45,32 @@ export class ReporteForm implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: ReporteService,
-    private usuarioService: UsuarioService,
     private categoriaService: CategoriaService,
     private ubicacionService: UbicacionService,
     private router: Router,
     private route: ActivatedRoute,
     private snack: MatSnackBar,
     private translate: TranslateService,
+    public auth: AuthService,
   ) {
     this.form = this.fb.group({
       descripcion: ['', Validators.required],
-      estado: [null, Validators.required],
-      usuarioId: [null, Validators.required],
+      estado: ['pendiente', Validators.required],
+      // Se autocompleta con el usuario logueado; no se elige manualmente.
+      usuarioId: [this.auth.getUsuarioId(), Validators.required],
       categoriaId: [null, Validators.required],
       ubicacionId: [null, Validators.required],
     });
   }
 
   ngOnInit() {
-    this.usuarioService.list().subscribe((d) => {
-      this.usuarios = d.filter(
-        (u) => u.nombreRol?.toUpperCase() === 'ADMIN' || u.nombreRol?.toUpperCase() === 'USER',
-      );
-    });
     this.categoriaService.list().subscribe((d) => (this.categorias = d));
     this.ubicacionService.list().subscribe((d) => (this.ubicaciones = d));
     this.route.params.subscribe((p) => {
       this.id = +p['id'];
       this.edicion = !!p['id'];
+      // En edición se conserva el usuario original del reporte (no se
+      // reasigna al usuario que está editando).
       if (this.edicion) this.service.listId(this.id).subscribe((d) => this.form.patchValue(d));
     });
   }

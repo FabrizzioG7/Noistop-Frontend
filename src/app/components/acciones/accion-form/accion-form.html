@@ -47,25 +47,14 @@
         }
       </mat-form-field>
 
-      <mat-form-field class="form-field-full">
-        <mat-label>
-          {{ 'ACCION.FORM.AUTORIDAD' | translate }}
-        </mat-label>
-
-        <mat-select formControlName="usuarioId" required>
-          @for (u of usuarios; track u.pkUsuarioId) {
-            <mat-option [value]="u.pkUsuarioId">
-              {{ u.nombre }}
-            </mat-option>
-          }
-        </mat-select>
-
-        @if (form.get('usuarioId')?.hasError('required')) {
-          <mat-error>
-            {{ 'ACCION.FORM.ERROR_USUARIO' | translate }}
-          </mat-error>
-        }
-      </mat-form-field>
+      <div class="usuario-registrando">
+        <mat-icon>person</mat-icon>
+        <span>
+          {{ 'ACCION.FORM.REGISTRADO_POR' | translate }}
+          <strong>{{ auth.getUsuarioNombre() }}</strong>
+          ({{ auth.getRol() }})
+        </span>
+      </div>
 
       <mat-form-field class="form-field-full">
         <mat-label>

@@ -37,6 +37,7 @@ import { Registro } from './components/registro/registro';
 import { authGuard } from './guards/auth-guard';
 import { roleGuard } from './guards/role-guard';
 
+// Roles válidos: 'ADMIN' | 'USER' | 'AUTHORITY'
 const ADMIN = ['ADMIN'];
 const STAFF = ['ADMIN', 'AUTHORITY'];
 const TODOS = ['ADMIN', 'USER', 'AUTHORITY'];
@@ -73,15 +74,16 @@ export const routes: Routes = [
     ],
   },
 
-  // Ubicaciones: los 3 roles pueden ver el listado (catálogo); crear/editar
-  // es de ADMIN y AUTHORITY, tal como en el backend.
+  // Ubicaciones: los 3 roles pueden ver el listado (catálogo) y crear una
+  // nueva ubicación (USER indica el lugar exacto de su reporte); editar y
+  // ver reportes por ubicación es cosa de staff.
   {
     path: 'ubicaciones',
     component: Ubicaciones,
     canActivate: [authGuard],
     children: [
       { path: '', component: UbicacionListar, canActivate: [roleGuard(TODOS)] },
-      { path: 'nuevo', component: UbicacionForm, canActivate: [roleGuard(STAFF)] },
+      { path: 'nuevo', component: UbicacionForm, canActivate: [roleGuard(TODOS)] },
       { path: 'editar/:id', component: UbicacionForm, canActivate: [roleGuard(STAFF)] },
       { path: 'reportes', component: UbicacionReportes, canActivate: [roleGuard(STAFF)] },
     ],
@@ -99,14 +101,15 @@ export const routes: Routes = [
     ],
   },
 
-  // Reportes: cualquiera puede crear una denuncia (USER incluido), pero solo
-  // ADMIN/AUTHORITY ven el listado completo y editan reportes.
+  // Reportes: cualquiera puede crear una denuncia (USER incluido). El listado
+  // también es accesible para USER, pero se filtra a "sus" reportes en el
+  // propio componente; ADMIN/AUTHORITY ven el listado completo.
   {
     path: 'reportes',
     component: Reportes,
     canActivate: [authGuard],
     children: [
-      { path: '', component: ReporteListar, canActivate: [roleGuard(STAFF)] },
+      { path: '', component: ReporteListar, canActivate: [roleGuard(TODOS)] },
       { path: 'nuevo', component: ReporteForm, canActivate: [roleGuard(TODOS)] },
       { path: 'editar/:id', component: ReporteForm, canActivate: [roleGuard(STAFF)] },
     ],
@@ -124,12 +127,14 @@ export const routes: Routes = [
     ],
   },
 
+  // Evidencias: cualquiera puede subir evidencia. El listado también es
+  // accesible para USER (filtrado a "sus" evidencias en el componente).
   {
     path: 'evidencias',
     component: Evidencias,
     canActivate: [authGuard],
     children: [
-      { path: '', component: EvidenciaListar, canActivate: [roleGuard(STAFF)] },
+      { path: '', component: EvidenciaListar, canActivate: [roleGuard(TODOS)] },
       { path: 'nuevo', component: EvidenciaForm, canActivate: [roleGuard(TODOS)] },
     ],
   },

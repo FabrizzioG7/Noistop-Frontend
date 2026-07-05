@@ -17,7 +17,10 @@
     "IDIOMA_EN": "Inglés",
     "CERRAR_SESION": "Cerrar sesión",
     "REPORTAR": "Reportar",
-    "SUBIR_EVIDENCIA": "Subir Evidencia"
+    "SUBIR_EVIDENCIA": "Subir Evidencia",
+    "MIS_REPORTES": "Mis Reportes",
+    "MIS_EVIDENCIAS": "Mis Evidencias",
+    "MIS_UBICACIONES": "Mis Ubicaciones"
   },
   "HOME": {
     "BADGE": "Gestión Inteligente de Ruido Urbano",
@@ -280,7 +283,9 @@
       "CATEGORIA": "Categoría",
       "DISTRITO": "Distrito",
       "FECHA": "Fecha",
-      "VACIO": "No hay reportes registrados."
+      "VACIO": "No hay reportes registrados.",
+      "TITULO_MIS": "Mis Reportes",
+      "SUBTITULO_MIS": "Reportes de ruido que has registrado."
     },
     "FORM": {
       "NUEVO": "Nuevo Reporte",
@@ -297,7 +302,8 @@
       "ERROR_ESTADO": "Debe seleccionar un estado.",
       "ERROR_USUARIO": "Debe seleccionar un usuario.",
       "ERROR_CATEGORIA": "Debe seleccionar una categoría.",
-      "ERROR_UBICACION": "Debe seleccionar una ubicación."
+      "ERROR_UBICACION": "Debe seleccionar una ubicación.",
+      "REGISTRADO_POR": "Se registrará a nombre de:"
     },
     "MENSAJES": {
       "CONFIRMAR_ELIMINAR": "¿Eliminar este reporte?",
@@ -331,7 +337,8 @@
       "AUTORIDAD": "Usuario (Autoridad)",
       "ERROR_USUARIO": "Debe seleccionar un usuario.",
       "REPORTE": "Reporte Asociado",
-      "ERROR_REPORTE": "Debe seleccionar un reporte."
+      "ERROR_REPORTE": "Debe seleccionar un reporte.",
+      "REGISTRADO_POR": "Registrado por:"
     },
     "MENSAJES": {
       "CONFIRMAR_ELIMINAR": "¿Eliminar esta acción?",
@@ -352,7 +359,9 @@
       "REPORTE": "Reporte",
       "FECHA": "Fecha",
       "VACIO": "No hay evidencias registradas.",
-      "VER_IMAGEN": "Ver imagen"
+      "VER_IMAGEN": "Ver imagen",
+      "TITULO_MIS": "Mis Evidencias",
+      "SUBTITULO_MIS": "Evidencias que has subido para tus reportes."
     },
     "FORM": {
       "NUEVO": "Nueva Evidencia",

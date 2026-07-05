@@ -25,7 +25,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styleUrl: './categoria-listar.scss',
 })
 export class CategoriaListar implements OnInit {
-  displayedColumns = ['id', 'nombre', 'descripcion', 'acciones'];
   dataSource = new MatTableDataSource<Categoria>();
 
   constructor(
@@ -35,8 +34,14 @@ export class CategoriaListar implements OnInit {
     public auth: AuthService,
   ) {}
 
+  // Crear/editar/eliminar categorías: solo ADMIN
   puedeGestionar(): boolean {
     return this.auth.tieneRol('ADMIN');
+  }
+
+  get displayedColumns(): string[] {
+    const base = ['id', 'nombre', 'descripcion'];
+    return this.puedeGestionar() ? [...base, 'acciones'] : base;
   }
 
   ngOnInit() {

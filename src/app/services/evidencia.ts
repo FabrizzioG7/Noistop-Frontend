@@ -17,6 +17,9 @@ export class EvidenciaService {
   listByReporte(reporteId: number): Observable<EvidenciaReporte[]> {
     return this.http.get<EvidenciaReporte[]>(`${this.url}/reporte/${reporteId}`);
   }
+  listByUsuario(usuarioId: number): Observable<EvidenciaReporte[]> {
+    return this.http.get<EvidenciaReporte[]>(`${this.url}/usuario/${usuarioId}`);
+  }
 
   /** Sube la imagen real (multipart/form-data) y la asocia al reporte. */
   upload(file: File, reporteId: number): Observable<EvidenciaReporte> {

@@ -17,7 +17,10 @@
     "IDIOMA_EN": "English",
     "CERRAR_SESION": "Log out",
     "REPORTAR": "Report",
-    "SUBIR_EVIDENCIA": "Upload Evidence"
+    "SUBIR_EVIDENCIA": "Upload Evidence",
+    "MIS_REPORTES": "My Reports",
+    "MIS_EVIDENCIAS": "My Evidence",
+    "MIS_UBICACIONES": "My Locations"
   },
   "HOME": {
     "BADGE": "Smart Urban Noise Management",
@@ -280,7 +283,9 @@
       "CATEGORIA": "Category",
       "DISTRITO": "District",
       "FECHA": "Date",
-      "VACIO": "No reports registered."
+      "VACIO": "No reports registered.",
+      "TITULO_MIS": "My Reports",
+      "SUBTITULO_MIS": "Noise reports you have filed."
     },
     "FORM": {
       "NUEVO": "New Report",
@@ -297,7 +302,8 @@
       "ERROR_ESTADO": "Please select a status.",
       "ERROR_USUARIO": "Please select a user.",
       "ERROR_CATEGORIA": "Please select a category.",
-      "ERROR_UBICACION": "Please select a location."
+      "ERROR_UBICACION": "Please select a location.",
+      "REGISTRADO_POR": "Will be registered under:"
     },
     "MENSAJES": {
       "CONFIRMAR_ELIMINAR": "Delete this report?",
@@ -331,7 +337,8 @@
       "AUTORIDAD": "Authority User",
       "ERROR_USUARIO": "Please select a user.",
       "REPORTE": "Associated Report",
-      "ERROR_REPORTE": "Please select a report."
+      "ERROR_REPORTE": "Please select a report.",
+      "REGISTRADO_POR": "Registered by:"
     },
     "MENSAJES": {
       "CONFIRMAR_ELIMINAR": "Delete this action?",
@@ -352,7 +359,9 @@
       "REPORTE": "Report",
       "FECHA": "Date",
       "VACIO": "No evidence registered.",
-      "VER_IMAGEN": "View image"
+      "VER_IMAGEN": "View image",
+      "TITULO_MIS": "My Evidence",
+      "SUBTITULO_MIS": "Evidence you have uploaded for your reports."
     },
     "FORM": {
       "NUEVO": "New Evidence",

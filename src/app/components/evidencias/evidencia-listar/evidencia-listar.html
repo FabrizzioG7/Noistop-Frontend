@@ -4,11 +4,13 @@
       <h2>
         <mat-icon>photo_library</mat-icon>
 
-        {{ 'EVIDENCIA.LISTAR.TITULO' | translate }}
+        {{ (esUser() ? 'EVIDENCIA.LISTAR.TITULO_MIS' : 'EVIDENCIA.LISTAR.TITULO') | translate }}
       </h2>
 
       <p class="subtitle">
-        {{ 'EVIDENCIA.LISTAR.SUBTITULO' | translate }}
+        {{
+          (esUser() ? 'EVIDENCIA.LISTAR.SUBTITULO_MIS' : 'EVIDENCIA.LISTAR.SUBTITULO') | translate
+        }}
       </p>
     </div>
 
