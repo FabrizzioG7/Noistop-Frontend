@@ -38,7 +38,7 @@
 .table-container {
   background: white;
   border-radius: 16px;
-  overflow: hidden;
+  overflow-x: auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   animation: fadeTable 0.7s ease-out;
   margin-bottom: 40px;
@@ -222,8 +222,6 @@ table {
   background: #e8eaf6;
   color: #3949ab;
 }
-
-
 
 .nombre-badge {
   padding: 4px 10px;
