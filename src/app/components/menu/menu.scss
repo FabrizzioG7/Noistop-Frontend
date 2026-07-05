@@ -255,3 +255,102 @@
   margin-left: auto;
   font-size: 18px;
 }
+
+// ===== Responsive: menú hamburguesa en mobile =====
+
+.mobile-only {
+  display: none;
+}
+
+.hamburger-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-left: auto;
+  transition: background 0.2s;
+
+  mat-icon {
+    font-size: 26px;
+    width: 26px;
+    height: 26px;
+    color: #1a1a1a;
+  }
+
+  &:hover {
+    background: #43a04847;
+  }
+}
+
+.mobile-user-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  cursor: default;
+
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .user-info {
+    .user-name {
+      font-size: 14px;
+    }
+
+    .user-role {
+      font-size: 11px;
+    }
+  }
+}
+
+.mobile-menu-separator {
+  height: 1px;
+  background: #eee;
+  margin: 6px 0;
+}
+
+::ng-deep .mobile-menu-panel .mat-mdc-menu-panel {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 960px) {
+  .main-toolbar {
+    padding: 0 14px;
+    height: 72px;
+  }
+
+  .brand {
+    font-size: 1.15rem;
+  }
+
+  .logo-icon-box {
+    width: 38px;
+    height: 38px;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: flex;
+  }
+
+  .divider-vertical {
+    display: none;
+  }
+}
