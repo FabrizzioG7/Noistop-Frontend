@@ -1,0 +1,13 @@
+<div class="welcome-dialog">
+  <div class="check-circle">
+    <mat-icon>check</mat-icon>
+  </div>
+
+  <h2>{{ 'LOGIN.BIENVENIDA.TITULO' | translate }} {{ data.nombre }}! 👋</h2>
+
+  <p>{{ 'LOGIN.BIENVENIDA.MENSAJE' | translate }}</p>
+
+  <button mat-raised-button color="primary" class="btn-continuar" (click)="cerrar()">
+    {{ 'LOGIN.BIENVENIDA.CONTINUAR' | translate }}
+  </button>
+</div>

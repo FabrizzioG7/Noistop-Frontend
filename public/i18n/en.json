@@ -1,0 +1,417 @@
+{
+  "MENU": {
+    "DASHBOARD": "Dashboard",
+    "ROLES": "Roles",
+    "USUARIOS": "Users",
+    "UBICACIONES": "Locations",
+    "CATEGORIAS": "Categories",
+    "REPORTES": "Reports",
+    "ACCIONES": "Actions",
+    "EVIDENCIAS": "Evidence",
+    "LISTAR": "List",
+    "NUEVO": "New",
+    "NUEVA": "New",
+    "CUENTA": "Account",
+    "IDIOMA": "Language",
+    "IDIOMA_ES": "Spanish",
+    "IDIOMA_EN": "English",
+    "CERRAR_SESION": "Log out",
+    "REPORTAR": "Report",
+    "SUBIR_EVIDENCIA": "Upload Evidence",
+    "MIS_REPORTES": "My Reports",
+    "MIS_EVIDENCIAS": "My Evidence",
+    "MIS_UBICACIONES": "My Locations"
+  },
+  "HOME": {
+    "BADGE": "Smart Urban Noise Management",
+    "DESCRIPTION": "Platform for managing noise reports, evidence, locations and corrective actions.",
+    "USUARIOS": "Users",
+    "USUARIOS_DESC": "Complete management",
+    "REPORTES": "Reports",
+    "REPORTES_DESC": "Urban monitoring",
+    "UBICACIONES": "Locations",
+    "UBICACIONES_DESC": "Geolocation",
+    "MODULOS": "System Modules",
+    "GESTIONAR": "Manage",
+    "HERO_TITLE": "Smart Urban Noise Management",
+    "STAT_COBERTURA": "Active Coverage",
+    "STAT_REPORTES_HOY": "Reports Today",
+    "STAT_ACCIONES": "Active Actions",
+    "STAT_USUARIOS": "Connected Users",
+    "KPI_REPORTES": "Total Reports",
+    "KPI_UBICACIONES": "Registered Locations",
+    "KPI_ACCIONES": "Corrective Actions",
+    "KPI_EVIDENCIAS": "Captured Evidence",
+    "ESTE_MES": "this month",
+    "ACTIVIDAD_RECIENTE": "Recent Activity",
+    "VER_TODAS": "View all",
+    "TOTAL_REGISTROS": "total records",
+    "STAT_EVIDENCIAS": "Evidence",
+    "STAT_REPORTES": "Total Reports",
+    "CARDS": {
+      "ROLES": {
+        "TITLE": "Roles",
+        "DESCRIPTION": "Manage system roles. Create, edit and delete user roles."
+      },
+      "USUARIOS": {
+        "TITLE": "Users",
+        "DESCRIPTION": "User management. Register, update and delete accounts."
+      },
+      "UBICACIONES": {
+        "TITLE": "Locations",
+        "DESCRIPTION": "Manage geographic locations with district coordinates."
+      },
+      "CATEGORIAS": {
+        "TITLE": "Noise Categories",
+        "DESCRIPTION": "Classification of noise types used in system reports."
+      },
+      "REPORTES": {
+        "TITLE": "Reports",
+        "DESCRIPTION": "Noise reports with status, category and georeferenced location."
+      },
+      "ACCIONES": {
+        "TITLE": "Administrative Actions",
+        "DESCRIPTION": "Comments and actions taken by authorities regarding reports."
+      },
+      "EVIDENCIAS": {
+        "TITLE": "Evidence",
+        "DESCRIPTION": "Multimedia files attached as evidence for noise reports."
+      },
+      "REPORTAR": {
+        "TITLE": "Report Noise",
+        "DESCRIPTION": "Report an excessive noise case in your area in a few steps."
+      },
+      "SUBIR_EVIDENCIA": {
+        "TITLE": "Upload Evidence",
+        "DESCRIPTION": "Attach a photo to support your noise report."
+      }
+    },
+    "CARGANDO": "Loading...",
+    "SIN_ACTIVIDAD": "No recent activity",
+    "TIEMPO": {
+      "HACE_SEGUNDOS": "{{value}}s ago",
+      "HACE_MINUTOS": "{{value}} min ago",
+      "HACE_HORAS": "{{value}}h ago",
+      "HACE_DIAS": "{{value}}d ago"
+    },
+    "ACTIVIDAD": {
+      "REPORTE_RUIDO": "Noise report",
+      "ACCION_ADMIN": "Administrative action",
+      "EVIDENCIA_SUBIDA": "New evidence uploaded",
+      "UBICACION_REGISTRADA": "Location registered",
+      "USUARIO_REGISTRADO": "User registered"
+    },
+    "STAT_UBICACIONES": "Locations",
+    "STAT_MIS_REPORTES": "My Reports",
+    "STAT_MIS_REPORTES_HOY": "Reported Today",
+    "STAT_CATEGORIAS": "Categories",
+    "KPI_MIS_REPORTES": "My Reports",
+    "KPI_CATEGORIAS": "Available Categories",
+    "MI_ACTIVIDAD_RECIENTE": "My Recent Activity"
+  },
+  "GENERAL": {
+    "GUARDAR": "Save",
+    "ACTUALIZAR": "Update",
+    "CANCELAR": "Cancel",
+    "VOLVER": "Back",
+    "NUEVO": "New",
+    "NUEVA": "New",
+    "LISTAR": "List",
+    "ACCIONES": "Actions",
+    "TOTAL": "Total",
+    "NO_HAY_REGISTROS": "No records available.",
+    "ERROR": "An error occurred"
+  },
+  "ROL": {
+    "LISTAR": {
+      "TITULO": "System Roles",
+      "SUBTITULO": "Platform roles and permissions management.",
+      "NUEVO": "New Role",
+      "TOTAL": "Total Roles",
+      "NOMBRE": "Name",
+      "ACCIONES": "Actions",
+      "VACIO": "No roles registered."
+    },
+    "FORM": {
+      "NUEVO": "New Role",
+      "EDITAR": "Edit Role",
+      "SUBTITULO": "System roles and permissions management.",
+      "INFO": "Complete the required information to register the role.",
+      "NOMBRE": "Role Name",
+      "ERROR_NOMBRE": "Role name is required."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "Delete this role?",
+      "ELIMINADO": "Role deleted",
+      "ERROR_ELIMINAR": "Error deleting role",
+      "CREADO": "Role created",
+      "ACTUALIZADO": "Role updated",
+      "ERROR_GENERAL": "Error"
+    }
+  },
+  "USUARIO": {
+    "LISTAR": {
+      "TITULO": "System Users",
+      "SUBTITULO": "Management of users and platform access.",
+      "NUEVO": "New User",
+      "TOTAL": "Total Users",
+      "NOMBRE": "Name",
+      "EMAIL": "Email",
+      "ROL": "Role",
+      "VACIO": "No users registered."
+    },
+    "FORM": {
+      "NUEVO": "New User",
+      "EDITAR": "Edit User",
+      "SUBTITULO": "Management of users and platform access.",
+      "INFO": "Complete the required information to register the user.",
+      "NOMBRE": "Full Name",
+      "PLACEHOLDER_NOMBRE": "Enter full name",
+      "ERROR_NOMBRE": "Name is required.",
+      "EMAIL": "Email",
+      "PLACEHOLDER_EMAIL": "email@example.com",
+      "ERROR_EMAIL": "Email is required.",
+      "ERROR_EMAIL_FORMATO": "Invalid email format.",
+      "PASSWORD": "Password",
+      "PLACEHOLDER_PASSWORD": "Enter a password",
+      "ERROR_PASSWORD": "Password is required.",
+      "ROL": "Role",
+      "ERROR_ROL": "You must select a role."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "Delete this user?",
+      "ELIMINADO": "User deleted",
+      "ERROR_ELIMINAR": "Error deleting user",
+      "CREADO": "User created",
+      "ACTUALIZADO": "User updated",
+      "ERROR_GENERAL": "Error"
+    },
+    "RANKING": {
+      "TITULO": "Most Active User",
+      "SUBTITULO": "Ranking of users by number of registered reports",
+      "USUARIO": "User",
+      "CANTIDAD_REPORTES": "Report Count"
+    }
+  },
+  "UBICACION": {
+    "LISTAR": {
+      "TITULO": "Registered Locations",
+      "SUBTITULO": "Management of locations associated with citizen reports.",
+      "NUEVO": "New Location",
+      "TOTAL": "Total Locations",
+      "UBICACION": "Address",
+      "DISTRITO": "District",
+      "LATITUD": "Latitude",
+      "LONGITUD": "Longitude",
+      "VACIO": "No registered locations."
+    },
+    "FORM": {
+      "NUEVO": "New Location",
+      "EDITAR": "Edit Location",
+      "SUBTITULO": "Management of geographic locations associated with citizen reports.",
+      "INFO": "Complete the required information to register the location.",
+      "UBICACION": "Address / Description",
+      "DISTRITO": "District",
+      "LATITUD": "Latitude",
+      "LONGITUD": "Longitude",
+      "PLACEHOLDER_UBICACION": "Example Ave. 123",
+      "PLACEHOLDER_DISTRITO": "Miraflores",
+      "ERROR_UBICACION": "Address is required.",
+      "ERROR_DISTRITO": "District is required.",
+      "ERROR_LATITUD": "Latitude is required.",
+      "ERROR_LONGITUD": "Longitude is required.",
+      "ERROR_LATITUD_RANGO": "Latitude must be between -90 and 90.",
+      "ERROR_LONGITUD_RANGO": "Longitude must be between -180 and 180.",
+      "SELECCIONAR_UBICACION": "Select location",
+      "MAPA_INFO": "Click on the map to select a location."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "Delete this location?",
+      "ELIMINADO": "Location deleted",
+      "CREADO": "Location created",
+      "ACTUALIZADO": "Location updated",
+      "ERROR_ELIMINAR": "Error deleting location",
+      "ERROR_GENERAL": "Error"
+    },
+    "RANKING": {
+      "TITULO": "District Ranking",
+      "SUBTITULO": "Top districts with the highest number of reports",
+      "DISTRITO": "District",
+      "CANTIDAD_REPORTES": "Report Count"
+    }
+  },
+  "CATEGORIA": {
+    "LISTAR": {
+      "TITULO": "Noise Categories",
+      "SUBTITULO": "Management of categories used to classify noise reports.",
+      "NUEVO": "New Category",
+      "TOTAL": "Total Categories",
+      "NOMBRE": "Name",
+      "DESCRIPCION": "Description",
+      "VACIO": "No categories registered."
+    },
+    "FORM": {
+      "NUEVO": "New Category",
+      "EDITAR": "Edit Category",
+      "SUBTITULO": "Management of noise categories used on the platform.",
+      "INFO": "Complete the required information to register the category.",
+      "NOMBRE": "Category Name",
+      "DESCRIPCION": "Description",
+      "PLACEHOLDER_NOMBRE": "Ex: Traffic, Construction, Events...",
+      "PLACEHOLDER_DESCRIPCION": "Detailed category description...",
+      "ERROR_NOMBRE": "Category name is required.",
+      "ERROR_DESCRIPCION": "Description is required."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "Delete this category?",
+      "ELIMINADO": "Category deleted",
+      "ERROR_ELIMINAR": "Error deleting category",
+      "CREADO": "Category created",
+      "ACTUALIZADO": "Category updated",
+      "ERROR_GENERAL": "Error"
+    }
+  },
+  "REPORTE": {
+    "LISTAR": {
+      "TITULO": "Noise Reports",
+      "SUBTITULO": "Management and monitoring of reports registered by users.",
+      "NUEVO": "New Report",
+      "TOTAL": "Total Reports",
+      "DESCRIPCION": "Description",
+      "ESTADO": "Status",
+      "USUARIO": "User",
+      "CATEGORIA": "Category",
+      "DISTRITO": "District",
+      "FECHA": "Date",
+      "VACIO": "No reports registered.",
+      "TITULO_MIS": "My Reports",
+      "SUBTITULO_MIS": "Noise reports you have filed."
+    },
+    "FORM": {
+      "NUEVO": "New Report",
+      "EDITAR": "Edit Report",
+      "SUBTITULO": "Management and monitoring of noise reports registered on the platform.",
+      "INFO": "Complete the required information to register the report.",
+      "DESCRIPCION": "Incident Description",
+      "ESTADO": "Status",
+      "USUARIO": "User",
+      "CATEGORIA": "Noise Category",
+      "UBICACION": "Location",
+      "PLACEHOLDER_DESCRIPCION": "Detailed noise description...",
+      "ERROR_DESCRIPCION": "Description is required.",
+      "ERROR_ESTADO": "Please select a status.",
+      "ERROR_USUARIO": "Please select a user.",
+      "ERROR_CATEGORIA": "Please select a category.",
+      "ERROR_UBICACION": "Please select a location.",
+      "REGISTRADO_POR": "Will be registered under:"
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "Delete this report?",
+      "ELIMINADO": "Report deleted",
+      "ERROR_ELIMINAR": "Error deleting report",
+      "CREADO": "Report created",
+      "ACTUALIZADO": "Report updated",
+      "ERROR_GENERAL": "Error"
+    }
+  },
+  "ACCION": {
+    "LISTAR": {
+      "TITULO": "Administrative Actions",
+      "SUBTITULO": "Management and monitoring of actions performed by authorities.",
+      "NUEVO": "New Action",
+      "TOTAL": "Total Actions",
+      "DETALLE": "Detail",
+      "REPORTE": "Report",
+      "AUTORIDAD": "Authority",
+      "FECHA": "Date",
+      "VACIO": "No administrative actions registered."
+    },
+    "FORM": {
+      "NUEVO": "New Administrative Action",
+      "EDITAR": "Edit Action",
+      "SUBTITULO": "Management and monitoring of administrative actions performed on reports.",
+      "INFO": "Complete the required information to register the administrative action.",
+      "DETALLE": "Action Detail",
+      "PLACEHOLDER_DETALLE": "Description of the action taken...",
+      "ERROR_DETALLE": "Action detail is required.",
+      "AUTORIDAD": "Authority User",
+      "ERROR_USUARIO": "Please select a user.",
+      "REPORTE": "Associated Report",
+      "ERROR_REPORTE": "Please select a report.",
+      "REGISTRADO_POR": "Registered by:"
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "Delete this action?",
+      "ELIMINADO": "Action deleted",
+      "ERROR_ELIMINAR": "Error deleting action",
+      "CREADO": "Action created",
+      "ACTUALIZADO": "Action updated",
+      "ERROR_GENERAL": "Error"
+    }
+  },
+  "EVIDENCIA": {
+    "LISTAR": {
+      "TITULO": "Report Evidence",
+      "SUBTITULO": "Management of multimedia evidence associated with citizen reports.",
+      "NUEVO": "New Evidence",
+      "TOTAL": "Total Evidence",
+      "ARCHIVO": "File",
+      "REPORTE": "Report",
+      "FECHA": "Date",
+      "VACIO": "No evidence registered.",
+      "VER_IMAGEN": "View image",
+      "TITULO_MIS": "My Evidence",
+      "SUBTITULO_MIS": "Evidence you have uploaded for your reports."
+    },
+    "FORM": {
+      "NUEVO": "New Evidence",
+      "SUBTITULO": "Register multimedia evidence associated with reports.",
+      "INFO": "Select an evidence image and associate it with a report.",
+      "SELECCIONAR": "Select Evidence",
+      "VISTA_PREVIA": "Preview",
+      "REPORTE": "Associated Report",
+      "ERROR_REPORTE": "Please select a report.",
+      "ARRASTRAR": "Drag your image here or click to choose it",
+      "FORMATOS": "JPG, PNG, GIF or WEBP · max. 5MB",
+      "ERROR_FORMATO": "Format not allowed. Use JPG, PNG, GIF or WEBP.",
+      "ERROR_TAMANO": "The image exceeds the maximum allowed size (5MB).",
+      "ERROR_SIN_ARCHIVO": "You must select an evidence image."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "Delete this evidence?",
+      "ELIMINADO": "Evidence deleted",
+      "CREADO": "Evidence registered",
+      "ERROR_ELIMINAR": "Error deleting evidence",
+      "ERROR_GENERAL": "Error"
+    }
+  },
+  "LOGIN": {
+    "TITULO": "Welcome back",
+    "SUBTITULO": "Sign in to continue",
+    "IDENTIFICADOR": "Username or email",
+    "PLACEHOLDER_IDENTIFICADOR": "Enter your username or email",
+    "ERROR_IDENTIFICADOR": "Username or email is required.",
+    "PASSWORD": "Password",
+    "PLACEHOLDER_PASSWORD": "Enter your password",
+    "ERROR_PASSWORD": "Password is required.",
+    "INGRESAR": "Sign in",
+    "NO_TIENES_CUENTA": "Don't have an account?",
+    "REGISTRATE": "Sign up",
+    "BIENVENIDA": {
+      "TITULO": "Welcome,",
+      "MENSAJE": "You have signed in successfully. Enjoy your visit with NoiStop 🎉",
+      "CONTINUAR": "Continue"
+    }
+  },
+  "REGISTRO": {
+    "TITULO": "Create your account",
+    "SUBTITULO": "Fill in your details to sign up",
+    "CREAR_CUENTA": "Create account",
+    "YA_TIENES_CUENTA": "Already have an account?",
+    "INICIA_SESION": "Sign in",
+    "MENSAJES": {
+      "CREADO": "Account created successfully, you can now sign in",
+      "ERROR": "Could not create the account"
+    }
+  }
+}

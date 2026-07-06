@@ -1,0 +1,81 @@
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <h2>
+        <mat-icon>category</mat-icon>
+
+        {{ edicion ? ('CATEGORIA.FORM.EDITAR' | translate) : ('CATEGORIA.FORM.NUEVO' | translate) }}
+      </h2>
+
+      <p class="subtitle">
+        {{ 'CATEGORIA.FORM.SUBTITULO' | translate }}
+      </p>
+    </div>
+
+    <a class="back-link" routerLink="/categorias">
+      <mat-icon>arrow_back</mat-icon>
+      {{ 'GENERAL.VOLVER' | translate }}
+    </a>
+  </div>
+
+  <div class="form-container">
+    <div class="form-info">
+      <mat-icon>info</mat-icon>
+      {{ 'CATEGORIA.FORM.INFO' | translate }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'CATEGORIA.FORM.NOMBRE' | translate }}
+        </mat-label>
+
+        <input
+          matInput
+          formControlName="nombreCategoria"
+          [placeholder]="'CATEGORIA.FORM.PLACEHOLDER_NOMBRE' | translate"
+          required
+        />
+
+        @if (form.get('nombreCategoria')?.hasError('required')) {
+          <mat-error>
+            {{ 'CATEGORIA.FORM.ERROR_NOMBRE' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'CATEGORIA.FORM.DESCRIPCION' | translate }}
+        </mat-label>
+
+        <textarea
+          matInput
+          rows="4"
+          formControlName="descripcionCategoria"
+          [placeholder]="'CATEGORIA.FORM.PLACEHOLDER_DESCRIPCION' | translate"
+          required
+        >
+        </textarea>
+
+        @if (form.get('descripcionCategoria')?.hasError('required')) {
+          <mat-error>
+            {{ 'CATEGORIA.FORM.ERROR_DESCRIPCION' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          <mat-icon>save</mat-icon>
+
+          {{ edicion ? ('GENERAL.ACTUALIZAR' | translate) : ('GENERAL.GUARDAR' | translate) }}
+        </button>
+
+        <a mat-stroked-button color="primary" routerLink="/categorias">
+          {{ 'GENERAL.CANCELAR' | translate }}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

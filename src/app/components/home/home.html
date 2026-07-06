@@ -1,0 +1,124 @@
+<div class="home-container">
+  <div class="top-row">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-left">
+        <span class="hero-badge">
+          <mat-icon>notifications_active</mat-icon>
+          {{ 'HOME.BADGE' | translate }}
+        </span>
+        <h1>{{ 'HOME.HERO_TITLE' | translate }}</h1>
+        <p>{{ 'HOME.DESCRIPTION' | translate }}</p>
+
+        <div class="hero-stats">
+          @for (stat of heroStats; track stat.labelKey; let last = $last) {
+            <div class="hero-stat">
+              <mat-icon>{{ stat.icon }}</mat-icon>
+              <div>
+                <span class="hero-stat-value">{{ stat.value }}</span>
+                <span class="hero-stat-label">{{ stat.labelKey | translate }}</span>
+              </div>
+            </div>
+            @if (!last) {
+              <div class="hero-stat-divider"></div>
+            }
+          }
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-icon-wrap">
+          <mat-icon class="hero-icon">volume_off</mat-icon>
+          <div class="sound-wave wave1"></div>
+          <div class="sound-wave wave2"></div>
+          <div class="sound-wave wave3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIVIDAD RECIENTE -->
+    <div class="activity-section">
+      <div class="section-header">
+        <h2 class="section-title">{{ actividadTituloKey | translate }}</h2>
+        <span class="ver-todas">{{ 'HOME.VER_TODAS' | translate }}</span>
+      </div>
+
+      @if (loading) {
+        <div class="loading-msg">{{ 'HOME.CARGANDO' | translate }}</div>
+      } @else {
+        <div class="activity-list">
+          @for (item of recentActivity; track item.id) {
+            <div class="activity-item">
+              <div class="activity-icon" [style.background]="item.color + '18'">
+                <mat-icon [style.color]="item.color">{{ item.icon }}</mat-icon>
+              </div>
+              <div class="activity-info">
+                <span class="activity-title">{{ item.title | translate }}</span>
+                <span class="activity-sub">{{ item.subtitle }}</span>
+              </div>
+              @if (item.timeUnit) {
+                <span class="activity-time">
+                  {{ 'HOME.TIEMPO.' + item.timeUnit | translate: { value: item.timeValue } }}
+                </span>
+              }
+            </div>
+          }
+          @if (recentActivity.length === 0) {
+            <div class="empty-activity">{{ 'HOME.SIN_ACTIVIDAD' | translate }}</div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- KPI CARDS -->
+  <div class="kpi-grid">
+    @for (kpi of kpis; track kpi.labelKey) {
+      <div class="kpi-card">
+        <div class="kpi-header">
+          <span class="kpi-label">{{ kpi.labelKey | translate }}</span>
+          <div class="kpi-icon" [style.background]="kpi.iconBg">
+            <mat-icon [style.color]="kpi.iconColor">{{ kpi.icon }}</mat-icon>
+          </div>
+        </div>
+        <div class="kpi-value">{{ kpi.value }}</div>
+        <div class="kpi-trend positive">
+          <mat-icon>trending_up</mat-icon><span>{{ 'HOME.TOTAL_REGISTROS' | translate }}</span>
+        </div>
+        <svg class="sparkline" viewBox="0 0 100 30" preserveAspectRatio="none">
+          <polyline
+            points="0,25 20,20 40,22 60,15 80,12 100,8"
+            fill="none"
+            stroke="#0fa719"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    }
+  </div>
+
+  <!-- MÓDULOS -->
+  <div class="section-header" style="margin-bottom: 16px">
+    <h2 class="section-title">{{ 'HOME.MODULOS' | translate }}</h2>
+  </div>
+
+  <div class="modules-grid">
+    @for (entity of entities; track entity.route) {
+      <div class="module-card" (click)="navigate(entity.route)">
+        <div class="module-icon" [style.background]="entity.color + '18'">
+          <mat-icon [style.color]="entity.color">{{ entity.icon }}</mat-icon>
+        </div>
+        <div class="module-info">
+          <h4>{{ entity.title | translate }}</h4>
+          <p>{{ entity.description | translate }}</p>
+        </div>
+        <button class="module-btn" [style.color]="entity.color">
+          {{ 'HOME.GESTIONAR' | translate }}
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    }
+  </div>
+</div>

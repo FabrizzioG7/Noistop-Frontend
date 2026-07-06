@@ -1,0 +1,112 @@
+<div class="registro-bg">
+  <mat-card class="registro-card">
+    <div class="registro-logo">
+      <div class="logo-icon-box">
+        <mat-icon>volume_off</mat-icon>
+      </div>
+      <span class="brand">NoiStop</span>
+    </div>
+
+    <mat-card-header>
+      <mat-card-title>{{ 'REGISTRO.TITULO' | translate }}</mat-card-title>
+      <mat-card-subtitle>{{ 'REGISTRO.SUBTITULO' | translate }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="guardar()">
+        <mat-form-field appearance="outline" class="form-field-full">
+          <mat-label>{{ 'USUARIO.FORM.NOMBRE' | translate }}</mat-label>
+
+          <input
+            matInput
+            formControlName="nombre"
+            [placeholder]="'USUARIO.FORM.PLACEHOLDER_NOMBRE' | translate"
+          />
+
+          <mat-icon matSuffix>badge</mat-icon>
+
+          @if (form.get('nombre')?.touched && form.get('nombre')?.hasError('required')) {
+            <mat-error>{{ 'USUARIO.FORM.ERROR_NOMBRE' | translate }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field-full">
+          <mat-label>{{ 'USUARIO.FORM.EMAIL' | translate }}</mat-label>
+
+          <input
+            matInput
+            type="email"
+            formControlName="email"
+            [placeholder]="'USUARIO.FORM.PLACEHOLDER_EMAIL' | translate"
+          />
+
+          <mat-icon matSuffix>mail</mat-icon>
+
+          @if (form.get('email')?.touched && form.get('email')?.hasError('required')) {
+            <mat-error>{{ 'USUARIO.FORM.ERROR_EMAIL' | translate }}</mat-error>
+          }
+
+          @if (form.get('email')?.hasError('email')) {
+            <mat-error>{{ 'USUARIO.FORM.ERROR_EMAIL_FORMATO' | translate }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field-full">
+          <mat-label>{{ 'USUARIO.FORM.PASSWORD' | translate }}</mat-label>
+
+          <input
+            matInput
+            [type]="ocultarPassword() ? 'password' : 'text'"
+            formControlName="password"
+            [placeholder]="'USUARIO.FORM.PLACEHOLDER_PASSWORD' | translate"
+          />
+
+          <button
+            mat-icon-button
+            matSuffix
+            type="button"
+            (click)="togglePassword($event)"
+            [attr.aria-label]="'Mostrar contraseña'"
+            [attr.aria-pressed]="!ocultarPassword()"
+          >
+            <mat-icon>{{ ocultarPassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+
+          @if (form.get('password')?.touched && form.get('password')?.hasError('required')) {
+            <mat-error>{{ 'USUARIO.FORM.ERROR_PASSWORD' | translate }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field-full">
+          <mat-label>{{ 'USUARIO.FORM.ROL' | translate }}</mat-label>
+
+          <mat-select formControlName="rolId">
+            @for (r of roles; track r.pkRolId) {
+              <mat-option [value]="r.pkRolId">{{ r.nombreRol }}</mat-option>
+            }
+          </mat-select>
+
+          @if (form.get('rolId')?.touched && form.get('rolId')?.hasError('required')) {
+            <mat-error>{{ 'USUARIO.FORM.ERROR_ROL' | translate }}</mat-error>
+          }
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          class="btn-full"
+          [disabled]="cargando()"
+        >
+          <mat-icon>person_add</mat-icon>
+          {{ 'REGISTRO.CREAR_CUENTA' | translate }}
+        </button>
+      </form>
+
+      <p class="login-link">
+        {{ 'REGISTRO.YA_TIENES_CUENTA' | translate }}
+        <a routerLink="/login">{{ 'REGISTRO.INICIA_SESION' | translate }}</a>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>

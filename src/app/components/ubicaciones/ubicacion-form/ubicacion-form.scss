@@ -1,0 +1,156 @@
+.page-container {
+  padding: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.page-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #0fa719;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #0fa719;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.back-link:hover {
+  transform: translateX(-4px);
+}
+
+.subtitle {
+  color: #777;
+  margin-top: 6px;
+  font-size: 0.95rem;
+}
+
+.form-container {
+  max-width: 750px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.05);
+
+  animation: fadeIn 0.4s ease;
+}
+
+.form-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: #f0faf0;
+  color: #0fa719;
+
+  padding: 12px 16px;
+  border-radius: 12px;
+
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.form-field-full {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+button[mat-raised-button] {
+  border-radius: 50px;
+  min-width: 160px;
+  height: 48px;
+  font-weight: 600;
+}
+
+a[mat-stroked-button] {
+  border-radius: 50px;
+  min-width: 160px;
+  height: 48px;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.map-section {
+  margin-bottom: 30px;
+}
+
+.map-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0fa719;
+  margin-bottom: 6px;
+}
+
+.map-help {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.map-container {
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 20px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.form-grid mat-form-field:first-child,
+.form-grid mat-form-field:nth-child(2) {
+  grid-column: span 2;
+}
+
+a[mat-stroked-button] {
+  color: #0fa719 !important;
+  border-color: #0fa719 !important;
+}

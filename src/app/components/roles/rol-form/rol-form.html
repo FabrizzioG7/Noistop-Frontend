@@ -1,0 +1,56 @@
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <h2>
+        <mat-icon>security</mat-icon>
+
+        {{ edicion ? ('ROL.FORM.EDITAR' | translate) : ('ROL.FORM.NUEVO' | translate) }}
+      </h2>
+
+      <p class="subtitle">
+        {{ 'ROL.FORM.SUBTITULO' | translate }}
+      </p>
+    </div>
+
+    <a class="back-link" routerLink="/roles">
+      <mat-icon>arrow_back</mat-icon>
+      {{ 'GENERAL.VOLVER' | translate }}
+    </a>
+  </div>
+
+  <div class="form-container">
+    <div class="form-info">
+      <mat-icon>info</mat-icon>
+
+      {{ 'ROL.FORM.INFO' | translate }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'ROL.FORM.NOMBRE' | translate }}
+        </mat-label>
+
+        <input matInput formControlName="nombreRol" placeholder="ADMIN" required />
+
+        @if (form.get('nombreRol')?.hasError('required')) {
+          <mat-error>
+            {{ 'ROL.FORM.ERROR_NOMBRE' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          <mat-icon>save</mat-icon>
+
+          {{ edicion ? ('GENERAL.ACTUALIZAR' | translate) : ('GENERAL.GUARDAR' | translate) }}
+        </button>
+
+        <a mat-stroked-button color="primary" routerLink="/roles">
+          {{ 'GENERAL.CANCELAR' | translate }}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
