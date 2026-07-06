@@ -358,7 +358,7 @@
       "ACTUALIZADO": "Action updated",
       "ERROR_GENERAL": "Error"
     },
-    "REPORTE": {
+    "REPORTES": {
       "TITULO": "Administrative Actions Report",
       "SUBTITULO": "Monthly comparison of actions carried out by each authority.",
       "GRAFICO": "Actions by authority grouped by year and month",
