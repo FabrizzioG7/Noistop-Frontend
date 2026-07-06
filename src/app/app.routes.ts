@@ -36,6 +36,7 @@ import { Login } from './components/login/login';
 import { Registro } from './components/registro/registro';
 import { authGuard } from './guards/auth-guard';
 import { roleGuard } from './guards/role-guard';
+import { AccionReportes } from './components/acciones/accion-reportes/accion-reportes';
 
 // Roles válidos: 'ADMIN' | 'USER' | 'AUTHORITY'
 const ADMIN = ['ADMIN'];
@@ -124,6 +125,7 @@ export const routes: Routes = [
       { path: '', component: AccionListar },
       { path: 'nuevo', component: AccionForm },
       { path: 'editar/:id', component: AccionForm },
+      { path: 'reportes', component: AccionReportes },
     ],
   },
 

@@ -128,11 +128,6 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-  <!-- Todas las definiciones de <mat-menu> van SIN condicionar por @if, porque
-       las variables de plantilla (#menuX) declaradas dentro de un @if no son
-       visibles fuera de ese bloque. Solo los botones que las abren (arriba en
-       el nav de escritorio, y abajo en el menú móvil) se condicionan por rol. -->
-
   <mat-menu #menuUsuarios="matMenu" class="custom-dropdown">
     <button mat-menu-item routerLink="/usuarios">
       <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
@@ -197,6 +192,10 @@
     </button>
     <button mat-menu-item routerLink="/acciones/nuevo">
       <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
+    </button>
+    <button mat-menu-item routerLink="/acciones/reportes">
+      <mat-icon>bar_chart</mat-icon>
+      {{ 'MENU.REPORTES' | translate }}
     </button>
   </mat-menu>
 
