@@ -401,6 +401,13 @@ export class HomeComponent implements OnInit {
           color: '#e53935',
         },
         {
+          title: 'HOME.CARDS.MEDICIONES.TITLE',
+          description: 'HOME.CARDS.MEDICIONES.DESCRIPTION',
+          icon: 'graphic_eq',
+          route: '/mediciones',
+          color: '#009688',
+        },
+        {
           title: 'HOME.CARDS.ACCIONES.TITLE',
           description: 'HOME.CARDS.ACCIONES.DESCRIPTION',
           icon: 'gavel',
@@ -442,6 +449,13 @@ export class HomeComponent implements OnInit {
           color: '#e53935',
         },
         {
+          title: 'HOME.CARDS.MEDICIONES.TITLE',
+          description: 'HOME.CARDS.MEDICIONES.DESCRIPTION',
+          icon: 'graphic_eq',
+          route: '/mediciones',
+          color: '#009688',
+        },
+        {
           title: 'HOME.CARDS.ACCIONES.TITLE',
           description: 'HOME.CARDS.ACCIONES.DESCRIPTION',
           icon: 'gavel',
@@ -480,6 +494,13 @@ export class HomeComponent implements OnInit {
         icon: 'report_problem',
         route: '/reportes/nuevo',
         color: '#e53935',
+      },
+      {
+        title: 'HOME.CARDS.MEDICIONES.TITLE',
+        description: 'HOME.CARDS.MEDICIONES.DESCRIPTION',
+        icon: 'graphic_eq',
+        route: '/mediciones',
+        color: '#009688',
       },
       {
         title: 'HOME.CARDS.SUBIR_EVIDENCIA.TITLE',

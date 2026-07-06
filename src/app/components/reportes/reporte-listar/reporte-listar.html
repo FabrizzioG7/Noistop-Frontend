@@ -80,6 +80,20 @@
         </td>
       </ng-container>
 
+      <ng-container matColumnDef="medicion">
+        <th mat-header-cell *matHeaderCellDef>
+          {{ 'REPORTE.LISTAR.MEDICION' | translate }}
+        </th>
+
+        <td mat-cell *matCellDef="let r">
+          @if (decibelesDe(r) !== null) {
+            <span class="medicion-chip">{{ decibelesDe(r) }} dB</span>
+          } @else {
+            <span class="sin-dato">—</span>
+          }
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="distrito">
         <th mat-header-cell *matHeaderCellDef>
           {{ 'REPORTE.LISTAR.DISTRITO' | translate }}

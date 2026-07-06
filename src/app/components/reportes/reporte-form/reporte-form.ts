@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,9 +10,11 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Categoria } from '../../../models/categoria.model';
 import { Ubicacion } from '../../../models/ubicacion.model';
+import { Medicion } from '../../../models/medicion.model';
 import { ReporteService } from '../../../services/reporte';
 import { CategoriaService } from '../../../services/categoria';
 import { UbicacionService } from '../../../services/ubicacion';
+import { MedicionService } from '../../../services/medicion';
 import { AuthService } from '../../../services/auth';
 import { Reporte } from '../../../models/reporte.model';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -29,6 +31,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     MatSelectModule,
     MatSnackBarModule,
     RouterLink,
+    DatePipe,
     TranslateModule,
   ],
   templateUrl: './reporte-form.html',
@@ -40,6 +43,7 @@ export class ReporteForm implements OnInit {
   id = 0;
   categorias: Categoria[] = [];
   ubicaciones: Ubicacion[] = [];
+  mediciones: Medicion[] = [];
   estados = ['pendiente', 'en proceso', 'resuelto', 'cerrado'];
 
   constructor(
@@ -47,6 +51,7 @@ export class ReporteForm implements OnInit {
     private service: ReporteService,
     private categoriaService: CategoriaService,
     private ubicacionService: UbicacionService,
+    private medicionService: MedicionService,
     private router: Router,
     private route: ActivatedRoute,
     private snack: MatSnackBar,
@@ -58,6 +63,7 @@ export class ReporteForm implements OnInit {
       estado: ['pendiente', Validators.required],
       // Se autocompleta con el usuario logueado; no se elige manualmente.
       usuarioId: [this.auth.getUsuarioId(), Validators.required],
+      medicionId: [null],
       categoriaId: [null, Validators.required],
       ubicacionId: [null, Validators.required],
     });
@@ -66,6 +72,10 @@ export class ReporteForm implements OnInit {
   ngOnInit() {
     this.categoriaService.list().subscribe((d) => (this.categorias = d));
     this.ubicacionService.list().subscribe((d) => (this.ubicaciones = d));
+    this.medicionService.list().subscribe({
+      next: (d) => (this.mediciones = d),
+      error: () => (this.mediciones = []),
+    });
     this.route.params.subscribe((p) => {
       this.id = +p['id'];
       this.edicion = !!p['id'];

@@ -20,7 +20,9 @@
     "SUBIR_EVIDENCIA": "Subir Evidencia",
     "MIS_REPORTES": "Mis Reportes",
     "MIS_EVIDENCIAS": "Mis Evidencias",
-    "MIS_UBICACIONES": "Mis Ubicaciones"
+    "MIS_UBICACIONES": "Mis Ubicaciones",
+    "MEDICIONES": "Mediciones",
+    "MIS_MEDICIONES": "Mis Mediciones"
   },
   "HOME": {
     "BADGE": "Gestión Inteligente de Ruido Urbano",
@@ -68,6 +70,10 @@
       "REPORTES": {
         "TITLE": "Reportes",
         "DESCRIPTION": "Reportes de ruido con estado, categoría y ubicación georreferenciada."
+      },
+      "MEDICIONES": {
+        "TITLE": "Mediciones",
+        "DESCRIPTION": "Consulta y administra las mediciones de ruido registradas."
       },
       "ACCIONES": {
         "TITLE": "Acciones Administrativas",
@@ -285,7 +291,8 @@
       "FECHA": "Fecha",
       "VACIO": "No hay reportes registrados.",
       "TITULO_MIS": "Mis Reportes",
-      "SUBTITULO_MIS": "Reportes de ruido que has registrado."
+      "SUBTITULO_MIS": "Reportes de ruido que has registrado.",
+      "MEDICION": "Medición"
     },
     "FORM": {
       "NUEVO": "Nuevo Reporte",
@@ -303,7 +310,10 @@
       "ERROR_USUARIO": "Debe seleccionar un usuario.",
       "ERROR_CATEGORIA": "Debe seleccionar una categoría.",
       "ERROR_UBICACION": "Debe seleccionar una ubicación.",
-      "REGISTRADO_POR": "Se registrará a nombre de:"
+      "REGISTRADO_POR": "Se registrará a nombre de:",
+      "MEDICION": "Medición de Decibeles (opcional)",
+      "SIN_MEDICION": "Sin medición asociada",
+      "HINT_MEDICION": "Si un inspector ya tomó una medición de decibeles para este incidente, selecciónala aquí."
     },
     "MENSAJES": {
       "CONFIRMAR_ELIMINAR": "¿Eliminar este reporte?",
@@ -419,6 +429,46 @@
     "MENSAJES": {
       "CREADO": "Cuenta creada correctamente, ya puedes iniciar sesión",
       "ERROR": "No se pudo crear la cuenta"
+    }
+  },
+  "MEDICION": {
+    "LISTAR": {
+      "TITULO": "Mediciones de Decibeles",
+      "SUBTITULO": "Registro de niveles de ruido medidos en campo, asociados a los reportes.",
+      "TITULO_MIS": "Mis Mediciones",
+      "SUBTITULO_MIS": "Mediciones de decibeles asociadas a los reportes que has registrado.",
+      "NUEVO": "Nueva Medición",
+      "TOTAL": "Total de Mediciones",
+      "DECIBELES": "Decibeles",
+      "FECHA_HORA": "Fecha y Hora de la Medición",
+      "REGISTRADA": "Registrada el",
+      "VACIO": "No hay mediciones registradas.",
+      "VACIO_MIS": "Aún no tienes mediciones asociadas a tus reportes."
+    },
+    "FORM": {
+      "NUEVO": "Nueva Medición",
+      "EDITAR": "Editar Medición",
+      "SUBTITULO": "Registro de niveles de ruido en decibeles para asociar a un reporte.",
+      "INFO": "Complete los datos necesarios para registrar la medición.",
+      "DECIBELES": "Nivel de Decibeles",
+      "PLACEHOLDER_DECIBELES": "Ej: 85",
+      "FECHA_HORA": "Fecha y Hora de la Medición",
+      "ERROR_DECIBELES": "Los decibeles son obligatorios.",
+      "ERROR_RANGO": "Los decibeles deben estar entre 0 y 200 dB.",
+      "ERROR_FECHA_HORA": "La fecha y hora son obligatorias."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "¿Eliminar esta medición?",
+      "ELIMINADO": "Medición eliminada",
+      "ERROR_ELIMINAR": "Error al eliminar",
+      "CREADO": "Medición creada",
+      "ACTUALIZADO": "Medición actualizada",
+      "ERROR_GENERAL": "Error"
+    },
+    "NIVEL": {
+      "BAJO": "Bajo",
+      "MODERADO": "Moderado",
+      "ALTO": "Alto"
     }
   }
 }

@@ -37,6 +37,9 @@ import { Registro } from './components/registro/registro';
 import { authGuard } from './guards/auth-guard';
 import { roleGuard } from './guards/role-guard';
 import { AccionReportes } from './components/acciones/accion-reportes/accion-reportes';
+import { Mediciones } from './components/mediciones/mediciones';
+import { MedicionListar } from './components/mediciones/medicion-listar/medicion-listar';
+import { MedicionForm } from './components/mediciones/medicion-form/medicion-form';
 
 // Roles válidos: 'ADMIN' | 'USER' | 'AUTHORITY'
 const ADMIN = ['ADMIN'];
@@ -113,6 +116,20 @@ export const routes: Routes = [
       { path: '', component: ReporteListar, canActivate: [roleGuard(TODOS)] },
       { path: 'nuevo', component: ReporteForm, canActivate: [roleGuard(TODOS)] },
       { path: 'editar/:id', component: ReporteForm, canActivate: [roleGuard(STAFF)] },
+    ],
+  },
+
+  // Mediciones: los 3 roles pueden ver el listado (USER ve solo las
+  // mediciones asociadas a sus propios reportes); registrar/editar es tarea
+  // de ADMIN/AUTHORITY y eliminar solo de ADMIN (igual que en el backend).
+  {
+    path: 'mediciones',
+    component: Mediciones,
+    canActivate: [authGuard],
+    children: [
+      { path: '', component: MedicionListar, canActivate: [roleGuard(TODOS)] },
+      { path: 'nuevo', component: MedicionForm, canActivate: [roleGuard(STAFF)] },
+      { path: 'editar/:id', component: MedicionForm, canActivate: [roleGuard(STAFF)] },
     ],
   },
 

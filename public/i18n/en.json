@@ -20,7 +20,9 @@
     "SUBIR_EVIDENCIA": "Upload Evidence",
     "MIS_REPORTES": "My Reports",
     "MIS_EVIDENCIAS": "My Evidence",
-    "MIS_UBICACIONES": "My Locations"
+    "MIS_UBICACIONES": "My Locations",
+    "MEDICIONES": "Measurements",
+    "MIS_MEDICIONES": "My Measurements"
   },
   "HOME": {
     "BADGE": "Smart Urban Noise Management",
@@ -72,6 +74,10 @@
       "ACCIONES": {
         "TITLE": "Administrative Actions",
         "DESCRIPTION": "Comments and actions taken by authorities regarding reports."
+      },
+      "MEDICIONES": {
+        "TITLE": "Measurements",
+        "DESCRIPTION": "View and manage recorded noise measurements."
       },
       "EVIDENCIAS": {
         "TITLE": "Evidence",
@@ -285,7 +291,8 @@
       "FECHA": "Date",
       "VACIO": "No reports registered.",
       "TITULO_MIS": "My Reports",
-      "SUBTITULO_MIS": "Noise reports you have filed."
+      "SUBTITULO_MIS": "Noise reports you have filed.",
+      "MEDICION": "Measurement"
     },
     "FORM": {
       "NUEVO": "New Report",
@@ -303,7 +310,10 @@
       "ERROR_USUARIO": "Please select a user.",
       "ERROR_CATEGORIA": "Please select a category.",
       "ERROR_UBICACION": "Please select a location.",
-      "REGISTRADO_POR": "Will be registered under:"
+      "REGISTRADO_POR": "Will be registered under:",
+      "MEDICION": "Decibel Measurement (optional)",
+      "SIN_MEDICION": "No associated measurement",
+      "HINT_MEDICION": "If an inspector already took a decibel measurement for this incident, select it here."
     },
     "MENSAJES": {
       "CONFIRMAR_ELIMINAR": "Delete this report?",
@@ -419,6 +429,46 @@
     "MENSAJES": {
       "CREADO": "Account created successfully, you can now sign in",
       "ERROR": "Could not create the account"
+    }
+  },
+  "MEDICION": {
+    "LISTAR": {
+      "TITULO": "Decibel Measurements",
+      "SUBTITULO": "Record of noise levels measured on-site, linked to reports.",
+      "TITULO_MIS": "My Measurements",
+      "SUBTITULO_MIS": "Decibel measurements linked to the reports you have filed.",
+      "NUEVO": "New Measurement",
+      "TOTAL": "Total Measurements",
+      "DECIBELES": "Decibels",
+      "FECHA_HORA": "Measurement Date and Time",
+      "REGISTRADA": "Registered on",
+      "VACIO": "No measurements registered.",
+      "VACIO_MIS": "You don't have any measurements linked to your reports yet."
+    },
+    "FORM": {
+      "NUEVO": "New Measurement",
+      "EDITAR": "Edit Measurement",
+      "SUBTITULO": "Record noise levels in decibels to link to a report.",
+      "INFO": "Complete the required information to register the measurement.",
+      "DECIBELES": "Decibel Level",
+      "PLACEHOLDER_DECIBELES": "E.g.: 85",
+      "FECHA_HORA": "Measurement Date and Time",
+      "ERROR_DECIBELES": "Decibels are required.",
+      "ERROR_RANGO": "Decibels must be between 0 and 200 dB.",
+      "ERROR_FECHA_HORA": "Date and time are required."
+    },
+    "MENSAJES": {
+      "CONFIRMAR_ELIMINAR": "Delete this measurement?",
+      "ELIMINADO": "Measurement deleted",
+      "ERROR_ELIMINAR": "Error deleting measurement",
+      "CREADO": "Measurement created",
+      "ACTUALIZADO": "Measurement updated",
+      "ERROR_GENERAL": "Error"
+    },
+    "NIVEL": {
+      "BAJO": "Low",
+      "MODERADO": "Moderate",
+      "ALTO": "High"
     }
   }
 }

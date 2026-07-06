@@ -8,6 +8,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { Reporte } from '../../../models/reporte.model';
 import { ReporteService } from '../../../services/reporte';
+import { MedicionService } from '../../../services/medicion';
 import { AuthService } from '../../../services/auth';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -29,9 +30,11 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class ReporteListar implements OnInit {
   dataSource = new MatTableDataSource<Reporte>();
+  decibelesPorMedicion: Record<number, number> = {};
 
   constructor(
     private service: ReporteService,
+    private medicionService: MedicionService,
     private snack: MatSnackBar,
     private translate: TranslateService,
     public auth: AuthService,
@@ -41,7 +44,6 @@ export class ReporteListar implements OnInit {
     return this.auth.getRol() === 'USER';
   }
 
-  // Editar reportes: ADMIN y AUTHORITY. Eliminar: solo ADMIN.
   puedeEditar(): boolean {
     return this.auth.tieneRol('ADMIN', 'AUTHORITY');
   }
@@ -50,17 +52,32 @@ export class ReporteListar implements OnInit {
   }
 
   get displayedColumns(): string[] {
-    const base = ['id', 'descripcion', 'estado', 'usuario', 'categoria', 'distrito', 'fecha'];
+    const base = [
+      'id',
+      'descripcion',
+      'estado',
+      'usuario',
+      'categoria',
+      'medicion',
+      'distrito',
+      'fecha',
+    ];
     return this.puedeEditar() || this.puedeEliminar() ? [...base, 'acciones'] : base;
   }
 
   ngOnInit() {
     this.cargar();
     this.service.getList().subscribe((d) => (this.dataSource.data = d));
+    this.medicionService.list().subscribe({
+      next: (mediciones) => {
+        this.decibelesPorMedicion = {};
+        mediciones.forEach((m) => (this.decibelesPorMedicion[m.pkMedicionId] = m.decibeles));
+      },
+      error: () => (this.decibelesPorMedicion = {}),
+    });
   }
 
   cargar() {
-    // USER: solo ve sus propios reportes. ADMIN/AUTHORITY ven todos.
     if (this.esUser()) {
       const usuarioId = this.auth.getUsuarioId();
       if (!usuarioId) {
@@ -112,5 +129,10 @@ export class ReporteListar implements OnInit {
       cerrado: '#546e7a',
     };
     return map[estado?.toLowerCase()] || '#757575';
+  }
+
+  decibelesDe(r: Reporte): number | null {
+    if (!r.medicionId) return null;
+    return this.decibelesPorMedicion[r.medicionId] ?? null;
   }
 }

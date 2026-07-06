@@ -81,6 +81,18 @@
         <div class="active-bar"></div>
       </a>
 
+      <!-- MEDICIONES: los 3 roles ven "su" listado; registrar es de staff -->
+      <a
+        class="nav-item"
+        [matMenuTriggerFor]="menuMediciones"
+        #medicionesTrigger="matMenuTrigger"
+        [class.active]="medicionesTrigger.menuOpen"
+      >
+        <mat-icon>graphic_eq</mat-icon>
+        <span>{{ (esUser() ? 'MENU.MIS_MEDICIONES' : 'MENU.MEDICIONES') | translate }}</span>
+        <div class="active-bar"></div>
+      </a>
+
       <!-- ACCIONES: solo staff (ADMIN, AUTHORITY) -->
       @if (esStaff()) {
         <a
@@ -186,6 +198,18 @@
     </button>
   </mat-menu>
 
+  <mat-menu #menuMediciones="matMenu" class="custom-dropdown">
+    <button mat-menu-item routerLink="/mediciones">
+      <mat-icon>list</mat-icon>
+      {{ (esUser() ? 'MENU.MIS_MEDICIONES' : 'MENU.LISTAR') | translate }}
+    </button>
+    @if (esStaff()) {
+      <button mat-menu-item routerLink="/mediciones/nuevo">
+        <mat-icon>add</mat-icon> {{ 'MENU.NUEVA' | translate }}
+      </button>
+    }
+  </mat-menu>
+
   <mat-menu #menuAcciones="matMenu" class="custom-dropdown">
     <button mat-menu-item routerLink="/acciones">
       <mat-icon>list</mat-icon> {{ 'MENU.LISTAR' | translate }}
@@ -240,6 +264,11 @@
     <button mat-menu-item [matMenuTriggerFor]="menuReportes">
       <mat-icon>report</mat-icon>
       <span>{{ (esUser() ? 'MENU.MIS_REPORTES' : 'MENU.REPORTES') | translate }}</span>
+    </button>
+
+    <button mat-menu-item [matMenuTriggerFor]="menuMediciones">
+      <mat-icon>graphic_eq</mat-icon>
+      <span>{{ (esUser() ? 'MENU.MIS_MEDICIONES' : 'MENU.MEDICIONES') | translate }}</span>
     </button>
 
     @if (esStaff()) {

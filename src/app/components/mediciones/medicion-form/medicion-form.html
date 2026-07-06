@@ -1,0 +1,85 @@
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <h2>
+        <mat-icon>graphic_eq</mat-icon>
+
+        {{ edicion ? ('MEDICION.FORM.EDITAR' | translate) : ('MEDICION.FORM.NUEVO' | translate) }}
+      </h2>
+
+      <p class="subtitle">
+        {{ 'MEDICION.FORM.SUBTITULO' | translate }}
+      </p>
+    </div>
+
+    <a class="back-link" routerLink="/mediciones">
+      <mat-icon>arrow_back</mat-icon>
+      {{ 'GENERAL.VOLVER' | translate }}
+    </a>
+  </div>
+
+  <div class="form-container">
+    <div class="form-info">
+      <mat-icon>info</mat-icon>
+      {{ 'MEDICION.FORM.INFO' | translate }}
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="guardar()">
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'MEDICION.FORM.DECIBELES' | translate }}
+        </mat-label>
+
+        <input
+          matInput
+          type="number"
+          formControlName="decibeles"
+          min="0"
+          max="200"
+          [placeholder]="'MEDICION.FORM.PLACEHOLDER_DECIBELES' | translate"
+          required
+        />
+
+        <span matTextSuffix>dB</span>
+
+        @if (form.get('decibeles')?.hasError('required')) {
+          <mat-error>
+            {{ 'MEDICION.FORM.ERROR_DECIBELES' | translate }}
+          </mat-error>
+        } @else if (
+          form.get('decibeles')?.hasError('min') || form.get('decibeles')?.hasError('max')
+        ) {
+          <mat-error>
+            {{ 'MEDICION.FORM.ERROR_RANGO' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
+          {{ 'MEDICION.FORM.FECHA_HORA' | translate }}
+        </mat-label>
+
+        <input matInput type="datetime-local" formControlName="fechaHora" required />
+
+        @if (form.get('fechaHora')?.hasError('required')) {
+          <mat-error>
+            {{ 'MEDICION.FORM.ERROR_FECHA_HORA' | translate }}
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+          <mat-icon>save</mat-icon>
+
+          {{ edicion ? ('GENERAL.ACTUALIZAR' | translate) : ('GENERAL.GUARDAR' | translate) }}
+        </button>
+
+        <a mat-stroked-button color="primary" routerLink="/mediciones">
+          {{ 'GENERAL.CANCELAR' | translate }}
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

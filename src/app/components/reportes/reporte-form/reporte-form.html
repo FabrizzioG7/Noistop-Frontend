@@ -97,6 +97,26 @@
 
       <mat-form-field class="form-field-full">
         <mat-label>
+          {{ 'REPORTE.FORM.MEDICION' | translate }}
+        </mat-label>
+
+        <mat-select formControlName="medicionId">
+          <mat-option [value]="null">
+            {{ 'REPORTE.FORM.SIN_MEDICION' | translate }}
+          </mat-option>
+          @for (m of mediciones; track m.pkMedicionId) {
+            <mat-option [value]="m.pkMedicionId">
+              #{{ m.pkMedicionId }} · {{ m.decibeles }} dB ·
+              {{ m.fechaHora | date: 'dd/MM/yyyy HH:mm' }}
+            </mat-option>
+          }
+        </mat-select>
+
+        <mat-hint>{{ 'REPORTE.FORM.HINT_MEDICION' | translate }}</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="form-field-full">
+        <mat-label>
           {{ 'REPORTE.FORM.UBICACION' | translate }}
         </mat-label>
 
