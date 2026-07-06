@@ -5,10 +5,11 @@ import { AccionService } from '../../../services/accion';
 import { ChartConfiguration, ChartData, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-accion-reportes',
-  imports: [MatIcon, BaseChartDirective, CommonModule, MatIconModule],
+  imports: [MatIcon, BaseChartDirective, CommonModule, MatIconModule, TranslateModule],
   templateUrl: './accion-reportes.html',
   styleUrl: './accion-reportes.scss',
 })
