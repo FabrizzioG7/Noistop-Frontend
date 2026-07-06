@@ -5,7 +5,7 @@ import { AccionService } from '../../../services/accion';
 import { ChartConfiguration, ChartData, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-accion-reportes',
@@ -14,7 +14,10 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './accion-reportes.scss',
 })
 export class AccionReportes implements OnInit {
-  constructor(private accionService: AccionService) {}
+  constructor(
+    private accionService: AccionService,
+    private translate: TranslateService,
+  ) {}
 
   datos: AccionMensual[] = [];
 
@@ -67,7 +70,7 @@ export class AccionReportes implements OnInit {
           },
           title: {
             display: true,
-            text: 'Año y mes',
+            text: this.translate.instant('ACCION.REPORTES.EJE_X'),
           },
         },
         y: {
@@ -78,7 +81,7 @@ export class AccionReportes implements OnInit {
           },
           title: {
             display: true,
-            text: 'Cantidad de acciones',
+            text: this.translate.instant('ACCION.REPORTES.EJE_Y'),
           },
         },
       },

@@ -351,7 +351,9 @@
     "REPORTE": {
       "TITULO": "Administrative Actions Report",
       "SUBTITULO": "Monthly comparison of actions carried out by each authority.",
-      "GRAFICO": "Actions by authority grouped by year and month"
+      "GRAFICO": "Actions by authority grouped by year and month",
+      "EJE_X": "Year and Month",
+      "EJE_Y": "Number of Actions"
     }
   },
   "EVIDENCIA": {

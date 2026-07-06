@@ -9,9 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router, RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth';
 import { WelcomeDialog } from '../welcome-dialog/welcome-dialog';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +29,7 @@ import { WelcomeDialog } from '../welcome-dialog/welcome-dialog';
     MatProgressSpinnerModule,
     RouterLink,
     TranslateModule,
+    MatMenuModule,
   ],
   templateUrl: './login.html',
   styleUrl: './login.scss',
@@ -43,11 +45,21 @@ export class Login {
     private authService: AuthService,
     private router: Router,
     private dialog: MatDialog,
+    private translate: TranslateService,
   ) {
     this.form = this.fb.group({
       identificador: ['', Validators.required],
       password: ['', Validators.required],
     });
+
+    const idioma = localStorage.getItem('idioma') || 'es';
+    this.translate.setDefaultLang('es');
+    this.translate.use(idioma);
+  }
+
+  cambiarIdioma(idioma: string) {
+    this.translate.use(idioma);
+    localStorage.setItem('idioma', idioma);
   }
 
   togglePassword(event: MouseEvent) {

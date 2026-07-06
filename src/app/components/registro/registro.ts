@@ -14,6 +14,7 @@ import { Rol } from '../../models/rol.model';
 import { Usuario } from '../../models/usuario.model';
 import { RolService } from '../../services/rol';
 import { UsuarioService } from '../../services/usuario';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-registro',
@@ -30,6 +31,7 @@ import { UsuarioService } from '../../services/usuario';
     MatSnackBarModule,
     RouterLink,
     TranslateModule,
+    MatMenuModule,
   ],
   templateUrl: './registro.html',
   styleUrl: './registro.scss',
@@ -54,6 +56,15 @@ export class Registro implements OnInit {
       password: ['', Validators.required],
       rolId: [null, Validators.required],
     });
+
+    const idioma = localStorage.getItem('idioma') || 'es';
+    this.translate.setDefaultLang('es');
+    this.translate.use(idioma);
+  }
+
+  cambiarIdioma(idioma: string) {
+    this.translate.use(idioma);
+    localStorage.setItem('idioma', idioma);
   }
 
   ngOnInit() {

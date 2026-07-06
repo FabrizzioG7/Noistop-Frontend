@@ -1,4 +1,15 @@
 <div class="login-bg">
+  <div class="language-button">
+    <button mat-icon-button [matMenuTriggerFor]="idiomaMenu">
+      <mat-icon>language</mat-icon>
+    </button>
+  </div>
+
+  <mat-menu #idiomaMenu="matMenu">
+    <button mat-menu-item (click)="cambiarIdioma('es')">🇪🇸 Español</button>
+
+    <button mat-menu-item (click)="cambiarIdioma('en')">🇺🇸 English</button>
+  </mat-menu>
   <mat-card class="login-card">
     <div class="login-logo">
       <div class="logo-icon-box">
